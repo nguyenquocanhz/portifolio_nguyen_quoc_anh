@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="vi" class="scroll-smooth">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nguyen Quoc Anh — Full‑Stack Developer | Portfolio & Resume</title>
+  <meta name="description" content="Portfolio & resume của Nguyen Quoc Anh — Full‑Stack Developer. Dự án thực tế, kỹ năng, kinh nghiệm, liên hệ hợp tác." />
+  <meta name="robots" content="index,follow,max-image-preview:large" />
+  <link rel="canonical" href="https://nguyenquocanh.io.vn/" />
+  <!-- Open Graph -->
+  <meta property="og:type" content="website" />
+  <meta property="og:title" content="Nguyen Quoc Anh — Full‑Stack Developer" />
+  <meta property="og:description" content="Dự án, kỹ năng, kinh nghiệm, liên hệ." />
+  <meta property="og:url" content="https://nguyenquocanh.io.vn/" />
+  <meta property="og:image" content="https://nguyenquocanh.io.vn/cover.jpg" />
+  <!-- Twitter -->
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Nguyen Quoc Anh — Full‑Stack Developer" />
+  <meta name="twitter:description" content="Dự án, kỹ năng, kinh nghiệm, liên hệ." />
+  <meta name="twitter:image" content="https://nguyenquocanh.io.vn/cover.jpg" />
+
+  <!-- JSON-LD: WebSite + Person -->
+  <script type="application/ld+json">
+  {
+    "@context":"https://schema.org",
+    "@type":"Person",
+    "name":"Nguyen Quoc Anh",
+    "jobTitle":"Full‑Stack Developer",
+    "url":"https://nguyenquocanh.io.vn/",
+    "sameAs":[
+      "https://github.com/yourhandle",
+      "https://www.linkedin.com/in/yourhandle",
+      "https://t.me/nqa1997"
+    ]
+  }
+  </script>
+
+  <!-- Font -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        fontFamily: { sans: ['Inter','system-ui','-apple-system','Segoe UI','Roboto','Arial','sans-serif'], display: ['Fraunces','serif'] },
+        extend: {
+          colors: {
+            ink: { 950:'#0a0a14', 900:'#0f1020', 800:'#151633' },
+            brand: { 400:'#6bc2d8', 500:'#2aaee8', 600:'#1b76c2' },
+            gold:  { 400:'#f8d86b', 500:'#f1c232' }
+          },
+          boxShadow: { soft: '0 8px 28px rgba(0,0,0,.18)' },
+          keyframes: {
+            fadeUp: { '0%':{opacity:0, transform:'translateY(16px)'}, '100%':{opacity:1, transform:'translateY(0)'} },
+            slideLine: { '0%':{transform:'scaleX(0)', transformOrigin:'left'}, '100%':{transform:'scaleX(1)', transformOrigin:'left'} }
+          },
+          animation: {
+            fadeUp: 'fadeUp .7s cubic-bezier(.2,.6,.2,1) both',
+            slideLine: 'slideLine .35s ease-out forwards'
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- UX: font smoothing + reduced motion -->
+  <style>
+    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
+    @media (prefers-reduced-motion: reduce) {
+      * { animation: none !important; transition: none !important }
+    }
+    /* Nav underline gold run-left->right */
+    .navlink {
+      position: relative;
+    }
+    .navlink::after{
+      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:100%;
+      background: linear-gradient(90deg,#f1c232,#f8d86b);
+      transform: scaleX(0); transform-origin:left; transition: transform .35s ease-out;
+    }
+    .navlink:hover::after, .navlink:focus-visible::after{ transform: scaleX(1); }
+    /* Appear-on-scroll helper (will be toggled by JS) */
+    .will-animate{ opacity:0; transform: translateY(14px); }
+    .inview{ opacity:1 !important; transform:none !important; animation: fadeUp .7s cubic-bezier(.2,.6,.2,1) both; }
+  </style>
+</head>
+
+<body class="min-h-screen bg-ink-900 text-white selection:bg-gold-400/30">
+  <!-- Skip link for a11y -->
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-ink-800 text-white px-3 py-2 rounded">Bỏ qua nội dung điều hướng</a>
+
+  <!-- Header / Nav -->
+  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-ink-900/70">
+    <nav class="mx-auto max-w-5xl px-4 sm:px-6 py-3 flex items-center justify-between" aria-label="Chính">
+      <a href="/" class="flex items-center gap-2" aria-label="Trang chủ">
+        <span class="text-lg font-display tracking-tight">Nguyen Quoc Anh</span>
+      </a>
+      <ul class="flex items-center gap-6 text-sm">
+        <li><a class="navlink outline-none" href="#projects">Projects</a></li>
+        <li><a class="navlink outline-none" href="#skills">Skills</a></li>
+        <li><a class="navlink outline-none" href="#experience">Experience</a></li>
+        <li><a class="navlink outline-none" href="#contact">Contact</a></li>
+      </ul>
+      <div class="flex items-center gap-3">
+        <a href="/Nguyen-Quoc-Anh-CV.pdf" class="rounded-md bg-gold-500 text-ink-950 px-3 py-1.5 text-sm font-semibold shadow-soft hover:brightness-110" download>Download CV</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main" class="mx-auto max-w-5xl px-4 sm:px-6">
+    <!-- Hero -->
+    <section class="pt-14 md:pt-20 pb-8 md:pb-14 will-animate" id="hero">
+      <h1 class="text-3xl md:text-5xl font-display leading-tight tracking-tight">
+        Xin chào, mình là <span class="text-brand-500">Nguyen Quoc Anh</span>
+      </h1>
+      <p class="mt-4 max-w-2xl text-base/7 md:text-lg/8 text-white/80">
+        Full‑Stack Developer. Mình thiết kế, xây dựng và vận hành web/app end‑to‑end: Next.js, Spring Boot, Laravel, Node.js, DevOps on Linux.
+        Luôn ưu tiên hiệu năng, UX, bảo trì dễ.
+      </p>
+
+      <!-- Social (icons8) -->
+      <div class="mt-6 flex gap-4" aria-label="Mạng xã hội">
+        <a href="https://github.com/yourhandle" title="GitHub" rel="me noopener" target="_blank" class="hover:opacity-90">
+          <img loading="lazy" width="28" height="28" alt="GitHub" src="./assets/img/icons8-github-logo-50.png"/>
+        </a>
+        <a href="https://www.linkedin.com/in/yourhandle" title="LinkedIn" rel="me noopener" target="_blank" class="hover:opacity-90">
+          <img loading="lazy" width="28" height="28" alt="LinkedIn" src="./assets/img/icons8-linkedin-50.png"/>
+        </a>
+        <a href="https://t.me/yourhandle" title="Telegram" rel="me noopener" target="_blank" class="hover:opacity-90">
+          <img loading="lazy" width="28" height="28" alt="Telegram" src="./assets/img/icons8-telegram-50.png"/>
+        </a>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section id="projects" class="py-10 md:py-16 border-t border-white/10 will-animate">
+      <header class="mb-6">
+        <h2 class="text-2xl md:text-3xl font-display tracking-tight">Projects</h2>
+        <p class="text-white/70 mt-1">Một vài dự án tiêu biểu (nhấn filter để lọc).</p>
+      </header>
+
+      <!-- Filters -->
+      <div class="flex gap-2 mb-6" role="tablist" aria-label="Bộ lọc dự án">
+        <button data-filter="all" class="filter-btn rounded-full px-3 py-1.5 text-sm bg-ink-800 hover:bg-ink-800/70">All</button>
+        <button data-filter="free" class="filter-btn rounded-full px-3 py-1.5 text-sm bg-ink-800 hover:bg-ink-800/70">Free</button>
+        <button data-filter="suggest" class="filter-btn rounded-full px-3 py-1.5 text-sm bg-ink-800 hover:bg-ink-800/70">Suggest</button>
+      </div>
+
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="projectGrid" itemscope itemtype="https://schema.org/Collection">
+        <!-- Card -->
+        <article class="card group rounded-xl bg-ink-800/70 p-4 shadow-soft border border-white/10 will-animate" data-type="free" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
+          <img class="w-full aspect-[16/10] rounded-md object-cover" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop" alt="Giao diện dashboard" loading="lazy" width="800" height="500" itemprop="image">
+          <h3 class="mt-3 text-lg font-semibold tracking-tight" itemprop="name">Admin Dashboard</h3>
+          <p class="mt-1 text-sm text-white/70" itemprop="about">Tailwind + Next.js + REST API.</p>
+          <div class="mt-3 flex gap-2">
+            <a itemprop="url" href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">Live</a>
+            <a href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">GitHub</a>
+          </div>
+        </article>
+
+        <article class="card group rounded-xl bg-ink-800/70 p-4 shadow-soft border border-white/10 will-animate" data-type="suggest" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
+          <img class="w-full aspect-[16/10] rounded-md object-cover" src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" alt="Trang thương mại điện tử" loading="lazy">
+          <h3 class="mt-3 text-lg font-semibold tracking-tight" itemprop="name">E‑commerce Mini</h3>
+          <p class="mt-1 text-sm text-white/70" itemprop="about">Spring Boot + React + PostgreSQL.</p>
+          <div class="mt-3 flex gap-2">
+            <a itemprop="url" href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">Live</a>
+            <a href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">GitHub</a>
+          </div>
+        </article>
+
+        <article class="card group rounded-xl bg-ink-800/70 p-4 shadow-soft border border-white/10 will-animate" data-type="free" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
+          <img class="w-full aspect-[16/10] rounded-md object-cover" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=800&auto=format&fit=crop" alt="Ứng dụng mobile" loading="lazy">
+          <h3 class="mt-3 text-lg font-semibold tracking-tight" itemprop="name">React Native Starter</h3>
+          <p class="mt-1 text-sm text-white/70" itemprop="about">Expo + NativeWind + Supabase Auth.</p>
+          <div class="mt-3 flex gap-2">
+            <a itemprop="url" href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">Live</a>
+            <a href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">GitHub</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills" class="py-10 md:py-16 border-t border-white/10 will-animate">
+      <h2 class="text-2xl md:text-3xl font-display tracking-tight mb-4">Skills</h2>
+      <ul class="flex flex-wrap gap-2" aria-label="Hashtag kỹ năng">
+        <!-- hashtag chips nhiều màu -->
+        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-brand-500 to-brand-600/80 text-white">#NextJS</li>
+        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-pink-500 to-rose-500/80">#ReactNative</li>
+        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-emerald-500 to-teal-500/80">#SpringBoot</li>
+        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-indigo-500 to-sky-500/80">#NodeJS</li>
+        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-amber-500 to-yellow-500/80 text-ink-950">#Laravel</li>
+        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-purple-500 to-fuchsia-500/80">#PostgreSQL</li>
+        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-slate-500 to-gray-600/80">#Linux/DevOps</li>
+      </ul>
+    </section>
+
+    <!-- Experience -->
+    <section id="experience" class="py-10 md:py-16 border-t border-white/10 will-animate">
+      <h2 class="text-2xl md:text-3xl font-display tracking-tight mb-6">Experience</h2>
+      <div class="space-y-6">
+        <article itemscope itemtype="https://schema.org/Organization">
+          <h3 class="text-lg font-semibold tracking-tight" itemprop="name">Freelance / Studio</h3>
+          <p class="text-sm text-white/70">2021 — Present · Full‑Stack</p>
+          <ul class="mt-2 list-disc list-outside ms-5 text-white/80 text-sm leading-7">
+            <li>Tư vấn kiến trúc, chuẩn REST, tính sẵn sàng cao.</li>
+            <li>Tối ưu SEO/CSR/ISR cho Next.js, Web Vitals & LCP & CLS.</li>
+            <li>CI/CD GitHub Actions, Docker, Nginx, Cloudflare.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="py-12 md:py-16 border-t border-white/10 will-animate">
+      <h2 class="text-2xl md:text-3xl font-display tracking-tight mb-4">Liên hệ</h2>
+      <p class="text-white/80 mb-4">Email: <a class="underline decoration-gold-500/70 underline-offset-4" href="mailto:nguyenquocanh.dev@gmail.com">nguyenquocanh.dev@gmail.com</a></p>
+      <form name="contact" class="grid sm:grid-cols-2 gap-4 max-w-xl" aria-label="Form liên hệ">
+        <label class="sr-only" for="name">Tên</label>
+        <input id="name" name="name" required placeholder="Tên của bạn" class="col-span-1 bg-ink-800/60 border border-white/15 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-brand-500/60">
+        <label class="sr-only" for="email">Email</label>
+        <input id="email" name="email" type="email" required placeholder="Email" class="col-span-1 bg-ink-800/60 border border-white/15 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-brand-500/60">
+        <textarea name="message" rows="4" required placeholder="Nội dung..." class="sm:col-span-2 bg-ink-800/60 border border-white/15 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-brand-500/60"></textarea>
+        <button type="submit" class="sm:col-span-2 justify-self-start rounded-md bg-gold-500 text-ink-950 px-4 py-2 font-semibold shadow-soft hover:brightness-110">Gửi</button>
+      </form>
+    </section>
+  </main>
+
+  <footer class="py-8 border-t border-white/10 text-center text-white/60 text-sm">
+    © <span id="y"></span> Nguyen Quoc Anh. All rights reserved.
+  </footer>
+
+  <!-- Scripts: filter + in-view animation + year -->
+  <script>
+    // Current year
+    document.getElementById('y').textContent = new Date().getFullYear();
+
+    // Project filter
+    const buttons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('#projectGrid .card');
+    buttons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        const t = btn.dataset.filter;
+        buttons.forEach(b=>b.classList.remove('ring-2','ring-gold-500/70'));
+        btn.classList.add('ring-2','ring-gold-500/70');
+        cards.forEach(c=>{
+          const show = (t==='all') || (c.dataset.type===t);
+          c.style.display = show? 'block':'none';
+        });
+      });
+    });
+
+    // IntersectionObserver for appear-on-scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{
+        if(e.isIntersecting){
+          e.target.classList.add('inview');
+          io.unobserve(e.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+
+    document.querySelectorAll('.will-animate').forEach(el=>io.observe(el));
+  </script>
+</body>
+</html>
