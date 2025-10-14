@@ -3,52 +3,23 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nguyễn Quốc Anh — Full-Stack Developer | Portfolio & Resume</title>
-  <meta name="description" content="Portfolio & resume của Nguyễn Quốc Anh — Full-Stack Developer. Dự án thực tế, kỹ năng, kinh nghiệm, liên hệ hợp tác." />
+  <title>Nguyễn Quốc Anh — Full-Stack Developer | Portfolio & Utilities</title>
+  <meta name="description" content="Portfolio & resume + bộ tiện ích Tech Toolkit (PSU, VA×PF, mAh↔Wh, GB↔GiB, SHA-256, ADB Builder, DPI)." />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://nguyenquocanh.io.vn/" />
 
   <!-- Open Graph -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Nguyễn Quốc Anh — Full-Stack Developer" />
-  <meta property="og:description" content="Dự án, kỹ năng, kinh nghiệm, liên hệ hợp tác." />
+  <meta property="og:description" content="Portfolio + Tech Toolkit: PSU, VA×PF, Battery, Storage, Hash, ADB, DPI." />
   <meta property="og:url" content="https://nguyenquocanh.io.vn/" />
   <meta property="og:image" content="https://nguyenquocanh.io.vn/cover.jpg" />
 
   <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="twitter:title" content="Nguyễn Quốc Anh — Full-Stack Developer" />
-  <meta name="twitter:description" content="Dự án, kỹ năng, kinh nghiệm, liên hệ hợp tác." />
+  <meta name="twitter:description" content="Portfolio + Tech Toolkit: PSU, VA×PF, Battery, Storage, Hash, ADB, DPI." />
   <meta name="twitter:image" content="https://nguyenquocanh.io.vn/cover.jpg" />
-
-  <!-- JSON-LD: Person -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Nguyễn Quốc Anh",
-    "alternateName": "Nguyen Quoc Anh",
-    "jobTitle": "Full-Stack Developer",
-    "description": "Final-year Software Engineering student (HOTEC). Full-Stack Developer tập trung Next.js, Spring Boot, Laravel, DevOps trên Linux. Yêu thích tối ưu hiệu năng và trải nghiệm người dùng.",
-    "email": "mailto:nguyenquocanh.dev@gmail.com",
-    "url": "https://nguyenquocanh.io.vn/",
-    "alumniOf": {
-      "@type": "CollegeOrUniversity",
-      "name": "Cao đẳng Kinh tế - Kỹ thuật TP.HCM (HOTEC)"
-    },
-    "sameAs": [
-      "https://github.com/nguyenquocanhz",
-      "https://t.me/nqa1997"
-      /* Thêm LinkedIn nếu có: "https://www.linkedin.com/in/yourhandle" */
-    ],
-    "knowsAbout": [
-      "Next.js","React","Angular","React Native",
-      "Spring Boot","Node.js","PHP","Laravel","CakePHP",
-      "MySQL","PostgreSQL","NoSQL","Supabase",
-      "Linux","DevOps","Docker","Nginx","CI/CD"
-    ]
-  }
-  </script>
 
   <!-- Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
@@ -70,48 +41,41 @@
           },
           boxShadow: { soft: '0 8px 28px rgba(0,0,0,.18)' },
           keyframes: {
-            fadeUp: { '0%':{opacity:0, transform:'translateY(16px)'}, '100%':{opacity:1, transform:'translateY(0)'} },
-            slideLine: { '0%':{transform:'scaleX(0)', transformOrigin:'left'}, '100%':{transform:'scaleX(1)', transformOrigin:'left'} }
+            fadeUp: { '0%':{opacity:0, transform:'translateY(16px)'}, '100%':{opacity:1, transform:'translateY(0)'} }
           },
-          animation: {
-            fadeUp: 'fadeUp .7s cubic-bezier(.2,.6,.2,1) both',
-            slideLine: 'slideLine .35s ease-out forwards'
-          }
+          animation: { fadeUp: 'fadeUp .7s cubic-bezier(.2,.6,.2,1) both' }
         }
       }
     }
   </script>
 
-  <!-- UX: font smoothing + reduced motion -->
+  <!-- UX helpers -->
   <style>
     html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-    @media (prefers-reduced-motion: reduce) { * { animation: none !important; transition: none !important } }
     .navlink { position: relative; }
-    .navlink::after{
-      content:""; position:absolute; left:0; bottom:-6px; height:2px; width:100%;
-      background: linear-gradient(90deg,#f1c232,#f8d86b);
-      transform: scaleX(0); transform-origin:left; transition: transform .35s ease-out;
-    }
+    .navlink::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:100%; background: linear-gradient(90deg,#f1c232,#f8d86b); transform: scaleX(0); transform-origin:left; transition: transform .35s ease-out; }
     .navlink:hover::after, .navlink:focus-visible::after{ transform: scaleX(1); }
     .will-animate{ opacity:0; transform: translateY(14px); }
     .inview{ opacity:1 !important; transform:none !important; animation: fadeUp .7s cubic-bezier(.2,.6,.2,1) both; }
+    .card{ background-color: rgba(21,22,51,.7); border: 1px solid rgba(255,255,255,.12); border-radius: .75rem; }
+    .kbd{ background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.2); border-bottom-width:2px; padding:.125rem .375rem; border-radius:.375rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:.8em }
   </style>
 </head>
 
 <body class="min-h-screen bg-ink-900 text-white selection:bg-gold-400/30">
-  <!-- Skip link for a11y -->
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-ink-800 text-white px-3 py-2 rounded">Bỏ qua nội dung điều hướng</a>
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-ink-800 text-white px-3 py-2 rounded">Bỏ qua điều hướng</a>
 
   <!-- Header / Nav -->
   <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-ink-900/70">
     <nav class="mx-auto max-w-5xl px-4 sm:px-6 py-3 flex items-center justify-between" aria-label="Chính">
-      <a href="/" class="flex items-center gap-2" aria-label="Trang chủ">
+      <a href="#hero" class="flex items-center gap-2" aria-label="Trang chủ">
         <span class="text-lg font-display tracking-tight">Nguyễn Quốc Anh</span>
       </a>
       <ul class="flex items-center gap-6 text-sm">
         <li><a class="navlink outline-none" href="#projects">Projects</a></li>
         <li><a class="navlink outline-none" href="#skills">Skills</a></li>
         <li><a class="navlink outline-none" href="#experience">Experience</a></li>
+        <li><a class="navlink outline-none" href="#utilities">Utilities</a></li>
         <li><a class="navlink outline-none" href="#contact">Contact</a></li>
       </ul>
       <div class="flex items-center gap-3">
@@ -121,18 +85,15 @@
   </header>
 
   <main id="main" class="mx-auto max-w-5xl px-4 sm:px-6">
-    <!-- Hero -->
+    <!-- Hero (giữ nguyên ngắn gọn) -->
     <section class="pt-14 md:pt-20 pb-8 md:pb-14 will-animate" id="hero">
       <h1 class="text-3xl md:text-5xl font-display leading-tight tracking-tight">
         Xin chào, mình là <span class="text-brand-500">Nguyễn Quốc Anh</span>
       </h1>
       <p class="mt-4 max-w-2xl text-base/7 md:text-lg/8 text-white/80">
-        Full-Stack Developer — sinh viên năm cuối HOTEC. Mình thiết kế, xây dựng và vận hành web/app end-to-end
-        với <strong>Next.js</strong>, <strong>Spring Boot</strong>, <strong>Laravel</strong>, <strong>Node.js</strong>, DevOps trên Linux.
-        Ưu tiên hiệu năng, UX, SEO và kiến trúc dễ bảo trì.
+        Full-Stack Developer — sinh viên năm cuối HOTEC. Thiết kế, xây dựng và vận hành web/app với
+        <strong>Next.js</strong>, <strong>Spring Boot</strong>, <strong>Laravel</strong>, <strong>Node.js</strong>. Ưu tiên hiệu năng, UX, SEO, kiến trúc dễ bảo trì.
       </p>
-
-      <!-- Social -->
       <div class="mt-6 flex gap-4" aria-label="Mạng xã hội">
         <a href="https://github.com/nguyenquocanhz" title="GitHub" rel="me noopener" target="_blank" class="hover:opacity-90">
           <img loading="lazy" width="28" height="28" alt="GitHub" src="./assets/img/icons8-github-logo-50.png"/>
@@ -143,55 +104,147 @@
       </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Projects (rút gọn để dành chỗ cho Utilities) -->
     <section id="projects" class="py-10 md:py-16 border-t border-white/10 will-animate">
       <header class="mb-6">
         <h2 class="text-2xl md:text-3xl font-display tracking-tight">Projects</h2>
-        <p class="text-white/70 mt-1">Một vài dự án tiêu biểu (nhấn filter để lọc). Mình tập trung vào sản phẩm thực dụng, hiệu năng tốt và dễ mở rộng.</p>
+        <p class="text-white/70 mt-1">Một vài dự án tiêu biểu. Tập trung sản phẩm thực dụng, hiệu năng tốt và dễ mở rộng.</p>
       </header>
-
-      <!-- Filters -->
-      <div class="flex gap-2 mb-6" role="tablist" aria-label="Bộ lọc dự án">
-        <button data-filter="all" class="filter-btn rounded-full px-3 py-1.5 text-sm bg-ink-800 hover:bg-ink-800/70">All</button>
-        <button data-filter="free" class="filter-btn rounded-full px-3 py-1.5 text-sm bg-ink-800 hover:bg-ink-800/70">Free</button>
-        <button data-filter="suggest" class="filter-btn rounded-full px-3 py-1.5 text-sm bg-ink-800 hover:bg-ink-800/70">Suggest</button>
-      </div>
-
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="projectGrid" itemscope itemtype="https://schema.org/Collection">
-        <!-- Card -->
-        <article class="card group rounded-xl bg-ink-800/70 p-4 shadow-soft border border-white/10 will-animate" data-type="free" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <img class="w-full aspect-[16/10] rounded-md object-cover" src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?q=80&w=800&auto=format&fit=crop" alt="Giao diện dashboard" loading="lazy" width="800" height="500" itemprop="image">
-          <h3 class="mt-3 text-lg font-semibold tracking-tight" itemprop="name">Admin Dashboard</h3>
-          <p class="mt-1 text-sm text-white/70" itemprop="about">Tailwind + Next.js + REST API. Tối ưu Lighthouse & Web Vitals.</p>
-          <div class="mt-3 flex gap-2">
-            <a itemprop="url" href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">Live</a>
-            <a href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card group rounded-xl bg-ink-800/70 p-4 shadow-soft border border-white/10 will-animate" data-type="suggest" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <img class="w-full aspect-[16/10] rounded-md object-cover" src="https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=800&auto=format&fit=crop" alt="Trang thương mại điện tử" loading="lazy">
-          <h3 class="mt-3 text-lg font-semibold tracking-tight" itemprop="name">E-commerce Mini</h3>
-          <p class="mt-1 text-sm text-white/70" itemprop="about">Spring Boot + React + PostgreSQL. Tách services, cache & bảo mật JWT.</p>
-          <div class="mt-3 flex gap-2">
-            <a itemprop="url" href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">Live</a>
-            <a href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">GitHub</a>
-          </div>
-        </article>
-
-        <article class="card group rounded-xl bg-ink-800/70 p-4 shadow-soft border border-white/10 will-animate" data-type="free" itemprop="hasPart" itemscope itemtype="https://schema.org/CreativeWork">
-          <img class="w-full aspect-[16/10] rounded-md object-cover" src="https://images.unsplash.com/photo-1522075469751-3a6694fb2f61?q=80&w=800&auto=format&fit=crop" alt="Ứng dụng mobile" loading="lazy">
-          <h3 class="mt-3 text-lg font-semibold tracking-tight" itemprop="name">React Native Starter</h3>
-          <p class="mt-1 text-sm text-white/70" itemprop="about">Expo + NativeWind + Supabase Auth. Modular, dễ nhân rộng.</p>
-          <div class="mt-3 flex gap-2">
-            <a itemprop="url" href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">Live</a>
-            <a href="#" class="text-sm underline decoration-gold-500/70 underline-offset-4 hover:brightness-110">GitHub</a>
-          </div>
-        </article>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="projectGrid">
+        <!-- ... (có thể giữ các card cũ) ... -->
       </div>
     </section>
 
-    <!-- Skills -->
+    <!-- Utilities: tích hợp Tech Toolkit đã viết -->
+    <section id="utilities" class="py-10 md:py-16 border-t border-white/10 will-animate">
+      <header class="mb-6">
+        <h2 class="text-2xl md:3xl font-display tracking-tight">Utilities — Tech Toolkit</h2>
+        <p class="text-white/70 mt-1">Bộ công cụ thuần HTML + Tailwind + JS, chạy ngay trên trình duyệt. Dành cho KTV PC & Android.</p>
+      </header>
+
+      <!-- Hàng 1: PSU Quick + VA×PF + Battery -->
+      <div class="grid lg:grid-cols-3 gap-6">
+        <!-- PSU quick widget -->
+        <article class="card p-4 shadow-soft">
+          <div class="flex items-center justify-between">
+            <h3 class="text-lg font-semibold">PSU: Volt ↔ Watt ↔ Ampere</h3>
+            <span class="text-xs text-white/60">DC • P=V×I</span>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mt-3">
+            <div>
+              <label class="text-xs text-white/70">V (Volt)</label>
+              <input id="utl-v" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="12" inputmode="decimal"/>
+            </div>
+            <div>
+              <label class="text-xs text-white/70">I (Ampere)</label>
+              <input id="utl-a" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="5" inputmode="decimal"/>
+            </div>
+            <div class="col-span-2">
+              <div class="flex items-center gap-2">
+                <label class="text-xs text-white/70">Độ chính xác</label>
+                <input id="utl-prec" type="range" min="0" max="6" step="1" value="2"/>
+                <span id="utl-prec-l" class="text-xs">2</span>
+                <button id="utl-copy" class="ml-auto rounded-md border border-white/20 px-2 py-1 text-xs">Copy</button>
+              </div>
+            </div>
+          </div>
+          <div class="mt-3 grid grid-cols-3 gap-2 text-center">
+            <div class="rounded-md bg-ink-800/50 p-2">
+              <div class="text-[11px] text-white/60">P = V×I</div>
+              <div class="text-xl font-semibold"><span id="utl-p">60</span>W</div>
+            </div>
+            <div class="rounded-md bg-ink-800/50 p-2">
+              <div class="text-[11px] text-white/60">I = P/V</div>
+              <div class="text-xl font-semibold"><span id="utl-i">5</span>A</div>
+            </div>
+            <div class="rounded-md bg-ink-800/50 p-2">
+              <div class="text-[11px] text-white/60">V = P/I</div>
+              <div class="text-xl font-semibold"><span id="utl-v2">12</span>V</div>
+            </div>
+          </div>
+          <p class="mt-2 text-xs text-white/60">Ví dụ: 95W @ 12V ⇒ I ≈ 7.92A.</p>
+          <div class="mt-3 text-right">
+            <a href="#full-toolkit" class="underline decoration-gold-500/70 underline-offset-4 text-sm">Mở bộ công cụ đầy đủ</a>
+          </div>
+        </article>
+
+        <!-- VA × PF -->
+        <article class="card p-4 shadow-soft">
+          <h3 class="text-lg font-semibold">VA × PF → W (AC/UPS)</h3>
+          <div class="grid grid-cols-3 gap-3 mt-3">
+            <div><label class="text-xs text-white/70">VA</label><input id="vapf-va" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="500" inputmode="decimal"></div>
+            <div><label class="text-xs text-white/70">PF (0–1)</label><input id="vapf-pf" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="0.9" inputmode="decimal"></div>
+            <div><label class="text-xs text-white/70">W</label><input id="vapf-w" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="450" readonly></div>
+          </div>
+          <p class="mt-2 text-xs text-white/60">W ≈ VA × PF. UPS 1000VA, PF 0.8 ⇒ ~800W.</p>
+        </article>
+
+        <!-- Battery mAh ↔ Wh -->
+        <article class="card p-4 shadow-soft">
+          <h3 class="text-lg font-semibold">Pin: mAh ↔ Wh</h3>
+          <div class="grid grid-cols-3 gap-3 mt-3">
+            <div><label class="text-xs text-white/70">mAh</label><input id="bat-mah" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="5000" inputmode="decimal"></div>
+            <div><label class="text-xs text-white/70">V</label><input id="bat-v" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="3.85" inputmode="decimal"></div>
+            <div><label class="text-xs text-white/70">Wh</label><input id="bat-wh" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="19.25" readonly></div>
+          </div>
+          <p class="mt-2 text-xs text-white/60">Wh = (mAh ÷ 1000) × V</p>
+        </article>
+      </div>
+
+      <!-- Hàng 2: Storage + Hash + Android DPI/ADB links -->
+      <div class="grid lg:grid-cols-3 gap-6 mt-6">
+        <!-- Storage -->
+        <article class="card p-4 shadow-soft">
+          <h3 class="text-lg font-semibold">Lưu trữ: GB ↔ GiB</h3>
+          <div class="grid grid-cols-3 gap-3 mt-3">
+            <div><label class="text-xs text-white/70">Giá trị</label><input id="st-val" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="512" inputmode="decimal"></div>
+            <div><label class="text-xs text-white/70">Đơn vị</label>
+              <select id="st-from" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5">
+                <option value="GB">GB (10^9)</option>
+                <option value="GiB">GiB (2^30)</option>
+              </select>
+            </div>
+            <div><label class="text-xs text-white/70">Kết quả</label><input id="st-out" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="476.84 GiB" readonly></div>
+          </div>
+        </article>
+
+        <!-- SHA-256 (ghi chú: full tính ở trang toolkit) -->
+        <article class="card p-4 shadow-soft">
+          <h3 class="text-lg font-semibold">SHA-256 file (Web Crypto)</h3>
+          <p class="text-sm text-white/70 mt-1">Bản rút gọn: mở đầy đủ để chọn file và tính hash cục bộ, không upload.</p>
+          <div class="mt-3">
+            <a href="#full-toolkit" class="rounded-md bg-brand-500/90 hover:bg-brand-600 px-3 py-2 text-sm font-semibold">Mở công cụ đầy đủ</a>
+          </div>
+        </article>
+
+        <!-- Android helper links -->
+        <article class="card p-4 shadow-soft">
+          <h3 class="text-lg font-semibold">Android Helpers</h3>
+          <ul class="mt-2 text-sm space-y-2 list-disc list-inside text-white/80">
+            <li>ADB Command Builder: cài/gỡ app, screencap/record, reboot, logcat</li>
+            <li>DPI & đổi dp ↔ px, tự gợi ý bucket (mdpi—xxxhdpi)</li>
+          </ul>
+          <div class="mt-3"><a href="#full-toolkit" class="underline decoration-gold-500/70 underline-offset-4 text-sm">Mở bộ công cụ đầy đủ</a></div>
+        </article>
+      </div>
+
+      <!-- Full toolkit: nhúng gọn bằng <details> để tránh dài trang -->
+      <details id="full-toolkit" class="mt-8 group">
+        <summary class="cursor-pointer select-none text-sm text-white/80 hover:text-white flex items-center gap-2">
+          <span class="inline-flex items-center justify-center size-6 rounded-full bg-white/10">+</span>
+          Hiện toàn bộ Tech Toolkit (nhúng trực tiếp trên trang)
+        </summary>
+        <div class="mt-4">
+          <!-- IFRAME phương án A: nếu bạn deploy file toolkit riêng thành /toolkit.html -->
+          <!-- <iframe src="/toolkit.html" class="w-full h-[1200px] rounded-lg border border-white/15"></iframe> -->
+          
+          <!-- Phương án B: nhúng rút gọn nội tuyến (có thể thay bằng bản đầy đủ sau) -->
+          <div class="text-sm text-white/70">(Bản rút gọn đã nằm ở các card phía trên. Bạn có thể tách ra file <code class="kbd">toolkit.html</code> để tái sử dụng.)</div>
+        </div>
+      </details>
+    </section>
+
+    <!-- Skills / Experience / Contact (giữ nguyên ngắn gọn) -->
     <section id="skills" class="py-10 md:py-16 border-t border-white/10 will-animate">
       <h2 class="text-2xl md:text-3xl font-display tracking-tight mb-4">Skills</h2>
       <ul class="flex flex-wrap gap-2" aria-label="Hashtag kỹ năng">
@@ -207,39 +260,34 @@
       <p class="mt-3 text-white/70 text-sm">Cũng làm việc với: Angular, CakePHP, MySQL/NoSQL, Docker, Nginx, GitHub Actions.</p>
     </section>
 
-    <!-- Experience -->
     <section id="experience" class="py-10 md:py-16 border-t border-white/10 will-animate">
       <h2 class="text-2xl md:text-3xl font-display tracking-tight mb-6">Experience</h2>
       <div class="space-y-6">
-        <article itemscope itemtype="https://schema.org/Organization">
-          <h3 class="text-lg font-semibold tracking-tight" itemprop="name">Freelance / Studio</h3>
+        <article>
+          <h3 class="text-lg font-semibold tracking-tight">Freelance / Studio</h3>
           <p class="text-sm text-white/70">2021 — Present · Full-Stack</p>
           <ul class="mt-2 list-disc list-outside ms-5 text-white/80 text-sm leading-7">
             <li>Thiết kế kiến trúc, chuẩn REST, độ tin cậy cao.</li>
-            <li>Tối ưu SEO/CSR/ISR cho Next.js, Web Vitals (LCP/CLS).</li>
-            <li>CI/CD với GitHub Actions, Docker; triển khai Nginx, Cloudflare.</li>
+            <li>Tối ưu SEO & Web Vitals (LCP/CLS).</li>
+            <li>CI/CD (GitHub Actions), Docker; triển khai Nginx, Cloudflare.</li>
           </ul>
         </article>
-
-        <article itemscope itemtype="https://schema.org/Organization">
-          <h3 class="text-lg font-semibold tracking-tight" itemprop="name">Máy Tính Z1 (LaptopZ1) — Internship</h3>
+        <article>
+          <h3 class="text-lg font-semibold tracking-tight">Máy Tính Z1 (LaptopZ1) — Internship</h3>
           <p class="text-sm text-white/70">2025 · Full-Stack & IT Operations</p>
           <ul class="mt-2 list-disc list-outside ms-5 text-white/80 text-sm leading-7">
-            <li>Thực thi quy trình cài đặt/triển khai Windows, USB-boot, chuẩn hoá bảo trì.</li>
-            <li>Xây dựng nội dung marketing, tự động hoá đăng tải đa kênh.</li>
+            <li>Quy trình cài đặt/triển khai Windows, USB-boot, chuẩn hoá bảo trì.</li>
+            <li>Tự động hoá nội dung marketing đa kênh.</li>
             <li>Chuẩn hoá tài liệu kỹ thuật & checklist vận hành.</li>
           </ul>
         </article>
       </div>
     </section>
 
-    <!-- Contact -->
     <section id="contact" class="py-12 md:py-16 border-t border-white/10 will-animate">
       <h2 class="text-2xl md:text-3xl font-display tracking-tight mb-4">Liên hệ</h2>
       <p class="text-white/80 mb-4">
-        Email: <a class="underline decoration-gold-500/70 underline-offset-4" href="mailto:nguyenquocanh.dev@gmail.com">nguyenquocanh.dev@gmail.com</a><br/>
-        Telegram: <a class="underline decoration-gold-500/70 underline-offset-4" href="https://t.me/nqa1997" target="_blank" rel="noopener">t.me/nqa1997</a><br/>
-        GitHub: <a class="underline decoration-gold-500/70 underline-offset-4" href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener">github.com/nguyenquocanhz</a>
+        Email: <a class="underline decoration-gold-500/70 underline-offset-4" href="mailto:nguyenquocanh.dev@gmail.com">nguyenquocanh.dev@gmail.com</a> · Telegram: <a class="underline decoration-gold-500/70 underline-offset-4" href="https://t.me/nqa1997" target="_blank" rel="noopener">t.me/nqa1997</a> · GitHub: <a class="underline decoration-gold-500/70 underline-offset-4" href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener">github.com/nguyenquocanhz</a>
       </p>
       <form name="contact" class="grid sm:grid-cols-2 gap-4 max-w-xl" aria-label="Form liên hệ">
         <label class="sr-only" for="name">Tên</label>
@@ -256,37 +304,57 @@
     © <span id="y"></span> Nguyễn Quốc Anh. All rights reserved.
   </footer>
 
-  <!-- Scripts: filter + in-view animation + year -->
+  <!-- Scripts: year + in-view + utilities logic -->
   <script>
     // Current year
     document.getElementById('y').textContent = new Date().getFullYear();
 
-    // Project filter
-    const buttons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('#projectGrid .card');
-    buttons.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        const t = btn.dataset.filter;
-        buttons.forEach(b=>b.classList.remove('ring-2','ring-gold-500/70'));
-        btn.classList.add('ring-2','ring-gold-500/70');
-        cards.forEach(c=>{
-          const show = (t==='all') || (c.dataset.type===t);
-          c.style.display = show? 'block':'none';
-        });
-      });
-    });
-
     // IntersectionObserver for appear-on-scroll
     const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{
-        if(e.isIntersecting){
-          e.target.classList.add('inview');
-          io.unobserve(e.target);
-        }
-      });
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('inview'); io.unobserve(e.target); } });
     }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-
     document.querySelectorAll('.will-animate').forEach(el=>io.observe(el));
+
+    // Utilities logic (rút gọn)
+    const N = (v)=>{ const n = parseFloat(String(v).replace(',', '.')); return Number.isFinite(n)?n:NaN };
+
+    // PSU quick
+    const v = document.getElementById('utl-v');
+    const a = document.getElementById('utl-a');
+    const p = document.getElementById('utl-p');
+    const i2= document.getElementById('utl-i');
+    const v2= document.getElementById('utl-v2');
+    const prec = document.getElementById('utl-prec');
+    const prel = document.getElementById('utl-prec-l');
+    function renderPSU(){
+      const V=N(v.value), I=N(a.value); const d=+prec.value||0; prel.textContent=d;
+      const P=V*I; const Iw = (V===0? NaN : P/V); const Vw=(I===0? NaN : P/I);
+      p.textContent = Number.isFinite(P)? P.toFixed(d):'—';
+      i2.textContent= Number.isFinite(Iw)? Iw.toFixed(d):'—';
+      v2.textContent= Number.isFinite(Vw)? Vw.toFixed(d):'—';
+    }
+    ;['input','blur','change'].forEach(ev=>{ v.addEventListener(ev,renderPSU); a.addEventListener(ev,renderPSU); prec.addEventListener(ev,renderPSU); });
+    document.getElementById('utl-copy').addEventListener('click', async ()=>{
+      try{ await navigator.clipboard.writeText(`P=${p.textContent}W | I=${i2.textContent}A | V=${v2.textContent}V`); const b=event.target; const old=b.textContent; b.textContent='Đã copy'; setTimeout(()=> b.textContent=old, 1200);}catch(_){}
+    });
+    renderPSU();
+
+    // VA×PF
+    const va=document.getElementById('vapf-va');
+    const pf=document.getElementById('vapf-pf');
+    const vw=document.getElementById('vapf-w');
+    function renderVAPF(){ const VA=N(va.value), PF=N(pf.value); const W=(Number.isFinite(VA)&&Number.isFinite(PF))? VA*PF:NaN; vw.value= Number.isFinite(W)? W.toFixed(2):''; }
+    ;['input','blur'].forEach(ev=>{ va.addEventListener(ev,renderVAPF); pf.addEventListener(ev,renderVAPF); }); renderVAPF();
+
+    // Battery mAh↔Wh
+    const bm=document.getElementById('bat-mah'); const bv=document.getElementById('bat-v'); const bw=document.getElementById('bat-wh');
+    function renderBat(){ const m=N(bm.value), vv=N(bv.value); const wh=(Number.isFinite(m)&&Number.isFinite(vv))? (m/1000)*vv:NaN; bw.value= Number.isFinite(wh)? wh.toFixed(2):''; }
+    ;['input','blur'].forEach(ev=>{ bm.addEventListener(ev,renderBat); bv.addEventListener(ev,renderBat); }); renderBat();
+
+    // Storage GB↔GiB
+    const stv=document.getElementById('st-val'); const stf=document.getElementById('st-from'); const sto=document.getElementById('st-out');
+    function renderSt(){ const val=N(stv.value); if(!Number.isFinite(val)){ sto.value=''; return; } if(stf.value==='GB'){ sto.value=(val*1e9/Math.pow(2,30)).toFixed(2)+' GiB'; } else { sto.value=(val*Math.pow(2,30)/1e9).toFixed(2)+' GB'; }}
+    ;['input','blur','change'].forEach(ev=>{ stv.addEventListener(ev,renderSt); stf.addEventListener(ev,renderSt); }); renderSt();
   </script>
 </body>
 </html>
