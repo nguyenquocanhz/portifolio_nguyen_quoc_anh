@@ -1,30 +1,9 @@
 <!DOCTYPE html>
 <html lang="vi" class="scroll-smooth">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nguyễn Quốc Anh </title>
-  <meta name="description" content="My portfolio" />
-  <meta name="robots" content="index,follow,max-image-preview:large" />
-  <link rel="canonical" href="https://nguyenquocanh.io.vn/" />
-  <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/img/logo.svg">
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/img/logo.svg">
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/img/logo.svg">
-  <link rel="manifest" href="/assets/img/site.webmanifest">
-  <meta name="theme-color" content="#ffffff">
-  <!-- Open Graph -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Nguyễn Quốc Anh — Full-Stack Developer" />
-  <meta property="og:description" content="Portfolio + Tech Toolkit: PSU, VA×PF, Battery, Storage, Hash, ADB, DPI." />
-  <meta property="og:url" content="https://nguyenquocanh.io.vn/" />
-  <meta property="og:image" content="https://nguyenquocanh.io.vn/cover.jpg" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Nguyễn Quốc Anh — Full-Stack Developer" />
-  <meta name="twitter:description" content="Portfolio + Tech Toolkit: PSU, VA×PF, Battery, Storage, Hash, ADB, DPI." />
-  <meta name="twitter:image" content="https://nguyenquocanh.io.vn/cover.jpg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nguyễn Quốc Anh | Fullstack Developer</title>
 
     <!-- 1. Tailwind CSS CDN (Stable) -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -64,123 +43,89 @@
         ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
         .dark ::-webkit-scrollbar-thumb { background: #334155; }
         
-        /* Hiệu ứng Background Blur */
-        .glass-nav {
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
+        /* Loading State - Optional now since data is instant */
+        .loading-skeleton {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+            background-color: #e2e8f0;
+        }
+        .dark .loading-skeleton {
+            background-color: #334155;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
         }
     </style>
 </head>
 
 <body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 overflow-x-hidden relative">
 
-    <!-- === THEME TOGGLE (Nút đổi màu giao diện) === -->
-    <button id="theme-toggle" class="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur text-slate-800 dark:text-yellow-400 shadow-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 border border-slate-200 dark:border-slate-700">
+    <!-- === THEME TOGGLE === -->
+    <button id="theme-toggle" class="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur text-slate-800 dark:text-yellow-400 shadow-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 border border-slate-200 dark:border-slate-700 cursor-pointer">
         <i id="theme-icon-sun" class="fa-solid fa-sun text-xl hidden"></i>
         <i id="theme-icon-moon" class="fa-solid fa-moon text-xl"></i>
     </button>
 
-    <!-- === HEADER / HERO SECTION (Avatar First) === -->
+    <!-- === HEADER / HERO SECTION === -->
     <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
         
-        <!-- Background Orbs (Trang trí) -->
+        <!-- Background Orbs -->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
             <div class="absolute top-[10%] left-[15%] w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px] animate-pulse"></div>
             <div class="absolute bottom-[10%] right-[15%] w-80 h-80 bg-purple-500/20 rounded-full blur-[100px]"></div>
         </div>
 
-        <!-- 1. AVATAR (Xuất hiện đầu tiên) -->
+        <!-- 1. AVATAR -->
         <div class="relative mb-8 group cursor-pointer" data-aos="zoom-in" data-aos-duration="1200">
-            <!-- Vòng hào quang -->
             <div class="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
-            <!-- Ảnh đại diện (Thay link ảnh của bạn vào đây) -->
-            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=256&h=256&auto=format&fit=crop" 
-                 alt="My Avatar" 
-                 class="relative w-44 h-44 rounded-full object-cover border-[6px] border-white dark:border-slate-900 shadow-2xl transform group-hover:scale-105 transition duration-500">
+            <img id="profile-avatar" src="" alt="Avatar" 
+                 class="relative w-44 h-44 rounded-full object-cover border-[6px] border-white dark:border-slate-900 shadow-2xl transform group-hover:scale-105 transition duration-500 bg-slate-200 dark:bg-slate-800">
         </div>
 
         <!-- 2. INTRO TEXT -->
         <div class="max-w-3xl mx-auto">
-            <h2 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase" data-aos="fade-up" data-aos-delay="100">
-                Xin chào, tôi là
-            </h2>
-            <h1 class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-800 to-slate-900 dark:from-white dark:via-indigo-300 dark:to-white mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200">
-                Nguyễn Văn Dev
-            </h1>
+            <h2 id="profile-intro" class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase" data-aos="fade-up" data-aos-delay="100"></h2>
+            <h1 id="profile-name" class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-800 to-slate-900 dark:from-white dark:via-indigo-300 dark:to-white mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200"></h1>
             <p class="text-lg md:text-2xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium" data-aos="fade-up" data-aos-delay="300">
-                <span class="text-indigo-600 dark:text-indigo-400 font-bold">Fullstack Developer</span> chuyên xây dựng các giải pháp web tối ưu, giao diện hiện đại và trải nghiệm người dùng mượt mà.
+                <span id="profile-role" class="text-indigo-600 dark:text-indigo-400 font-bold"></span> 
+                <span id="profile-bio"></span>
             </p>
 
-            <!-- 3. ACTION BUTTONS & SOCIAL -->
+            <!-- 3. ACTION BUTTONS -->
             <div class="flex flex-col md:flex-row items-center justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
-                <!-- Download CV Button -->
-                <a href="#" class="px-8 py-3.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+                <a id="btn-cv" href="#" class="px-8 py-3.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
                     <i class="fa-solid fa-download"></i> Tải CV
                 </a>
 
-                <!-- Social Links -->
                 <div class="flex gap-4">
-                    <a href="#" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
+                    <a id="link-github" href="#" target="_blank" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
                         <i class="fa-brands fa-github text-xl"></i>
                     </a>
-                    <a href="#" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
+                    <a id="link-linkedin" href="#" target="_blank" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
                         <i class="fa-brands fa-linkedin-in text-xl"></i>
                     </a>
-                    <a href="#contact" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-green-600 hover:text-white hover:border-green-600 dark:hover:bg-green-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
+                    <a id="link-email" href="#" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-green-600 hover:text-white hover:border-green-600 dark:hover:bg-green-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
                         <i class="fa-solid fa-envelope text-xl"></i>
                     </a>
                 </div>
             </div>
         </div>
 
-        <!-- Scroll Down Hint -->
         <div class="absolute bottom-10 animate-bounce cursor-pointer opacity-70" data-aos="fade-in" data-aos-delay="800">
             <span class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-2 block">Cuộn xuống</span>
             <i class="fa-solid fa-chevron-down text-slate-400 dark:text-slate-500 text-xl"></i>
         </div>
     </section>
 
-    <!-- === ABOUT / SERVICES === -->
+    <!-- === SERVICES === -->
     <section class="py-24 bg-white dark:bg-slate-900/50 transition-colors">
         <div class="container mx-auto px-4 max-w-6xl">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-sm font-bold text-indigo-500 uppercase tracking-widest mb-2">Chuyên môn</h2>
                 <h3 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">Tôi làm gì?</h3>
             </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Service 1 -->
-                <div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="0">
-                    <div class="w-14 h-14 rounded-2xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-code"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-3 dark:text-white">Frontend Development</h4>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Xây dựng giao diện responsive, pixel-perfect với React, Vue và Tailwind CSS. Tối ưu hóa trải nghiệm người dùng (UX).
-                    </p>
-                </div>
-
-                <!-- Service 2 -->
-                <div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
-                    <div class="w-14 h-14 rounded-2xl bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-server"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-3 dark:text-white">Backend System</h4>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Thiết kế RESTful API, Database (SQL/NoSQL) và hệ thống xác thực bảo mật với Node.js, NestJS.
-                    </p>
-                </div>
-
-                <!-- Service 3 -->
-                <div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
-                    <div class="w-14 h-14 rounded-2xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
-                        <i class="fa-solid fa-rocket"></i>
-                    </div>
-                    <h4 class="text-xl font-bold mb-3 dark:text-white">Performance & Deploy</h4>
-                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
-                        Tối ưu tốc độ tải trang, SEO và triển khai ứng dụng lên AWS, Vercel hoặc Docker.
-                    </p>
-                </div>
+            <div id="services-list" class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Data will be injected here -->
             </div>
         </div>
     </section>
@@ -194,115 +139,40 @@
                     <h3 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">Dự án tiêu biểu</h3>
                 </div>
                 <div class="hidden md:flex gap-2">
-                    <button class="swiper-prev w-12 h-12 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left"></i></button>
-                    <button class="swiper-next w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-700 transition"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button class="swiper-prev w-12 h-12 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="swiper-next w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-700 transition cursor-pointer"><i class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
 
             <!-- Swiper -->
             <div class="swiper mySwiper w-full !pb-14 px-4" data-aos="fade-up" data-aos-delay="200">
-                <div class="swiper-wrapper">
-                    <!-- Project Card 1 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="bg-white dark:bg-slate-800 rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700 h-full flex flex-col group cursor-pointer">
-                            <div class="h-64 overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Project 1">
-                                <div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">
-                                    <i class="fa-brands fa-react text-blue-400 mr-1"></i> E-commerce
-                                </div>
-                            </div>
-                            <div class="p-8 flex-1 flex flex-col">
-                                <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors">Fashion Store</h3>
-                                <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">Hệ thống thương mại điện tử trọn gói với giỏ hàng, thanh toán Stripe và quản lý kho hàng realtime.</p>
-                                <div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
-                                    <div class="flex gap-2">
-                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">NextJS</span>
-                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">NodeJS</span>
-                                    </div>
-                                    <span class="text-indigo-600 font-semibold text-sm group-hover:translate-x-1 transition-transform">Xem chi tiết <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 2 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="bg-white dark:bg-slate-800 rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700 h-full flex flex-col group cursor-pointer">
-                            <div class="h-64 overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Project 2">
-                                <div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">
-                                    <i class="fa-solid fa-chart-pie text-green-400 mr-1"></i> Fintech
-                                </div>
-                            </div>
-                            <div class="p-8 flex-1 flex flex-col">
-                                <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors">Finance Dashboard</h3>
-                                <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">Dashboard quản lý tài chính cá nhân, visual hóa dữ liệu với biểu đồ động và xuất báo cáo PDF.</p>
-                                <div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
-                                    <div class="flex gap-2">
-                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">Vue</span>
-                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">Firebase</span>
-                                    </div>
-                                    <span class="text-indigo-600 font-semibold text-sm group-hover:translate-x-1 transition-transform">Xem chi tiết <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Project Card 3 -->
-                    <div class="swiper-slide h-auto">
-                        <div class="bg-white dark:bg-slate-800 rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700 h-full flex flex-col group cursor-pointer">
-                            <div class="h-64 overflow-hidden relative">
-                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Project 3">
-                                <div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">
-                                    <i class="fa-solid fa-comments text-purple-400 mr-1"></i> Social
-                                </div>
-                            </div>
-                            <div class="p-8 flex-1 flex flex-col">
-                                <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors">Chat Realtime</h3>
-                                <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">Ứng dụng nhắn tin tức thời hỗ trợ gửi file, tạo nhóm chat và video call sử dụng WebRTC.</p>
-                                <div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
-                                    <div class="flex gap-2">
-                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">React</span>
-                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">Socket.IO</span>
-                                    </div>
-                                    <span class="text-indigo-600 font-semibold text-sm group-hover:translate-x-1 transition-transform">Xem chi tiết <i class="fa-solid fa-arrow-right ml-1"></i></span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div id="projects-wrapper" class="swiper-wrapper">
+                    <!-- Data will be injected here -->
                 </div>
                 <div class="swiper-pagination mt-6"></div>
             </div>
         </div>
     </section>
 
-    <!-- === FOOTER / CONTACT === -->
+    <!-- === CONTACT === -->
     <section id="contact" class="py-24 bg-slate-50 dark:bg-slate-900/50 relative">
         <div class="container mx-auto px-4 max-w-4xl relative z-10">
             <div class="bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 md:p-16 shadow-2xl border border-slate-100 dark:border-slate-700 text-center" data-aos="zoom-in-up">
-                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Bạn có ý tưởng dự án?</h2>
-                <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto">
-                    Hãy cùng nhau biến ý tưởng đó thành hiện thực. Tôi luôn sẵn sàng cho những thử thách mới.
-                </p>
+                <h2 id="contact-title" class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">...</h2>
+                <p id="contact-desc" class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto"></p>
                 <div class="flex flex-col md:flex-row justify-center gap-4">
-                    <a href="mailto:contact@example.com" class="px-10 py-4 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg shadow-lg hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1">
-                        Gửi Email Ngay
+                    <a id="contact-email-btn" href="#" class="px-10 py-4 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg shadow-lg hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1">
+                        Liên hệ ngay
                     </a>
-                    <a href="#" class="px-10 py-4 rounded-full bg-white dark:bg-transparent border-2 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-white font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
-                        Sao chép SĐT
+                    <a id="contact-phone-btn" href="#" class="px-10 py-4 rounded-full bg-white dark:bg-transparent border-2 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-white font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+                        Gọi điện
                     </a>
                 </div>
             </div>
         </div>
         
-        <!-- Footer Info -->
         <div class="mt-16 text-center text-slate-500 dark:text-slate-500 text-sm">
-            <p>&copy; 2025 Nguyễn Văn Dev. Built with passion & Tailwind CSS.</p>
-            <div class="flex justify-center gap-6 mt-4 opacity-50">
-                <a href="#" class="hover:text-indigo-500 transition">Github</a>
-                <a href="#" class="hover:text-indigo-500 transition">LinkedIn</a>
-                <a href="#" class="hover:text-indigo-500 transition">Twitter</a>
-            </div>
+            <p>&copy; 2025 Powered by <span class="font-bold text-indigo-500">JSON Data</span></p>
         </div>
     </section>
 
@@ -311,76 +181,239 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
     <script>
-        /* 1. DARK MODE LOGIC (An toàn & Nhớ trạng thái) */
+        // --- 1. CONFIG DATA (CHỈNH SỬA THÔNG TIN TẠI ĐÂY) ---
+        // Do lỗi fetch data.json trên môi trường không có server, ta dùng biến trực tiếp.
+        const portfolioData = {
+          "profile": {
+            "name": "Nguyễn Văn Dev",
+            "role": "Fullstack Developer",
+            "avatar": "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=256&h=256&auto=format&fit=crop",
+            "intro": "Xin chào, tôi là",
+            "bio": "chuyên xây dựng các giải pháp web tối ưu, giao diện hiện đại và trải nghiệm người dùng mượt mà.",
+            "cvLink": "#",
+            "social": {
+              "github": "#",
+              "linkedin": "#",
+              "email": "mailto:contact@example.com"
+            }
+          },
+          "services": [
+            {
+              "icon": "fa-code",
+              "color": "blue",
+              "title": "Frontend Development",
+              "desc": "Xây dựng giao diện responsive, pixel-perfect với React, Vue và Tailwind CSS. Tối ưu hóa trải nghiệm người dùng (UX)."
+            },
+            {
+              "icon": "fa-server",
+              "color": "green",
+              "title": "Backend System",
+              "desc": "Thiết kế RESTful API, Database (SQL/NoSQL) và hệ thống xác thực bảo mật với Node.js, NestJS."
+            },
+            {
+              "icon": "fa-rocket",
+              "color": "orange",
+              "title": "Performance & Deploy",
+              "desc": "Tối ưu tốc độ tải trang, SEO và triển khai ứng dụng lên AWS, Vercel hoặc Docker."
+            }
+          ],
+          "projects": [
+            {
+              "title": "Fashion Store",
+              "category": "E-commerce",
+              "icon": "fa-brands fa-react",
+              "iconColor": "text-blue-400",
+              "image": "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=800&auto=format&fit=crop",
+              "desc": "Hệ thống thương mại điện tử trọn gói với giỏ hàng, thanh toán Stripe và quản lý kho hàng realtime.",
+              "tech": ["NextJS", "NodeJS"]
+            },
+            {
+              "title": "Finance Dashboard",
+              "category": "Fintech",
+              "icon": "fa-solid fa-chart-pie",
+              "iconColor": "text-green-400",
+              "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+              "desc": "Dashboard quản lý tài chính cá nhân, visual hóa dữ liệu với biểu đồ động và xuất báo cáo PDF.",
+              "tech": ["Vue", "Firebase"]
+            },
+            {
+              "title": "Chat Realtime",
+              "category": "Social",
+              "icon": "fa-solid fa-comments",
+              "iconColor": "text-purple-400",
+              "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop",
+              "desc": "Ứng dụng nhắn tin tức thời hỗ trợ gửi file, tạo nhóm chat và video call sử dụng WebRTC.",
+              "tech": ["React", "Socket.IO"]
+            }
+          ],
+          "contact": {
+            "title": "Bạn có ý tưởng dự án?",
+            "desc": "Hãy cùng nhau biến ý tưởng đó thành hiện thực. Tôi luôn sẵn sàng cho những thử thách mới.",
+            "emailText": "Gửi Email Ngay",
+            "phoneText": "Sao chép SĐT"
+          }
+        };
+
+        // --- 2. THEME LOGIC ---
         const themeToggleBtn = document.getElementById('theme-toggle');
-        const themeIconSun = document.getElementById('theme-icon-sun');
-        const themeIconMoon = document.getElementById('theme-icon-moon');
         const html = document.documentElement;
 
         function applyTheme(isDark) {
             if (isDark) {
                 html.classList.add('dark');
-                themeIconSun.classList.remove('hidden');
-                themeIconMoon.classList.add('hidden');
+                document.getElementById('theme-icon-sun').classList.remove('hidden');
+                document.getElementById('theme-icon-moon').classList.add('hidden');
             } else {
                 html.classList.remove('dark');
-                themeIconSun.classList.add('hidden');
-                themeIconMoon.classList.remove('hidden');
+                document.getElementById('theme-icon-sun').classList.add('hidden');
+                document.getElementById('theme-icon-moon').classList.remove('hidden');
             }
         }
-
-        // Kiểm tra cài đặt cũ hoặc hệ thống
+        
         const savedTheme = localStorage.getItem('theme');
         const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-        
-        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
-            applyTheme(true);
-        } else {
-            applyTheme(false);
-        }
+        applyTheme(savedTheme === 'dark' || (!savedTheme && systemDark));
 
-        // Sự kiện Click
         themeToggleBtn.addEventListener('click', () => {
             const isDark = html.classList.toggle('dark');
             localStorage.setItem('theme', isDark ? 'dark' : 'light');
             applyTheme(isDark);
         });
 
-        /* 2. AOS ANIMATION INIT */
-        AOS.init({
-            once: false, // Animation lặp lại khi cuộn
-            mirror: true, 
-            offset: 50,
-            duration: 1000,
-            easing: 'ease-out-cubic',
-        });
+        // --- 3. LOAD DATA & RENDER ---
+        function loadPortfolio() {
+            try {
+                // Sử dụng dữ liệu trực tiếp từ biến portfolioData thay vì fetch
+                const data = portfolioData; 
 
-        /* 3. SWIPER SLIDER INIT */
-        new Swiper(".mySwiper", {
-            slidesPerView: 1,
-            spaceBetween: 30,
-            loop: true,
-            speed: 600,
-            grabCursor: true,
-            pagination: { 
-                el: ".swiper-pagination", 
-                clickable: true,
-                dynamicBullets: true,
-            },
-            navigation: {
-                nextEl: ".swiper-next",
-                prevEl: ".swiper-prev",
-            },
-            breakpoints: {
-                640: { slidesPerView: 1 },
-                768: { slidesPerView: 2 },
-                1024: { slidesPerView: 3 },
-            },
-            autoplay: {
-                delay: 5000,
-                disableOnInteraction: false,
+                // === 3.1 Render Profile ===
+                const p = data.profile;
+                document.getElementById('profile-avatar').src = p.avatar;
+                document.getElementById('profile-intro').textContent = p.intro;
+                document.getElementById('profile-name').textContent = p.name;
+                document.getElementById('profile-role').textContent = p.role;
+                document.getElementById('profile-bio').textContent = p.bio;
+                document.getElementById('btn-cv').href = p.cvLink;
+                
+                // Social Links
+                const linkMap = {
+                    'link-github': p.social.github,
+                    'link-linkedin': p.social.linkedin,
+                    'link-email': p.social.email
+                };
+                for (const [id, link] of Object.entries(linkMap)) {
+                    const el = document.getElementById(id);
+                    if(el) el.href = link;
+                }
+
+                // === 3.2 Render Services ===
+                const colorClasses = {
+                    blue: { bg: 'bg-blue-100', darkBg: 'dark:bg-blue-900/30', text: 'text-blue-600', darkText: 'dark:text-blue-400' },
+                    green: { bg: 'bg-green-100', darkBg: 'dark:bg-green-900/30', text: 'text-green-600', darkText: 'dark:text-green-400' },
+                    orange: { bg: 'bg-orange-100', darkBg: 'dark:bg-orange-900/30', text: 'text-orange-600', darkText: 'dark:text-orange-400' },
+                    purple: { bg: 'bg-purple-100', darkBg: 'dark:bg-purple-900/30', text: 'text-purple-600', darkText: 'dark:text-purple-400' }
+                };
+
+                const servicesHtml = data.services.map((s, index) => {
+                    const colors = colorClasses[s.color] || colorClasses.blue;
+                    return `
+                    <div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="${index * 100}">
+                        <div class="w-14 h-14 rounded-2xl ${colors.bg} ${colors.darkBg} ${colors.text} ${colors.darkText} flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid ${s.icon}"></i>
+                        </div>
+                        <h4 class="text-xl font-bold mb-3 dark:text-white">${s.title}</h4>
+                        <p class="text-slate-600 dark:text-slate-400 leading-relaxed">${s.desc}</p>
+                    </div>
+                `}).join('');
+                document.getElementById('services-list').innerHTML = servicesHtml;
+
+                // === 3.3 Render Projects ===
+                const projectsHtml = data.projects.map(proj => `
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-white dark:bg-slate-800 rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700 h-full flex flex-col group cursor-pointer">
+                            <div class="h-64 overflow-hidden relative">
+                                <img src="${proj.image}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="${proj.title}">
+                                <div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    <i class="${proj.icon} ${proj.iconColor} mr-1"></i> ${proj.category}
+                                </div>
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col">
+                                <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors">${proj.title}</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">${proj.desc}</p>
+                                <div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                                    <div class="flex gap-2">
+                                        ${proj.tech.map(t => `<span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">${t}</span>`).join('')}
+                                    </div>
+                                    <span class="text-indigo-600 font-semibold text-sm group-hover:translate-x-1 transition-transform">Xem <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+                document.getElementById('projects-wrapper').innerHTML = projectsHtml;
+
+                // === 3.4 Render Contact ===
+                const c = data.contact;
+                document.getElementById('contact-title').textContent = c.title;
+                document.getElementById('contact-desc').textContent = c.desc;
+                
+                const emailBtn = document.getElementById('contact-email-btn');
+                emailBtn.textContent = c.emailText;
+                emailBtn.href = p.social.email;
+
+                const phoneBtn = document.getElementById('contact-phone-btn');
+                phoneBtn.textContent = c.phoneText;
+
+            } catch (error) {
+                console.error('Lỗi render:', error);
+            } finally {
+                initPlugins();
             }
-        });
+        }
+
+        function initPlugins() {
+            setTimeout(() => {
+                AOS.init({
+                    once: false,
+                    mirror: true, 
+                    offset: 50,
+                    duration: 1000,
+                    easing: 'ease-out-cubic',
+                });
+                AOS.refresh();
+            }, 100);
+
+            new Swiper(".mySwiper", {
+                slidesPerView: 1,
+                spaceBetween: 30,
+                loop: true,
+                speed: 600,
+                grabCursor: true,
+                observer: true,
+                observeParents: true,
+                pagination: { 
+                    el: ".swiper-pagination", 
+                    clickable: true,
+                    dynamicBullets: true,
+                },
+                navigation: {
+                    nextEl: ".swiper-next",
+                    prevEl: ".swiper-prev",
+                },
+                breakpoints: {
+                    640: { slidesPerView: 1 },
+                    768: { slidesPerView: 2 },
+                    1024: { slidesPerView: 3 },
+                },
+                autoplay: {
+                    delay: 5000,
+                    disableOnInteraction: false,
+                }
+            });
+        }
+
+        document.addEventListener('DOMContentLoaded', loadPortfolio);
+
     </script>
 </body>
 </html>
