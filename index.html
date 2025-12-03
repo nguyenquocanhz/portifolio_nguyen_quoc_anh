@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Nguyễn Quốc Anh — Full-Stack Developer | Portfolio & Utilities</title>
-  <meta name="description" content="Portfolio & resume + bộ tiện ích Tech Toolkit (PSU, VA×PF, mAh↔Wh, GB↔GiB, SHA-256, ADB Builder, DPI)." />
+  <title>Nguyễn Quốc Anh </title>
+  <meta name="description" content="My portfolio" />
   <meta name="robots" content="index,follow,max-image-preview:large" />
   <link rel="canonical" href="https://nguyenquocanh.io.vn/" />
   <link rel="icon" type="image/x-icon" href="/assets/img/favicon.ico">
@@ -26,342 +26,361 @@
   <meta name="twitter:description" content="Portfolio + Tech Toolkit: PSU, VA×PF, Battery, Storage, Hash, ADB, DPI." />
   <meta name="twitter:image" content="https://nguyenquocanh.io.vn/cover.jpg" />
 
-  <!-- Font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Fraunces:opsz,wght@9..144,700&display=swap" rel="stylesheet">
-
-  <!-- Tailwind CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        fontFamily: { sans: ['Inter','system-ui','-apple-system','Segoe UI','Roboto','Arial','sans-serif'], display: ['Fraunces','serif'] },
-        extend: {
-          colors: {
-            ink: { 950:'#0a0a14', 900:'#0f1020', 800:'#151633' },
-            brand: { 400:'#6bc2d8', 500:'#2aaee8', 600:'#1b76c2' },
-            gold:  { 400:'#f8d86b', 500:'#f1c232' }
-          },
-          boxShadow: { soft: '0 8px 28px rgba(0,0,0,.18)' },
-          keyframes: {
-            fadeUp: { '0%':{opacity:0, transform:'translateY(16px)'}, '100%':{opacity:1, transform:'translateY(0)'} }
-          },
-          animation: { fadeUp: 'fadeUp .7s cubic-bezier(.2,.6,.2,1) both' }
+    <!-- 1. Tailwind CSS CDN (Stable) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Config Tailwind: Màu chủ đạo & Dark Mode -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#4f46e5', /* Indigo 600 */
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    }
+                }
+            }
         }
-      }
-    }
-  </script>
+    </script>
 
-  <!-- UX helpers -->
-  <style>
-    html { -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; text-rendering: optimizeLegibility; }
-    .navlink { position: relative; }
-    .navlink::after{ content:""; position:absolute; left:0; bottom:-6px; height:2px; width:100%; background: linear-gradient(90deg,#f1c232,#f8d86b); transform: scaleX(0); transform-origin:left; transition: transform .35s ease-out; }
-    .navlink:hover::after, .navlink:focus-visible::after{ transform: scaleX(1); }
-    .will-animate{ opacity:0; transform: translateY(14px); }
-    .inview{ opacity:1 !important; transform:none !important; animation: fadeUp .7s cubic-bezier(.2,.6,.2,1) both; }
-    .card{ background-color: rgba(21,22,51,.7); border: 1px solid rgba(255,255,255,.12); border-radius: .75rem; }
-    .kbd{ background: rgba(255,255,255,.06); border:1px solid rgba(255,255,255,.2); border-bottom-width:2px; padding:.125rem .375rem; border-radius:.375rem; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size:.8em }
-  </style>
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3274778094917677"
-     crossorigin="anonymous"></script>
+    <!-- Fonts: Inter cho nét hiện đại -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <!-- Animation & Slider CSS -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Reset cơ bản */
+        body { font-family: 'Inter', sans-serif; }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-track { background: transparent; }
+        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .dark ::-webkit-scrollbar-thumb { background: #334155; }
+        
+        /* Hiệu ứng Background Blur */
+        .glass-nav {
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
 </head>
 
-<body class="min-h-screen bg-ink-900 text-white selection:bg-gold-400/30">
-  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 bg-ink-800 text-white px-3 py-2 rounded">Bỏ qua điều hướng</a>
+<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 overflow-x-hidden relative">
 
-  <!-- Header / Nav -->
-  <header class="sticky top-0 z-50 backdrop-blur supports-[backdrop-filter]:bg-ink-900/70">
-    <nav class="mx-auto max-w-5xl px-4 sm:px-6 py-3 flex items-center justify-between" aria-label="Chính">
-      <a href="#hero" class="flex items-center gap-2" aria-label="Trang chủ">
-        <span class="text-lg font-display tracking-tight">Nguyễn Quốc Anh</span>
-      </a>
-      <ul class="flex items-center gap-6 text-sm">
-        <li><a class="navlink outline-none" href="#projects">Projects</a></li>
-        <li><a class="navlink outline-none" href="#skills">Skills</a></li>
-        <li><a class="navlink outline-none" href="#experience">Experience</a></li>
-        <li><a class="navlink outline-none" href="#utilities">Utilities</a></li>
-        <li><a class="navlink outline-none" href="#contact">Contact</a></li>
-      </ul>
-      <div class="flex items-center gap-3">
-        <a href="/Nguyen-Quoc-Anh-CV.pdf" class="rounded-md bg-gold-500 text-ink-950 px-3 py-1.5 text-sm font-semibold shadow-soft hover:brightness-110" download>Download CV</a>
-      </div>
-    </nav>
-  </header>
+    <!-- === THEME TOGGLE (Nút đổi màu giao diện) === -->
+    <button id="theme-toggle" class="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur text-slate-800 dark:text-yellow-400 shadow-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 border border-slate-200 dark:border-slate-700">
+        <i id="theme-icon-sun" class="fa-solid fa-sun text-xl hidden"></i>
+        <i id="theme-icon-moon" class="fa-solid fa-moon text-xl"></i>
+    </button>
 
-  <main id="main" class="mx-auto max-w-5xl px-4 sm:px-6">
-    <!-- Hero (giữ nguyên ngắn gọn) -->
-    <section class="pt-14 md:pt-20 pb-8 md:pb-14 will-animate" id="hero">
-      <h1 class="text-3xl md:text-5xl font-display leading-tight tracking-tight">
-        Xin chào, mình là <span class="text-brand-500">Nguyễn Quốc Anh</span>
-      </h1>
-      <p class="mt-4 max-w-2xl text-base/7 md:text-lg/8 text-white/80">
-        Full-Stack Developer — sinh viên năm cuối HOTEC. Thiết kế, xây dựng và vận hành web/app với
-        <strong>Next.js</strong>, <strong>Spring Boot</strong>, <strong>Laravel</strong>, <strong>Node.js</strong>. Ưu tiên hiệu năng, UX, SEO, kiến trúc dễ bảo trì.
-      </p>
-      <div class="mt-6 flex gap-4" aria-label="Mạng xã hội">
-        <a href="https://github.com/nguyenquocanhz" title="GitHub" rel="me noopener" target="_blank" class="hover:opacity-90">
-          <img loading="lazy" width="28" height="28" alt="GitHub" src="./assets/img/icons8-github-logo-50.png"/>
-        </a>
-        <a href="https://t.me/nqa1997" title="Telegram" rel="me noopener" target="_blank" class="hover:opacity-90">
-          <img loading="lazy" width="28" height="28" alt="Telegram" src="./assets/img/icons8-telegram-50.png"/>
-        </a>
-      </div>
-    </section>
-
-    <!-- Projects (rút gọn để dành chỗ cho Utilities) -->
-    <section id="projects" class="py-10 md:py-16 border-t border-white/10 will-animate">
-      <header class="mb-6">
-        <h2 class="text-2xl md:text-3xl font-display tracking-tight">Projects</h2>
-        <p class="text-white/70 mt-1">Một vài dự án tiêu biểu. Tập trung sản phẩm thực dụng, hiệu năng tốt và dễ mở rộng.</p>
-      </header>
-      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" id="projectGrid">
-        <!-- ... (có thể giữ các card cũ) ... -->
-      </div>
-    </section>
-
-    <!-- Utilities: tích hợp Tech Toolkit đã viết -->
-    <section id="utilities" class="py-10 md:py-16 border-t border-white/10 will-animate">
-      <header class="mb-6">
-        <h2 class="text-2xl md:3xl font-display tracking-tight">Utilities — Tech Toolkit</h2>
-        <p class="text-white/70 mt-1">Bộ công cụ thuần HTML + Tailwind + JS, chạy ngay trên trình duyệt. Dành cho KTV PC & Android.</p>
-      </header>
-
-      <!-- Hàng 1: PSU Quick + VA×PF + Battery -->
-      <div class="grid lg:grid-cols-3 gap-6">
-        <!-- PSU quick widget -->
-        <article class="card p-4 shadow-soft">
-          <div class="flex items-center justify-between">
-            <h3 class="text-lg font-semibold">PSU: Volt ↔ Watt ↔ Ampere</h3>
-            <span class="text-xs text-white/60">DC • P=V×I</span>
-          </div>
-          <div class="grid grid-cols-2 gap-3 mt-3">
-            <div>
-              <label class="text-xs text-white/70">V (Volt)</label>
-              <input id="utl-v" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="12" inputmode="decimal"/>
-            </div>
-            <div>
-              <label class="text-xs text-white/70">I (Ampere)</label>
-              <input id="utl-a" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="5" inputmode="decimal"/>
-            </div>
-            <div class="col-span-2">
-              <div class="flex items-center gap-2">
-                <label class="text-xs text-white/70">Độ chính xác</label>
-                <input id="utl-prec" type="range" min="0" max="6" step="1" value="2"/>
-                <span id="utl-prec-l" class="text-xs">2</span>
-                <button id="utl-copy" class="ml-auto rounded-md border border-white/20 px-2 py-1 text-xs">Copy</button>
-              </div>
-            </div>
-          </div>
-          <div class="mt-3 grid grid-cols-3 gap-2 text-center">
-            <div class="rounded-md bg-ink-800/50 p-2">
-              <div class="text-[11px] text-white/60">P = V×I</div>
-              <div class="text-xl font-semibold"><span id="utl-p">60</span>W</div>
-            </div>
-            <div class="rounded-md bg-ink-800/50 p-2">
-              <div class="text-[11px] text-white/60">I = P/V</div>
-              <div class="text-xl font-semibold"><span id="utl-i">5</span>A</div>
-            </div>
-            <div class="rounded-md bg-ink-800/50 p-2">
-              <div class="text-[11px] text-white/60">V = P/I</div>
-              <div class="text-xl font-semibold"><span id="utl-v2">12</span>V</div>
-            </div>
-          </div>
-          <p class="mt-2 text-xs text-white/60">Ví dụ: 95W @ 12V ⇒ I ≈ 7.92A.</p>
-          <div class="mt-3 text-right">
-            <a href="/psuUtil.html" class="underline decoration-gold-500/70 underline-offset-4 text-sm">Mở bộ công cụ đầy đủ</a>
-          </div>
-        </article>
-
-        <!-- VA × PF -->
-        <article class="card p-4 shadow-soft">
-          <h3 class="text-lg font-semibold">VA × PF → W (AC/UPS)</h3>
-          <div class="grid grid-cols-3 gap-3 mt-3">
-            <div><label class="text-xs text-white/70">VA</label><input id="vapf-va" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="500" inputmode="decimal"></div>
-            <div><label class="text-xs text-white/70">PF (0–1)</label><input id="vapf-pf" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="0.9" inputmode="decimal"></div>
-            <div><label class="text-xs text-white/70">W</label><input id="vapf-w" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="450" readonly></div>
-          </div>
-          <p class="mt-2 text-xs text-white/60">W ≈ VA × PF. UPS 1000VA, PF 0.8 ⇒ ~800W.</p>
-        </article>
-
-        <!-- Battery mAh ↔ Wh -->
-        <article class="card p-4 shadow-soft">
-          <h3 class="text-lg font-semibold">Pin: mAh ↔ Wh</h3>
-          <div class="grid grid-cols-3 gap-3 mt-3">
-            <div><label class="text-xs text-white/70">mAh</label><input id="bat-mah" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="5000" inputmode="decimal"></div>
-            <div><label class="text-xs text-white/70">V</label><input id="bat-v" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="3.85" inputmode="decimal"></div>
-            <div><label class="text-xs text-white/70">Wh</label><input id="bat-wh" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="19.25" readonly></div>
-          </div>
-          <p class="mt-2 text-xs text-white/60">Wh = (mAh ÷ 1000) × V</p>
-        </article>
-      </div>
-
-      <!-- Hàng 2: Storage + Hash + Android DPI/ADB links -->
-      <div class="grid lg:grid-cols-3 gap-6 mt-6">
-        <!-- Storage -->
-        <article class="card p-4 shadow-soft">
-          <h3 class="text-lg font-semibold">Lưu trữ: GB ↔ GiB</h3>
-          <div class="grid grid-cols-3 gap-3 mt-3">
-            <div><label class="text-xs text-white/70">Giá trị</label><input id="st-val" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="512" inputmode="decimal"></div>
-            <div><label class="text-xs text-white/70">Đơn vị</label>
-              <select id="st-from" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5">
-                <option value="GB">GB (10^9)</option>
-                <option value="GiB">GiB (2^30)</option>
-              </select>
-            </div>
-            <div><label class="text-xs text-white/70">Kết quả</label><input id="st-out" class="w-full bg-ink-800/60 border border-white/15 rounded-md px-2 py-1.5" value="476.84 GiB" readonly></div>
-          </div>
-        </article>
-
-        <!-- SHA-256 (ghi chú: full tính ở trang toolkit) -->
-        <article class="card p-4 shadow-soft">
-          <h3 class="text-lg font-semibold">SHA-256 file (Web Crypto)</h3>
-          <p class="text-sm text-white/70 mt-1">Bản rút gọn: mở đầy đủ để chọn file và tính hash cục bộ, không upload.</p>
-          <div class="mt-3">
-            <a href="/tech-toolkit-v1.html#hash" class="rounded-md bg-brand-500/90 hover:bg-brand-600 px-3 py-2 text-sm font-semibold">Mở công cụ đầy đủ</a>
-          </div>
-        </article>
-
-        <!-- Android helper links -->
-        <article class="card p-4 shadow-soft">
-          <h3 class="text-lg font-semibold">Android Helpers</h3>
-          <ul class="mt-2 text-sm space-y-2 list-disc list-inside text-white/80">
-            <li>ADB Command Builder: cài/gỡ app, screencap/record, reboot, logcat</li>
-            <li>DPI & đổi dp ↔ px, tự gợi ý bucket (mdpi—xxxhdpi)</li>
-          </ul>
-          <div class="mt-3"><a href="/tech-toolkit-v1.html#adb" class="underline decoration-gold-500/70 underline-offset-4 text-sm">Mở bộ công cụ đầy đủ</a></div>
-        </article>
-      </div>
-
-      <!-- Full toolkit: nhúng gọn bằng <details> để tránh dài trang -->
-      <details id="full-toolkit" class="mt-8 group">
-        <summary class="cursor-pointer select-none text-sm text-white/80 hover:text-white flex items-center gap-2">
-          <span class="inline-flex items-center justify-center size-6 rounded-full bg-white/10">+</span>
-          Hiện toàn bộ Tech Toolkit (nhúng trực tiếp trên trang)
-        </summary>
-        <div class="mt-4">
-          <!-- IFRAME phương án A: nếu bạn deploy file toolkit riêng thành /toolkit.html -->
-          <!-- <iframe src="/toolkit.html" class="w-full h-[1200px] rounded-lg border border-white/15"></iframe> -->
-          
-          <!-- Phương án B: nhúng rút gọn nội tuyến (có thể thay bằng bản đầy đủ sau) -->
-          <div class="text-sm text-white/70">(Bản rút gọn đã nằm ở các card phía trên. Bạn có thể tách ra file <code class="kbd">toolkit.html</code> để tái sử dụng.)</div>
+    <!-- === HEADER / HERO SECTION (Avatar First) === -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
+        
+        <!-- Background Orbs (Trang trí) -->
+        <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
+            <div class="absolute top-[10%] left-[15%] w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px] animate-pulse"></div>
+            <div class="absolute bottom-[10%] right-[15%] w-80 h-80 bg-purple-500/20 rounded-full blur-[100px]"></div>
         </div>
-      </details>
+
+        <!-- 1. AVATAR (Xuất hiện đầu tiên) -->
+        <div class="relative mb-8 group cursor-pointer" data-aos="zoom-in" data-aos-duration="1200">
+            <!-- Vòng hào quang -->
+            <div class="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
+            <!-- Ảnh đại diện (Thay link ảnh của bạn vào đây) -->
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?q=80&w=256&h=256&auto=format&fit=crop" 
+                 alt="My Avatar" 
+                 class="relative w-44 h-44 rounded-full object-cover border-[6px] border-white dark:border-slate-900 shadow-2xl transform group-hover:scale-105 transition duration-500">
+        </div>
+
+        <!-- 2. INTRO TEXT -->
+        <div class="max-w-3xl mx-auto">
+            <h2 class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase" data-aos="fade-up" data-aos-delay="100">
+                Xin chào, tôi là
+            </h2>
+            <h1 class="text-5xl md:text-7xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-800 to-slate-900 dark:from-white dark:via-indigo-300 dark:to-white mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200">
+                Nguyễn Văn Dev
+            </h1>
+            <p class="text-lg md:text-2xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium" data-aos="fade-up" data-aos-delay="300">
+                <span class="text-indigo-600 dark:text-indigo-400 font-bold">Fullstack Developer</span> chuyên xây dựng các giải pháp web tối ưu, giao diện hiện đại và trải nghiệm người dùng mượt mà.
+            </p>
+
+            <!-- 3. ACTION BUTTONS & SOCIAL -->
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
+                <!-- Download CV Button -->
+                <a href="#" class="px-8 py-3.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+                    <i class="fa-solid fa-download"></i> Tải CV
+                </a>
+
+                <!-- Social Links -->
+                <div class="flex gap-4">
+                    <a href="#" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
+                        <i class="fa-brands fa-github text-xl"></i>
+                    </a>
+                    <a href="#" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
+                        <i class="fa-brands fa-linkedin-in text-xl"></i>
+                    </a>
+                    <a href="#contact" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-green-600 hover:text-white hover:border-green-600 dark:hover:bg-green-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
+                        <i class="fa-solid fa-envelope text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Scroll Down Hint -->
+        <div class="absolute bottom-10 animate-bounce cursor-pointer opacity-70" data-aos="fade-in" data-aos-delay="800">
+            <span class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-2 block">Cuộn xuống</span>
+            <i class="fa-solid fa-chevron-down text-slate-400 dark:text-slate-500 text-xl"></i>
+        </div>
     </section>
 
-    <!-- Skills / Experience / Contact (giữ nguyên ngắn gọn) -->
-    <section id="skills" class="py-10 md:py-16 border-t border-white/10 will-animate">
-      <h2 class="text-2xl md:text-3xl font-display tracking-tight mb-4">Skills</h2>
-      <ul class="flex flex-wrap gap-2" aria-label="Hashtag kỹ năng">
-        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-brand-500 to-brand-600/80 text-white">#NextJS</li>
-        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-pink-500 to-rose-500/80">#ReactNative</li>
-        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-emerald-500 to-teal-500/80">#SpringBoot</li>
-        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-indigo-500 to-sky-500/80">#NodeJS</li>
-        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-amber-500 to-yellow-500/80 text-ink-950">#Laravel</li>
-        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-purple-500 to-fuchsia-500/80">#PostgreSQL</li>
-        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-slate-500 to-gray-600/80">#Linux/DevOps</li>
-        <li class="px-3 py-1 rounded-full text-sm font-medium bg-gradient-to-r from-cyan-500 to-sky-500/80">#Supabase</li>
-      </ul>
-      <p class="mt-3 text-white/70 text-sm">Cũng làm việc với: Angular, CakePHP, MySQL/NoSQL, Docker, Nginx, GitHub Actions.</p>
+    <!-- === ABOUT / SERVICES === -->
+    <section class="py-24 bg-white dark:bg-slate-900/50 transition-colors">
+        <div class="container mx-auto px-4 max-w-6xl">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-sm font-bold text-indigo-500 uppercase tracking-widest mb-2">Chuyên môn</h2>
+                <h3 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">Tôi làm gì?</h3>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Service 1 -->
+                <div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="0">
+                    <div class="w-14 h-14 rounded-2xl bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-code"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 dark:text-white">Frontend Development</h4>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Xây dựng giao diện responsive, pixel-perfect với React, Vue và Tailwind CSS. Tối ưu hóa trải nghiệm người dùng (UX).
+                    </p>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="w-14 h-14 rounded-2xl bg-green-100 dark:bg-green-900/30 text-green-600 dark:text-green-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-server"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 dark:text-white">Backend System</h4>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Thiết kế RESTful API, Database (SQL/NoSQL) và hệ thống xác thực bảo mật với Node.js, NestJS.
+                    </p>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="p-8 rounded-3xl bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 hover:shadow-xl transition-all duration-300 group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-14 h-14 rounded-2xl bg-orange-100 dark:bg-orange-900/30 text-orange-600 dark:text-orange-400 flex items-center justify-center text-2xl mb-6 group-hover:scale-110 transition-transform">
+                        <i class="fa-solid fa-rocket"></i>
+                    </div>
+                    <h4 class="text-xl font-bold mb-3 dark:text-white">Performance & Deploy</h4>
+                    <p class="text-slate-600 dark:text-slate-400 leading-relaxed">
+                        Tối ưu tốc độ tải trang, SEO và triển khai ứng dụng lên AWS, Vercel hoặc Docker.
+                    </p>
+                </div>
+            </div>
+        </div>
     </section>
 
-    <section id="experience" class="py-10 md:py-16 border-t border-white/10 will-animate">
-      <h2 class="text-2xl md:text-3xl font-display tracking-tight mb-6">Experience</h2>
-      <div class="space-y-6">
-        <article>
-          <h3 class="text-lg font-semibold tracking-tight">Freelance / Studio</h3>
-          <p class="text-sm text-white/70">2021 — Present · Full-Stack</p>
-          <ul class="mt-2 list-disc list-outside ms-5 text-white/80 text-sm leading-7">
-            <li>Thiết kế kiến trúc, chuẩn REST, độ tin cậy cao.</li>
-            <li>Tối ưu SEO & Web Vitals (LCP/CLS).</li>
-            <li>CI/CD (GitHub Actions), Docker; triển khai Nginx, Cloudflare.</li>
-          </ul>
-        </article>
-        <article>
-          <h3 class="text-lg font-semibold tracking-tight">Máy Tính Z1 (LaptopZ1) — Internship</h3>
-          <p class="text-sm text-white/70">2025 · Full-Stack & IT Operations</p>
-          <ul class="mt-2 list-disc list-outside ms-5 text-white/80 text-sm leading-7">
-            <li>Quy trình cài đặt/triển khai Windows, USB-boot, chuẩn hoá bảo trì.</li>
-            <li>Tự động hoá nội dung marketing đa kênh.</li>
-            <li>Chuẩn hoá tài liệu kỹ thuật & checklist vận hành.</li>
-          </ul>
-        </article>
-      </div>
+    <!-- === PROJECTS (SLIDER) === -->
+    <section class="py-24 overflow-hidden">
+        <div class="container mx-auto px-4 max-w-7xl">
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 px-4" data-aos="fade-up">
+                <div>
+                    <h2 class="text-sm font-bold text-indigo-500 uppercase tracking-widest mb-2">Portfolio</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">Dự án tiêu biểu</h3>
+                </div>
+                <div class="hidden md:flex gap-2">
+                    <button class="swiper-prev w-12 h-12 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition"><i class="fa-solid fa-arrow-left"></i></button>
+                    <button class="swiper-next w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-700 transition"><i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Swiper -->
+            <div class="swiper mySwiper w-full !pb-14 px-4" data-aos="fade-up" data-aos-delay="200">
+                <div class="swiper-wrapper">
+                    <!-- Project Card 1 -->
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-white dark:bg-slate-800 rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700 h-full flex flex-col group cursor-pointer">
+                            <div class="h-64 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Project 1">
+                                <div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    <i class="fa-brands fa-react text-blue-400 mr-1"></i> E-commerce
+                                </div>
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col">
+                                <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors">Fashion Store</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">Hệ thống thương mại điện tử trọn gói với giỏ hàng, thanh toán Stripe và quản lý kho hàng realtime.</p>
+                                <div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                                    <div class="flex gap-2">
+                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">NextJS</span>
+                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">NodeJS</span>
+                                    </div>
+                                    <span class="text-indigo-600 font-semibold text-sm group-hover:translate-x-1 transition-transform">Xem chi tiết <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 2 -->
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-white dark:bg-slate-800 rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700 h-full flex flex-col group cursor-pointer">
+                            <div class="h-64 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Project 2">
+                                <div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    <i class="fa-solid fa-chart-pie text-green-400 mr-1"></i> Fintech
+                                </div>
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col">
+                                <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors">Finance Dashboard</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">Dashboard quản lý tài chính cá nhân, visual hóa dữ liệu với biểu đồ động và xuất báo cáo PDF.</p>
+                                <div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                                    <div class="flex gap-2">
+                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">Vue</span>
+                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">Firebase</span>
+                                    </div>
+                                    <span class="text-indigo-600 font-semibold text-sm group-hover:translate-x-1 transition-transform">Xem chi tiết <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Project Card 3 -->
+                    <div class="swiper-slide h-auto">
+                        <div class="bg-white dark:bg-slate-800 rounded-[2rem] overflow-hidden shadow-lg border border-slate-100 dark:border-slate-700 h-full flex flex-col group cursor-pointer">
+                            <div class="h-64 overflow-hidden relative">
+                                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt="Project 3">
+                                <div class="absolute top-4 right-4 bg-white/90 dark:bg-black/80 backdrop-blur px-3 py-1 rounded-full text-xs font-bold shadow-sm">
+                                    <i class="fa-solid fa-comments text-purple-400 mr-1"></i> Social
+                                </div>
+                            </div>
+                            <div class="p-8 flex-1 flex flex-col">
+                                <h3 class="text-2xl font-bold mb-3 text-slate-800 dark:text-white group-hover:text-indigo-600 transition-colors">Chat Realtime</h3>
+                                <p class="text-slate-600 dark:text-slate-400 mb-6 line-clamp-2">Ứng dụng nhắn tin tức thời hỗ trợ gửi file, tạo nhóm chat và video call sử dụng WebRTC.</p>
+                                <div class="mt-auto pt-6 border-t border-slate-100 dark:border-slate-700 flex justify-between items-center">
+                                    <div class="flex gap-2">
+                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">React</span>
+                                        <span class="text-xs font-semibold px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded text-slate-600 dark:text-slate-300">Socket.IO</span>
+                                    </div>
+                                    <span class="text-indigo-600 font-semibold text-sm group-hover:translate-x-1 transition-transform">Xem chi tiết <i class="fa-solid fa-arrow-right ml-1"></i></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-pagination mt-6"></div>
+            </div>
+        </div>
     </section>
 
-    <section id="contact" class="py-12 md:py-16 border-t border-white/10 will-animate">
-      <h2 class="text-2xl md:text-3xl font-display tracking-tight mb-4">Liên hệ</h2>
-      <p class="text-white/80 mb-4">
-        Email: <a class="underline decoration-gold-500/70 underline-offset-4" href="mailto:nguyenquocanh.dev@gmail.com">nguyenquocanh.dev@gmail.com</a> · Telegram: <a class="underline decoration-gold-500/70 underline-offset-4" href="https://t.me/nqa1997" target="_blank" rel="noopener">t.me/nqa1997</a> · GitHub: <a class="underline decoration-gold-500/70 underline-offset-4" href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener">github.com/nguyenquocanhz</a>
-      </p>
-      <form name="contact" class="grid sm:grid-cols-2 gap-4 max-w-xl" aria-label="Form liên hệ">
-        <label class="sr-only" for="name">Tên</label>
-        <input id="name" name="name" required placeholder="Tên của bạn" class="col-span-1 bg-ink-800/60 border border-white/15 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-brand-500/60">
-        <label class="sr-only" for="email">Email</label>
-        <input id="email" name="email" type="email" required placeholder="Email" class="col-span-1 bg-ink-800/60 border border-white/15 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-brand-500/60">
-        <textarea name="message" rows="4" required placeholder="Nội dung..." class="sm:col-span-2 bg-ink-800/60 border border-white/15 rounded-md px-3 py-2 outline-none focus:ring-2 focus:ring-brand-500/60"></textarea>
-        <button type="submit" class="sm:col-span-2 justify-self-start rounded-md bg-gold-500 text-ink-950 px-4 py-2 font-semibold shadow-soft hover:brightness-110">Gửi</button>
-      </form>
+    <!-- === FOOTER / CONTACT === -->
+    <section id="contact" class="py-24 bg-slate-50 dark:bg-slate-900/50 relative">
+        <div class="container mx-auto px-4 max-w-4xl relative z-10">
+            <div class="bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 md:p-16 shadow-2xl border border-slate-100 dark:border-slate-700 text-center" data-aos="zoom-in-up">
+                <h2 class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">Bạn có ý tưởng dự án?</h2>
+                <p class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto">
+                    Hãy cùng nhau biến ý tưởng đó thành hiện thực. Tôi luôn sẵn sàng cho những thử thách mới.
+                </p>
+                <div class="flex flex-col md:flex-row justify-center gap-4">
+                    <a href="mailto:contact@example.com" class="px-10 py-4 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg shadow-lg hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1">
+                        Gửi Email Ngay
+                    </a>
+                    <a href="#" class="px-10 py-4 rounded-full bg-white dark:bg-transparent border-2 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-white font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+                        Sao chép SĐT
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Footer Info -->
+        <div class="mt-16 text-center text-slate-500 dark:text-slate-500 text-sm">
+            <p>&copy; 2025 Nguyễn Văn Dev. Built with passion & Tailwind CSS.</p>
+            <div class="flex justify-center gap-6 mt-4 opacity-50">
+                <a href="#" class="hover:text-indigo-500 transition">Github</a>
+                <a href="#" class="hover:text-indigo-500 transition">LinkedIn</a>
+                <a href="#" class="hover:text-indigo-500 transition">Twitter</a>
+            </div>
+        </div>
     </section>
-  </main>
 
-  <footer class="py-8 border-t border-white/10 text-center text-white/60 text-sm">
-    © <span id="y"></span> Nguyễn Quốc Anh. All rights reserved.
-  </footer>
+    <!-- === SCRIPTS === -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 
-  <!-- Scripts: year + in-view + utilities logic -->
-  <script>
-    // Current year
-    document.getElementById('y').textContent = new Date().getFullYear();
+    <script>
+        /* 1. DARK MODE LOGIC (An toàn & Nhớ trạng thái) */
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        const themeIconSun = document.getElementById('theme-icon-sun');
+        const themeIconMoon = document.getElementById('theme-icon-moon');
+        const html = document.documentElement;
 
-    // IntersectionObserver for appear-on-scroll
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('inview'); io.unobserve(e.target); } });
-    }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
-    document.querySelectorAll('.will-animate').forEach(el=>io.observe(el));
+        function applyTheme(isDark) {
+            if (isDark) {
+                html.classList.add('dark');
+                themeIconSun.classList.remove('hidden');
+                themeIconMoon.classList.add('hidden');
+            } else {
+                html.classList.remove('dark');
+                themeIconSun.classList.add('hidden');
+                themeIconMoon.classList.remove('hidden');
+            }
+        }
 
-    // Utilities logic (rút gọn)
-    const N = (v)=>{ const n = parseFloat(String(v).replace(',', '.')); return Number.isFinite(n)?n:NaN };
+        // Kiểm tra cài đặt cũ hoặc hệ thống
+        const savedTheme = localStorage.getItem('theme');
+        const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+        
+        if (savedTheme === 'dark' || (!savedTheme && systemDark)) {
+            applyTheme(true);
+        } else {
+            applyTheme(false);
+        }
 
-    // PSU quick
-    const v = document.getElementById('utl-v');
-    const a = document.getElementById('utl-a');
-    const p = document.getElementById('utl-p');
-    const i2= document.getElementById('utl-i');
-    const v2= document.getElementById('utl-v2');
-    const prec = document.getElementById('utl-prec');
-    const prel = document.getElementById('utl-prec-l');
-    function renderPSU(){
-      const V=N(v.value), I=N(a.value); const d=+prec.value||0; prel.textContent=d;
-      const P=V*I; const Iw = (V===0? NaN : P/V); const Vw=(I===0? NaN : P/I);
-      p.textContent = Number.isFinite(P)? P.toFixed(d):'—';
-      i2.textContent= Number.isFinite(Iw)? Iw.toFixed(d):'—';
-      v2.textContent= Number.isFinite(Vw)? Vw.toFixed(d):'—';
-    }
-    ;['input','blur','change'].forEach(ev=>{ v.addEventListener(ev,renderPSU); a.addEventListener(ev,renderPSU); prec.addEventListener(ev,renderPSU); });
-    document.getElementById('utl-copy').addEventListener('click', async ()=>{
-      try{ await navigator.clipboard.writeText(`P=${p.textContent}W | I=${i2.textContent}A | V=${v2.textContent}V`); const b=event.target; const old=b.textContent; b.textContent='Đã copy'; setTimeout(()=> b.textContent=old, 1200);}catch(_){}
-    });
-    renderPSU();
+        // Sự kiện Click
+        themeToggleBtn.addEventListener('click', () => {
+            const isDark = html.classList.toggle('dark');
+            localStorage.setItem('theme', isDark ? 'dark' : 'light');
+            applyTheme(isDark);
+        });
 
-    // VA×PF
-    const va=document.getElementById('vapf-va');
-    const pf=document.getElementById('vapf-pf');
-    const vw=document.getElementById('vapf-w');
-    function renderVAPF(){ const VA=N(va.value), PF=N(pf.value); const W=(Number.isFinite(VA)&&Number.isFinite(PF))? VA*PF:NaN; vw.value= Number.isFinite(W)? W.toFixed(2):''; }
-    ;['input','blur'].forEach(ev=>{ va.addEventListener(ev,renderVAPF); pf.addEventListener(ev,renderVAPF); }); renderVAPF();
+        /* 2. AOS ANIMATION INIT */
+        AOS.init({
+            once: false, // Animation lặp lại khi cuộn
+            mirror: true, 
+            offset: 50,
+            duration: 1000,
+            easing: 'ease-out-cubic',
+        });
 
-    // Battery mAh↔Wh
-    const bm=document.getElementById('bat-mah'); const bv=document.getElementById('bat-v'); const bw=document.getElementById('bat-wh');
-    function renderBat(){ const m=N(bm.value), vv=N(bv.value); const wh=(Number.isFinite(m)&&Number.isFinite(vv))? (m/1000)*vv:NaN; bw.value= Number.isFinite(wh)? wh.toFixed(2):''; }
-    ;['input','blur'].forEach(ev=>{ bm.addEventListener(ev,renderBat); bv.addEventListener(ev,renderBat); }); renderBat();
-
-    // Storage GB↔GiB
-    const stv=document.getElementById('st-val'); const stf=document.getElementById('st-from'); const sto=document.getElementById('st-out');
-    function renderSt(){ const val=N(stv.value); if(!Number.isFinite(val)){ sto.value=''; return; } if(stf.value==='GB'){ sto.value=(val*1e9/Math.pow(2,30)).toFixed(2)+' GiB'; } else { sto.value=(val*Math.pow(2,30)/1e9).toFixed(2)+' GB'; }}
-    ;['input','blur','change'].forEach(ev=>{ stv.addEventListener(ev,renderSt); stf.addEventListener(ev,renderSt); }); renderSt();
-  </script>
+        /* 3. SWIPER SLIDER INIT */
+        new Swiper(".mySwiper", {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            speed: 600,
+            grabCursor: true,
+            pagination: { 
+                el: ".swiper-pagination", 
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-next",
+                prevEl: ".swiper-prev",
+            },
+            breakpoints: {
+                640: { slidesPerView: 1 },
+                768: { slidesPerView: 2 },
+                1024: { slidesPerView: 3 },
+            },
+            autoplay: {
+                delay: 5000,
+                disableOnInteraction: false,
+            }
+        });
+    </script>
 </body>
 </html>
