@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="vi" class="scroll-smooth">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,7 @@
 
     <!-- 1. Tailwind CSS CDN (Stable) -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Config Tailwind: Màu chủ đạo & Dark Mode -->
     <script>
         tailwind.config = {
@@ -27,7 +28,7 @@
 
     <!-- Fonts: Inter cho nét hiện đại -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
+
     <!-- Animation & Slider CSS -->
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
@@ -35,83 +36,123 @@
 
     <style>
         /* CSS Reset cơ bản */
-        body { font-family: 'Inter', sans-serif; }
-        
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+
         /* Custom Scrollbar */
-        ::-webkit-scrollbar { width: 8px; }
-        ::-webkit-scrollbar-track { background: transparent; }
-        ::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
-        .dark ::-webkit-scrollbar-thumb { background: #334155; }
-        
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: transparent;
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: #cbd5e1;
+            border-radius: 10px;
+        }
+
+        .dark ::-webkit-scrollbar-thumb {
+            background: #334155;
+        }
+
         /* Loading State - Optional now since data is instant */
         .loading-skeleton {
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
             background-color: #e2e8f0;
         }
+
         .dark .loading-skeleton {
             background-color: #334155;
         }
+
         @keyframes pulse {
-            0%, 100% { opacity: 1; }
-            50% { opacity: .5; }
+
+            0%,
+            100% {
+                opacity: 1;
+            }
+
+            50% {
+                opacity: .5;
+            }
         }
     </style>
 </head>
 
-<body class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 overflow-x-hidden relative">
+<body
+    class="bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-300 overflow-x-hidden relative">
 
     <!-- === THEME TOGGLE === -->
-    <button id="theme-toggle" class="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur text-slate-800 dark:text-yellow-400 shadow-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 border border-slate-200 dark:border-slate-700 cursor-pointer">
+    <button id="theme-toggle"
+        class="fixed top-6 right-6 z-50 w-12 h-12 rounded-full bg-white/80 dark:bg-slate-800/80 backdrop-blur text-slate-800 dark:text-yellow-400 shadow-xl flex items-center justify-center hover:scale-110 transition-transform duration-300 border border-slate-200 dark:border-slate-700 cursor-pointer">
         <i id="theme-icon-sun" class="fa-solid fa-sun text-xl hidden"></i>
         <i id="theme-icon-moon" class="fa-solid fa-moon text-xl"></i>
     </button>
 
     <!-- === HEADER / HERO SECTION === -->
     <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
-        
+
         <!-- Background Orbs -->
         <div class="absolute top-0 left-0 w-full h-full overflow-hidden -z-10 pointer-events-none">
-            <div class="absolute top-[10%] left-[15%] w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px] animate-pulse"></div>
+            <div
+                class="absolute top-[10%] left-[15%] w-64 h-64 bg-indigo-500/20 rounded-full blur-[80px] animate-pulse">
+            </div>
             <div class="absolute bottom-[10%] right-[15%] w-80 h-80 bg-purple-500/20 rounded-full blur-[100px]"></div>
         </div>
 
         <!-- 1. AVATAR -->
         <div class="relative mb-8 group cursor-pointer" data-aos="zoom-in" data-aos-duration="1200">
-            <div class="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500"></div>
-            <img id="profile-avatar" src="" alt="Avatar" 
-                 class="relative w-44 h-44 rounded-full object-cover border-[6px] border-white dark:border-slate-900 shadow-2xl transform group-hover:scale-105 transition duration-500 bg-slate-200 dark:bg-slate-800">
+            <div
+                class="absolute -inset-1 bg-gradient-to-tr from-indigo-500 to-purple-500 rounded-full blur opacity-40 group-hover:opacity-100 transition duration-500">
+            </div>
+            <img id="profile-avatar" src="" alt="Avatar"
+                class="relative w-44 h-44 rounded-full object-cover border-[6px] border-white dark:border-slate-900 shadow-2xl transform group-hover:scale-105 transition duration-500 bg-slate-200 dark:bg-slate-800">
         </div>
 
         <!-- 2. INTRO TEXT -->
         <div class="max-w-3xl mx-auto">
-            <h2 id="profile-intro" class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase" data-aos="fade-up" data-aos-delay="100"></h2>
-            <h1 id="profile-name" class="text-5xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-800 to-slate-900 dark:from-white dark:via-indigo-300 dark:to-white mb-6 leading-tight" data-aos="fade-up" data-aos-delay="200"></h1>
-            <p class="text-lg md:text-2xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium" data-aos="fade-up" data-aos-delay="300">
-                <span id="profile-role" class="text-indigo-600 dark:text-indigo-400 font-bold"></span> 
+            <h2 id="profile-intro"
+                class="text-xl font-semibold text-indigo-600 dark:text-indigo-400 mb-3 tracking-wide uppercase"
+                data-aos="fade-up" data-aos-delay="100"></h2>
+            <h1 id="profile-name"
+                class="text-5xl md:text-4xl font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-slate-900 via-indigo-800 to-slate-900 dark:from-white dark:via-indigo-300 dark:to-white mb-6 leading-tight"
+                data-aos="fade-up" data-aos-delay="200"></h1>
+            <p class="text-lg md:text-2xl text-slate-600 dark:text-slate-400 mb-8 leading-relaxed font-medium"
+                data-aos="fade-up" data-aos-delay="300">
+                <span id="profile-role" class="text-indigo-600 dark:text-indigo-400 font-bold"></span>
                 <span id="profile-bio"></span>
             </p>
 
             <!-- 3. ACTION BUTTONS -->
-            <div class="flex flex-col md:flex-row items-center justify-center gap-6" data-aos="fade-up" data-aos-delay="400">
-                <a id="btn-cv" href="#" class="px-8 py-3.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
+            <div class="flex flex-col md:flex-row items-center justify-center gap-6" data-aos="fade-up"
+                data-aos-delay="400">
+                <a id="btn-cv" href="#"
+                    class="px-8 py-3.5 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all duration-300 flex items-center gap-2">
                     <i class="fa-solid fa-download"></i> Tải CV
                 </a>
 
                 <div class="flex gap-4">
-                    <a id="link-github" href="#" target="_blank" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
+                    <a id="link-github" href="#" target="_blank"
+                        class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 dark:hover:bg-indigo-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
                         <i class="fa-brands fa-github text-xl"></i>
                     </a>
-                    <a id="link-linkedin" href="#" target="_blank" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
+                    <a id="link-linkedin" href="#" target="_blank"
+                        class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-blue-600 hover:text-white hover:border-blue-600 dark:hover:bg-blue-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
                         <i class="fa-brands fa-linkedin-in text-xl"></i>
                     </a>
-                    <a id="link-email" href="#" class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-green-600 hover:text-white hover:border-green-600 dark:hover:bg-green-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
+                    <a id="link-email" href="#"
+                        class="w-12 h-12 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300 hover:bg-green-600 hover:text-white hover:border-green-600 dark:hover:bg-green-500 dark:hover:text-white transition-all duration-300 shadow-md hover:-translate-y-1">
                         <i class="fa-solid fa-envelope text-xl"></i>
                     </a>
                 </div>
             </div>
         </div>
 
-        <div class="absolute bottom-10 animate-bounce cursor-pointer opacity-70 mt-16" data-aos="fade-in" data-aos-delay="800">
+        <div class="absolute bottom-10 animate-bounce cursor-pointer opacity-70 mt-16" data-aos="fade-in"
+            data-aos-delay="800">
             <span class="text-xs font-semibold uppercase tracking-widest text-slate-500 mb-2 block">Cuộn xuống</span>
             <i class="fa-solid fa-chevron-down text-slate-400 dark:text-slate-500 text-xl"></i>
         </div>
@@ -135,12 +176,18 @@
         <div class="container mx-auto px-4 max-w-7xl">
             <div class="flex flex-col md:flex-row justify-between items-end mb-12 px-4" data-aos="fade-up">
                 <div>
-                    <h2 class="text-sm font-bold text-indigo-500 uppercase tracking-widest mb-2 text-center">Dự án của tôi</h2>
-                    <h3 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white">Dự án tiêu biểu</h3>
+                    <h2 class="text-sm font-bold text-indigo-500 uppercase tracking-widest mb-2 text-center">Dự án của
+                        tôi</h2>
+                    <h3 class="text-3xl md:text-4xl font-bold text-slate-800 dark:text-white text-center">Dự án tiêu
+                        biểu</h3>
                 </div>
                 <div class="hidden md:flex gap-2">
-                    <button class="swiper-prev w-12 h-12 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"><i class="fa-solid fa-arrow-left"></i></button>
-                    <button class="swiper-next w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-700 transition cursor-pointer"><i class="fa-solid fa-arrow-right"></i></button>
+                    <button
+                        class="swiper-prev w-12 h-12 rounded-full border border-slate-300 dark:border-slate-600 flex items-center justify-center hover:bg-slate-100 dark:hover:bg-slate-800 transition cursor-pointer"><i
+                            class="fa-solid fa-arrow-left"></i></button>
+                    <button
+                        class="swiper-next w-12 h-12 rounded-full bg-indigo-600 text-white flex items-center justify-center hover:bg-indigo-700 transition cursor-pointer"><i
+                            class="fa-solid fa-arrow-right"></i></button>
                 </div>
             </div>
 
@@ -157,20 +204,24 @@
     <!-- === CONTACT === -->
     <section id="contact" class="py-24 bg-slate-50 dark:bg-slate-900/50 relative">
         <div class="container mx-auto px-4 max-w-4xl relative z-10">
-            <div class="bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 md:p-16 shadow-2xl border border-slate-100 dark:border-slate-700 text-center" data-aos="zoom-in-up">
-                <h2 id="contact-title" class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">...</h2>
+            <div class="bg-white dark:bg-slate-800 rounded-[2.5rem] p-10 md:p-16 shadow-2xl border border-slate-100 dark:border-slate-700 text-center"
+                data-aos="zoom-in-up">
+                <h2 id="contact-title" class="text-3xl md:text-5xl font-bold text-slate-900 dark:text-white mb-6">...
+                </h2>
                 <p id="contact-desc" class="text-lg text-slate-600 dark:text-slate-300 mb-10 max-w-2xl mx-auto"></p>
                 <div class="flex flex-col md:flex-row justify-center gap-4">
-                    <a id="contact-email-btn" href="#" class="px-10 py-4 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg shadow-lg hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1">
+                    <a id="contact-email-btn" href="#"
+                        class="px-10 py-4 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-lg shadow-lg hover:shadow-indigo-500/30 transition-all transform hover:-translate-y-1">
                         Liên hệ ngay
                     </a>
-                    <a id="contact-phone-btn" href="#" class="px-10 py-4 rounded-full bg-white dark:bg-transparent border-2 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-white font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
+                    <a id="contact-phone-btn" href="#"
+                        class="px-10 py-4 rounded-full bg-white dark:bg-transparent border-2 border-slate-200 dark:border-slate-600 text-slate-700 dark:text-white font-bold text-lg hover:bg-slate-50 dark:hover:bg-slate-700 transition-all">
                         Gọi điện
                     </a>
                 </div>
             </div>
         </div>
-        
+
         <div class="mt-16 text-center text-slate-500 dark:text-slate-500 text-sm">
             <p>&copy; 2025 Powered by <span class="font-bold text-indigo-500">JSON Data</span></p>
         </div>
@@ -184,74 +235,74 @@
         // --- 1. CONFIG DATA (CHỈNH SỬA THÔNG TIN TẠI ĐÂY) ---
         // Do lỗi fetch data.json trên môi trường không có server, ta dùng biến trực tiếp.
         const portfolioData = {
-          "profile": {
-            "name": "Nguyễn Quốc Anh",
-            "role": "Fullstack Developer",
-            "avatar": "https://nguyenquocanh.io.vn/assets/img/me.jpg",
-            "intro": "Xin chào, tôi là",
-            "bio": "chuyên xây dựng các giải pháp web tối ưu, giao diện hiện đại và trải nghiệm người dùng mượt mà.",
-            "cvLink": "#",
-            "social": {
-              "github": "https://github.com/nguyenquocanhz",
-              "linkedin": "https://www.linkedin.com/in/nguyenquocanhz/",
-              "email": "mailto:nqatech@nguyenquocanh.io.vn"
+            "profile": {
+                "name": "Nguyễn Quốc Anh",
+                "role": "Fullstack Developer",
+                "avatar": "https://nguyenquocanh.io.vn/assets/img/me.jpg",
+                "intro": "Xin chào, tôi là",
+                "bio": "chuyên xây dựng các giải pháp web tối ưu, giao diện hiện đại và trải nghiệm người dùng mượt mà.",
+                "cvLink": "#",
+                "social": {
+                    "github": "https://github.com/nguyenquocanhz",
+                    "linkedin": "https://www.linkedin.com/in/nguyenquocanhz/",
+                    "email": "mailto:nqatech@nguyenquocanh.io.vn"
+                }
+            },
+            "services": [
+                {
+                    "icon": "fa-code",
+                    "color": "blue",
+                    "title": "Frontend Development",
+                    "desc": "Xây dựng giao diện responsive, pixel-perfect với React, Vue và Tailwind CSS. Tối ưu hóa trải nghiệm người dùng (UX)."
+                },
+                {
+                    "icon": "fa-server",
+                    "color": "green",
+                    "title": "Backend System",
+                    "desc": "Thiết kế RESTful API, Database (SQL/NoSQL) và hệ thống xác thực bảo mật với Node.js, NestJS."
+                },
+                {
+                    "icon": "fa-rocket",
+                    "color": "orange",
+                    "title": "Performance & Deploy",
+                    "desc": "Tối ưu tốc độ tải trang, SEO và triển khai ứng dụng lên AWS, Vercel hoặc Docker."
+                }
+            ],
+            "projects": [
+                {
+                    "title": "Fashion Store",
+                    "category": "E-commerce",
+                    "icon": "fa-brands fa-react",
+                    "iconColor": "text-blue-400",
+                    "image": "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=800&auto=format&fit=crop",
+                    "desc": "Hệ thống thương mại điện tử trọn gói với giỏ hàng, thanh toán Stripe và quản lý kho hàng realtime.",
+                    "tech": ["NextJS", "NodeJS"]
+                },
+                {
+                    "title": "Finance Dashboard",
+                    "category": "Fintech",
+                    "icon": "fa-solid fa-chart-pie",
+                    "iconColor": "text-green-400",
+                    "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
+                    "desc": "Dashboard quản lý tài chính cá nhân, visual hóa dữ liệu với biểu đồ động và xuất báo cáo PDF.",
+                    "tech": ["Vue", "Firebase"]
+                },
+                {
+                    "title": "Chat Realtime",
+                    "category": "Social",
+                    "icon": "fa-solid fa-comments",
+                    "iconColor": "text-purple-400",
+                    "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop",
+                    "desc": "Ứng dụng nhắn tin tức thời hỗ trợ gửi file, tạo nhóm chat và video call sử dụng WebRTC.",
+                    "tech": ["React", "Socket.IO"]
+                }
+            ],
+            "contact": {
+                "title": "Bạn có ý tưởng dự án?",
+                "desc": "Hãy cùng nhau biến ý tưởng đó thành hiện thực. Tôi luôn sẵn sàng cho những thử thách mới.",
+                "emailText": "Gửi Email Ngay",
+                "phoneText": "Sao chép SĐT"
             }
-          },
-          "services": [
-            {
-              "icon": "fa-code",
-              "color": "blue",
-              "title": "Frontend Development",
-              "desc": "Xây dựng giao diện responsive, pixel-perfect với React, Vue và Tailwind CSS. Tối ưu hóa trải nghiệm người dùng (UX)."
-            },
-            {
-              "icon": "fa-server",
-              "color": "green",
-              "title": "Backend System",
-              "desc": "Thiết kế RESTful API, Database (SQL/NoSQL) và hệ thống xác thực bảo mật với Node.js, NestJS."
-            },
-            {
-              "icon": "fa-rocket",
-              "color": "orange",
-              "title": "Performance & Deploy",
-              "desc": "Tối ưu tốc độ tải trang, SEO và triển khai ứng dụng lên AWS, Vercel hoặc Docker."
-            }
-          ],
-          "projects": [
-            {
-              "title": "Fashion Store",
-              "category": "E-commerce",
-              "icon": "fa-brands fa-react",
-              "iconColor": "text-blue-400",
-              "image": "https://images.unsplash.com/photo-1661956602116-aa6865609028?q=80&w=800&auto=format&fit=crop",
-              "desc": "Hệ thống thương mại điện tử trọn gói với giỏ hàng, thanh toán Stripe và quản lý kho hàng realtime.",
-              "tech": ["NextJS", "NodeJS"]
-            },
-            {
-              "title": "Finance Dashboard",
-              "category": "Fintech",
-              "icon": "fa-solid fa-chart-pie",
-              "iconColor": "text-green-400",
-              "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-              "desc": "Dashboard quản lý tài chính cá nhân, visual hóa dữ liệu với biểu đồ động và xuất báo cáo PDF.",
-              "tech": ["Vue", "Firebase"]
-            },
-            {
-              "title": "Chat Realtime",
-              "category": "Social",
-              "icon": "fa-solid fa-comments",
-              "iconColor": "text-purple-400",
-              "image": "https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=800&auto=format&fit=crop",
-              "desc": "Ứng dụng nhắn tin tức thời hỗ trợ gửi file, tạo nhóm chat và video call sử dụng WebRTC.",
-              "tech": ["React", "Socket.IO"]
-            }
-          ],
-          "contact": {
-            "title": "Bạn có ý tưởng dự án?",
-            "desc": "Hãy cùng nhau biến ý tưởng đó thành hiện thực. Tôi luôn sẵn sàng cho những thử thách mới.",
-            "emailText": "Gửi Email Ngay",
-            "phoneText": "Sao chép SĐT"
-          }
         };
 
         // --- 2. THEME LOGIC ---
@@ -269,7 +320,7 @@
                 document.getElementById('theme-icon-moon').classList.remove('hidden');
             }
         }
-        
+
         const savedTheme = localStorage.getItem('theme');
         const systemDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
         applyTheme(savedTheme === 'dark' || (!savedTheme && systemDark));
@@ -284,7 +335,7 @@
         function loadPortfolio() {
             try {
                 // Sử dụng dữ liệu trực tiếp từ biến portfolioData thay vì fetch
-                const data = portfolioData; 
+                const data = portfolioData;
 
                 // === 3.1 Render Profile ===
                 const p = data.profile;
@@ -294,7 +345,7 @@
                 document.getElementById('profile-role').textContent = p.role;
                 document.getElementById('profile-bio').textContent = p.bio;
                 document.getElementById('btn-cv').href = p.cvLink;
-                
+
                 // Social Links
                 const linkMap = {
                     'link-github': p.social.github,
@@ -303,7 +354,7 @@
                 };
                 for (const [id, link] of Object.entries(linkMap)) {
                     const el = document.getElementById(id);
-                    if(el) el.href = link;
+                    if (el) el.href = link;
                 }
 
                 // === 3.2 Render Services ===
@@ -356,7 +407,7 @@
                 const c = data.contact;
                 document.getElementById('contact-title').textContent = c.title;
                 document.getElementById('contact-desc').textContent = c.desc;
-                
+
                 const emailBtn = document.getElementById('contact-email-btn');
                 emailBtn.textContent = c.emailText;
                 emailBtn.href = p.social.email;
@@ -375,7 +426,7 @@
             setTimeout(() => {
                 AOS.init({
                     once: false,
-                    mirror: true, 
+                    mirror: true,
                     offset: 50,
                     duration: 1000,
                     easing: 'ease-out-cubic',
@@ -391,8 +442,8 @@
                 grabCursor: true,
                 observer: true,
                 observeParents: true,
-                pagination: { 
-                    el: ".swiper-pagination", 
+                pagination: {
+                    el: ".swiper-pagination",
                     clickable: true,
                     dynamicBullets: true,
                 },
@@ -416,4 +467,5 @@
 
     </script>
 </body>
+
 </html>
