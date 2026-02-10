@@ -1,5 +1,5 @@
 # Simple workflow for deploying static content to GitHub Pages
-name: Deploy static content to Pages
+name: Deploy Full Site (Root + Solutions)
 
 on:
   # Runs on pushes targeting the default branch
@@ -31,13 +31,30 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+
+      # --- BƯỚC 1: BUILD CSS CHO SOLUTIONS (QUAN TRỌNG) ---
+      # Phải build xong mới có file css để upload
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install Dependencies
+        run: npm install -D tailwindcss
+
+      - name: Build Tailwind CSS
+        run: npx tailwindcss -i ./solutions/css/input.css -o ./solutions/css/main.css --minify
+
+      # --- BƯỚC 2: DEPLOY BẰNG OFFICIAL ACTIONS ---
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Upload entire repository
+          # Upload entire repository (bao gồm cả file main.css vừa build xong)
           path: '.'
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
