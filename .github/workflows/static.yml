@@ -40,7 +40,8 @@ jobs:
           node-version: '20'
 
       - name: Install Dependencies
-        run: npm install -D tailwindcss
+        # Cài đặt cụ thể tailwindcss version 3 để tương thích với lệnh npx tailwindcss cũ
+        run: npm install -D tailwindcss@3
 
       - name: Build Tailwind CSS
         run: npx tailwindcss -i ./solutions/css/input.css -o ./solutions/css/main.css --minify
