@@ -33,18 +33,8 @@ git clone <repo link>
 
 ---
 
-## 📸 Preview
-> Add screenshots or demo GIFs of your portfolio site here once deployed.
-
----
-
-## 🔗 Live Demo
-Deployed version: [Click Here](#) _(replace with your Vercel/GitHub Pages link)_
-
----
-
 ## 📬 Contact
-- Email: nguyennquocanh.dev@example.com  
+- Email: [nqatech2003@nguyenquocanh.io.vn](://mailto:nqatech2003@nguyenquocanh.io.vn)  
 - Telegram : https://t.me/@nqatech2003  
 - GitHub: [Nguyenquocanhz](https://github.com/nguyenquocanhz)  
 
