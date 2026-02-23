@@ -132,6 +132,14 @@
                 { id: 3, title: 'Software Engineering Foundations', issuer: 'HackerRank / Coursera', delay: '300', icon: 'ph-duotone ph-graduation-cap', iconColor: 'text-purple-500', iconBg: 'bg-purple-500/10 border-purple-500/20' },
                 { id: 4, title: 'Agile & Kanban Basics', issuer: 'Scrum.org', delay: '400', icon: 'ph-duotone ph-shield-check', iconColor: 'text-green-500', iconBg: 'bg-green-500/10 border-green-500/20' }
             ],
+            donate : 
+            {
+                qrCodeUrl : '',
+                name : '',
+                account : '',
+                message : ''
+            },
+            
             contact: {
                 email: 'nguyenquocanh.dev@gmail.com',
                 linkedin: '#',
@@ -510,7 +518,34 @@
             <div class="absolute inset-0 flex items-center justify-center -z-10 opacity-30 pointer-events-none">
                 <div class="w-full max-w-3xl h-64 bg-primary blur-[100px] rounded-full"></div>
             </div>
-
+            <!-- Donate Card -->
+            <div class="bg-gray-900 border border-gray-800 p-8 rounded-3xl max-w-lg mx-auto text-left relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full blur-2xl"></div>
+                <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
+                    <i class="ph ph-coffee mr-2 text-yellow-500"></i> Support My Work
+                </h3>
+                <p class="text-gray-500 text-sm mb-6" x-text="data.donate.message"></p>
+                
+                <div class="flex flex-col sm:flex-row items-center gap-6">
+                    <img :src="data.donate.qrCodeUrl" alt="QR Code" class="w-24 h-24 rounded-lg bg-white p-1">
+                    <div class="flex-grow space-y-3 w-full">
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-500">Bank</span>
+                            <span class="text-gray-200 font-medium" x-text="data.donate.bank"></span>
+                        </div>
+                        <div class="flex justify-between text-sm">
+                            <span class="text-gray-500">Name</span>
+                            <span class="text-gray-200 font-medium" x-text="data.donate.name"></span>
+                        </div>
+                        <div class="flex justify-between text-sm items-center bg-gray-800 rounded-md px-3 py-2 mt-2 group">
+                            <span class="text-indigo-300 font-mono text-xs tracking-wider" x-text="data.donate.account"></span>
+                            <button @click="copyAccount" class="text-gray-400 hover:text-white transition-colors p-1" title="Copy Account">
+                                <i :class="copied ? 'ph-check text-green-500' : 'ph-copy'"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div class="container mx-auto px-6 md:px-12 text-center" data-aos="zoom-in">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Something Great</h2>
                 <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
@@ -533,6 +568,7 @@
                         </a>
                     </div>
                 </div>
+                
             </div>
         </section>
     </main>
