@@ -38,7 +38,7 @@
             }
         }
     </script>
-    <!-- AOS JS Library -->
+        <!-- AOS JS Library -->
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 
     <!-- DATA SOURCE & ALPINE COMPONENT INIT -->
@@ -51,7 +51,8 @@
                 { id: 2, label: 'Skills', link: '#skills' },
                 { id: 3, label: 'Education', link: '#education' },
                 { id: 4, label: 'Projects', link: '#projects' },
-                { id: 5, label: 'Certifications', link: '#certifications' }
+                { id: 5, label: 'Certifications', link: '#certifications' },
+                { id: 6, label: 'Tools', link: '#affiliates' }
             ],
             hero: {
                 availability: 'Freelancer / Available for Work',
@@ -132,29 +133,54 @@
                 { id: 3, title: 'Software Engineering Foundations', issuer: 'HackerRank / Coursera', delay: '300', icon: 'ph-duotone ph-graduation-cap', iconColor: 'text-purple-500', iconBg: 'bg-purple-500/10 border-purple-500/20' },
                 { id: 4, title: 'Agile & Kanban Basics', issuer: 'Scrum.org', delay: '400', icon: 'ph-duotone ph-shield-check', iconColor: 'text-green-500', iconBg: 'bg-green-500/10 border-green-500/20' }
             ],
-            donate : 
-            {
-                qrCodeUrl : '',
-                name : '',
-                account : '',
-                message : ''
+            affiliates: [
+                { id: 1, title: 'DigitalOcean Cloud', delay: '100', icon: 'ph-duotone ph-cloud-arrow-up', iconColor: 'text-blue-500', iconBg: 'bg-blue-500/10 border-blue-500/20', description: 'Get $200 in credit over 60 days to spin up your own droplets and test deployments.', link: '#' },
+                { id: 2, title: 'Keychron Keyboards', delay: '200', icon: 'ph-duotone ph-keyboard', iconColor: 'text-orange-500', iconBg: 'bg-orange-500/10 border-orange-500/20', description: 'My favorite mechanical keyboards for writing code comfortably all day long.', link: '#' },
+                { id: 3, title: 'NordVPN', delay: '300', icon: 'ph-duotone ph-shield-star', iconColor: 'text-green-500', iconBg: 'bg-green-500/10 border-green-500/20', description: 'Stay secure while managing remote servers and accessing geo-restricted content.', link: '#' }
+            ],
+            donate: {
+                bank: 'Vietcombank (VCB)',
+                account: '9397426841',
+                name: 'NGUYEN QUOC ANH',
+                message: 'mi hao hao',
+                // Using VietQR Quick Link API for dynamic QR generation
+                qrCodeUrl: 'https://img.vietqr.io/image/vcb-9397426841-compact2.png?addInfo=mi%20hao%20hao&accountName=NGUYEN%20QUOC%20ANH'
             },
-            
             contact: {
-                email: 'nguyenquocanh.dev@gmail.com',
+                email: 'contact@example.com',
                 linkedin: '#',
-                github: 'https://j2c.cc/nqatech',
-                telegram: 'https://j2c.cc/nqatech2003'
+                github: 'https://github.com',
+                telegram: 'https://t.me/your_username' // Đổi thành link thật của bạn nhé
             }
         };
 
-        // Alpine Component function
-        function portfolioApp() {
+        // Expose portfolioApp globally so Alpine.js can find it reliably
+        window.portfolioApp = function() {
             return {
                 data: myPortfolioData,
                 mobileMenuOpen: false,
                 scrolled: false,
                 year: new Date().getFullYear(),
+                copied: false,
+                
+                // Hàm Copy Số Tài Khoản
+                copyToClipboard(text) {
+                    navigator.clipboard.writeText(text).then(() => {
+                        this.copied = true;
+                        setTimeout(() => { this.copied = false; }, 2000);
+                    }).catch(err => {
+                        // Fallback in iframe if clipboard API fails
+                        const el = document.createElement('textarea');
+                        el.value = text;
+                        document.body.appendChild(el);
+                        el.select();
+                        document.execCommand('copy');
+                        document.body.removeChild(el);
+                        this.copied = true;
+                        setTimeout(() => { this.copied = false; }, 2000);
+                    });
+                },
+
                 init() {
                     // Initialize AOS after Alpine has rendered the DOM
                     this.$nextTick(() => {
@@ -168,8 +194,8 @@
                         }
                     });
                 }
-            }
-        }
+            };
+        };
     </script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
@@ -236,17 +262,17 @@
             </a>
 
             <!-- Desktop Menu -->
-            <nav class="hidden md:flex gap-8 items-center text-sm font-medium text-slate-300">
+            <nav class="hidden md:lg:flex gap-6 xl:gap-8 items-center text-sm font-medium text-slate-300">
                 <template x-for="item in data.menu" :key="item.id">
                     <a :href="item.link" class="hover:text-white transition-colors" x-text="item.label"></a>
                 </template>
                 <a href="#contact" class="px-5 py-2.5 bg-primary/10 text-primary hover:bg-primary hover:text-white rounded-lg transition-all border border-primary/20">
-                    Contact Me
+                    Contact
                 </a>
             </nav>
 
             <!-- Mobile Menu Toggle -->
-            <button @click="mobileMenuOpen = !mobileMenuOpen" class="md:hidden text-slate-300 hover:text-white focus:outline-none">
+            <button @click="mobileMenuOpen = !mobileMenuOpen" class="lg:hidden text-slate-300 hover:text-white focus:outline-none">
                 <i class="ph ph-list text-3xl" x-show="!mobileMenuOpen"></i>
                 <i class="ph ph-x text-3xl" x-show="mobileMenuOpen" x-cloak></i>
             </button>
@@ -261,11 +287,11 @@
              x-transition:leave-start="opacity-100 translate-y-0"
              x-transition:leave-end="opacity-0 -translate-y-4"
              @click.away="mobileMenuOpen = false"
-             class="md:hidden absolute top-full left-0 w-full glass-nav border-t border-slate-800 shadow-xl py-4 flex flex-col items-center gap-4" x-cloak>
+             class="lg:hidden absolute top-full left-0 w-full glass-nav border-t border-slate-800 shadow-xl py-4 flex flex-col items-center gap-4" x-cloak>
             <template x-for="item in data.menu" :key="item.id">
                 <a :href="item.link" @click="mobileMenuOpen = false" class="text-slate-300 hover:text-white w-full text-center py-2" x-text="item.label"></a>
             </template>
-            <a href="#contact" @click="mobileMenuOpen = false" class="text-primary font-medium w-full text-center py-2">Contact Me</a>
+            <a href="#contact" @click="mobileMenuOpen = false" class="text-primary font-medium w-full text-center py-2">Contact</a>
         </div>
     </header>
 
@@ -513,62 +539,138 @@
             </div>
         </section>
 
+        <!-- Affiliate / Recommendations Section -->
+        <section id="affiliates" class="py-24 relative border-t border-slate-800">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-4 flex items-center justify-center gap-3">
+                        <i class="ph-duotone ph-link text-primary"></i> Recommended Tools
+                    </h2>
+                    <p class="text-slate-400">Services and gear that I personally use and highly recommend for development & infrastructure.</p>
+                </div>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    <!-- Dynamic Affiliates -->
+                    <template x-for="aff in data.affiliates" :key="aff.id">
+                        <div class="glass-card p-6 rounded-2xl flex flex-col h-full" data-aos="fade-up" :data-aos-delay="aff.delay">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-lg flex items-center justify-center border shrink-0" :class="aff.iconBg">
+                                    <i class="text-2xl" :class="`${aff.icon} ${aff.iconColor}`"></i>
+                                </div>
+                                <h3 class="text-xl font-bold text-slate-200" x-text="aff.title"></h3>
+                            </div>
+                            <p class="text-slate-400 text-sm mb-6 flex-grow" x-text="aff.description"></p>
+                            <a :href="aff.link" target="_blank" class="w-full py-2.5 rounded-lg border border-slate-600 hover:border-primary text-slate-300 hover:text-primary transition-colors text-center text-sm font-medium flex items-center justify-center gap-2">
+                                Check It Out <i class="ph-bold ph-arrow-up-right"></i>
+                            </a>
+                        </div>
+                    </template>
+                </div>
+            </div>
+        </section>
+
+        <!-- Donate / Support Section -->
+        <section id="donate" class="py-20 bg-slate-900/50 relative border-t border-slate-800">
+            <div class="container mx-auto px-6 md:px-12">
+                <div class="max-w-4xl mx-auto glass-card rounded-3xl overflow-hidden border border-slate-700/50" data-aos="fade-up">
+                    <div class="grid md:grid-cols-2">
+                        <!-- Info Side -->
+                        <div class="p-8 md:p-12 flex flex-col justify-center border-b md:border-b-0 md:border-r border-slate-700/50">
+                            <h2 class="text-3xl font-bold mb-4 flex items-center gap-3">
+                                <i class="ph-duotone ph-coffee text-orange-400"></i> Support My Work
+                            </h2>
+                            <p class="text-slate-400 mb-8 leading-relaxed">
+                                If you find my projects helpful or simply want to buy me a coffee (or a bowl of "mì hảo hảo"), you can donate via VietQR below. Thank you for your support!
+                            </p>
+
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase font-semibold mb-1">Bank</p>
+                                    <p class="font-bold text-lg text-slate-200" x-text="data.donate.bank"></p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase font-semibold mb-1">Account Name</p>
+                                    <p class="font-bold text-lg text-slate-200" x-text="data.donate.name"></p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase font-semibold mb-1">Account Number</p>
+                                    <div class="flex items-center gap-3">
+                                        <p class="font-mono font-bold text-2xl text-primary" x-text="data.donate.account"></p>
+                                        <button @click="copyToClipboard(data.donate.account)" 
+                                                class="w-8 h-8 rounded bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition-colors"
+                                                title="Copy Account Number">
+                                            <i class="ph-bold" :class="copied ? 'ph-check text-green-500' : 'ph-copy'"></i>
+                                        </button>
+                                    </div>
+                                    <p x-show="copied" x-transition class="text-green-500 text-xs mt-1 font-medium">Copied to clipboard!</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs text-slate-500 uppercase font-semibold mb-1">Transfer Message</p>
+                                    <p class="font-medium text-slate-300" x-text="data.donate.message"></p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- QR Side -->
+                        <div class="p-8 md:p-12 flex items-center justify-center bg-slate-800/30">
+                            <div class="bg-white p-4 rounded-2xl shadow-xl w-64 h-64 relative group">
+                                <img :src="data.donate.qrCodeUrl" alt="Donate QR Code" class="w-full h-full object-contain rounded-xl">
+                                <!-- QR Overlay scan effect -->
+                                <div class="absolute inset-0 border-2 border-primary rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                                    <div class="w-full h-1 bg-primary absolute top-0 animate-[scan_2s_ease-in-out_infinite]"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <style>
+                @keyframes scan {
+                    0% { top: 0; opacity: 0; }
+                    10% { opacity: 1; }
+                    90% { opacity: 1; }
+                    100% { top: 100%; opacity: 0; }
+                }
+            </style>
+        </section>
+
         <!-- CTA / Contact Section -->
         <section id="contact" class="py-24 relative overflow-hidden border-t border-slate-800">
             <div class="absolute inset-0 flex items-center justify-center -z-10 opacity-30 pointer-events-none">
                 <div class="w-full max-w-3xl h-64 bg-primary blur-[100px] rounded-full"></div>
             </div>
-            <!-- Donate Card -->
-            <div class="bg-gray-900 border border-gray-800 p-8 rounded-3xl max-w-lg mx-auto text-left relative overflow-hidden">
-                <div class="absolute top-0 right-0 w-32 h-32 bg-indigo-500/10 rounded-bl-full blur-2xl"></div>
-                <h3 class="text-xl font-semibold text-white mb-2 flex items-center">
-                    <i class="ph ph-coffee mr-2 text-yellow-500"></i> Support My Work
-                </h3>
-                <p class="text-gray-500 text-sm mb-6" x-text="data.donate.message"></p>
-                
-                <div class="flex flex-col sm:flex-row items-center gap-6">
-                    <img :src="data.donate.qrCodeUrl" alt="QR Code" class="w-24 h-24 rounded-lg bg-white p-1">
-                    <div class="flex-grow space-y-3 w-full">
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-500">Bank</span>
-                            <span class="text-gray-200 font-medium" x-text="data.donate.bank"></span>
-                        </div>
-                        <div class="flex justify-between text-sm">
-                            <span class="text-gray-500">Name</span>
-                            <span class="text-gray-200 font-medium" x-text="data.donate.name"></span>
-                        </div>
-                        <div class="flex justify-between text-sm items-center bg-gray-800 rounded-md px-3 py-2 mt-2 group">
-                            <span class="text-indigo-300 font-mono text-xs tracking-wider" x-text="data.donate.account"></span>
-                            <button @click="copyAccount" class="text-gray-400 hover:text-white transition-colors p-1" title="Copy Account">
-                                <i :class="copied ? 'ph-check text-green-500' : 'ph-copy'"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
             <div class="container mx-auto px-6 md:px-12 text-center" data-aos="zoom-in">
                 <h2 class="text-4xl md:text-5xl font-bold mb-6">Let's Build Something Great</h2>
                 <p class="text-slate-400 text-lg mb-10 max-w-2xl mx-auto">
                     Whether you need a robust CI/CD pipeline, cloud infrastructure optimization, or a dedicated software engineer for your next project, I'm ready to contribute.
                 </p>
                 
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-6">
+                <!-- Contact Action Buttons -->
+                <div class="flex flex-col sm:flex-row items-center justify-center gap-4 md:gap-6">
+                    
+                    <!-- Email Button -->
                     <a :href="`mailto:${data.contact.email}`" class="w-full sm:w-auto px-8 py-4 bg-white text-slate-900 hover:bg-slate-200 font-bold rounded-lg transition-colors flex items-center justify-center gap-2">
                         <i class="ph-bold ph-envelope-simple text-xl"></i> Email Me
                     </a>
+
+                    <!-- Telegram Button -->
+                    <a :href="data.contact.telegram" target="_blank" class="w-full sm:w-auto px-8 py-4 bg-[#2AABEE]/10 text-[#2AABEE] hover:bg-[#2AABEE] hover:text-white font-bold rounded-lg border border-[#2AABEE]/30 hover:border-[#2AABEE] transition-all duration-300 flex items-center justify-center gap-2 shadow-lg shadow-[#2AABEE]/5 hover:shadow-[#2AABEE]/40 group">
+                        <i class="ph-fill ph-telegram-logo text-2xl group-hover:scale-110 transition-transform"></i> 
+                        <span>Chat on t.me</span>
+                    </a>
+
+                    <!-- Other Social Links -->
                     <div class="flex gap-4">
-                        <a :href="data.contact.linkedin" class="w-14 h-14 rounded-lg bg-slate-800 hover:bg-primary border border-slate-700 hover:border-primary flex items-center justify-center text-slate-300 hover:text-white transition-all">
+                        <a :href="data.contact.linkedin" target="_blank" class="w-14 h-14 rounded-lg bg-slate-800 hover:bg-[#0A66C2] border border-slate-700 hover:border-[#0A66C2] flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-lg hover:shadow-[#0A66C2]/30" title="LinkedIn">
                             <i class="ph-fill ph-linkedin-logo text-2xl"></i>
                         </a>
-                        <a :href="data.contact.github" class="w-14 h-14 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-all">
+                        <a :href="data.contact.github" target="_blank" class="w-14 h-14 rounded-lg bg-slate-800 hover:bg-[#333] border border-slate-700 hover:border-[#333] flex items-center justify-center text-slate-300 hover:text-white transition-all shadow-lg hover:shadow-white/10" title="GitHub">
                             <i class="ph-fill ph-github-logo text-2xl"></i>
-                        </a>
-                        <a :href="data.contact.telegram" class="w-14 h-14 rounded-lg bg-slate-800 hover:bg-slate-700 border border-slate-700 flex items-center justify-center text-slate-300 hover:text-white transition-all">
-                            <i class="ph-fill ph-telegram-logo text-2xl"></i>
                         </a>
                     </div>
                 </div>
-                
             </div>
         </section>
     </main>
