@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" class="scroll-smooth overflow-x-hidden">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -241,7 +241,7 @@
         [x-cloak] { display: none !important; }
     </style>
 </head>
-<body class="antialiased overflow-x-hidden relative" 
+<body class="antialiased overflow-x-hidden relative w-full max-w-full" 
       x-data="portfolioApp()" 
       @scroll.window="scrolled = (window.pageYOffset > 20)">
 
@@ -294,7 +294,7 @@
         </div>
     </header>
 
-    <main>
+    <main class="overflow-x-hidden w-full">
         <!-- Hero Section -->
         <section id="home" class="min-h-screen flex items-center pt-20 pb-10">
             <div class="container mx-auto px-6 md:px-12 grid md:grid-cols-2 gap-12 items-center">
@@ -306,11 +306,11 @@
                         </span>
                         <span x-text="data.hero.availability"></span>
                     </div>
-                    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4">
+                    <h1 class="text-5xl md:text-7xl font-bold leading-tight mb-4 break-words">
                         Hi, I'm <br>
                         <span class="text-transparent bg-clip-text bg-gradient-to-r from-primary to-accent" x-text="data.hero.name"></span>
                     </h1>
-                    <h2 class="text-2xl md:text-3xl font-medium text-slate-400 mb-6" x-text="data.hero.title"></h2>
+                    <h2 class="text-2xl md:text-3xl font-medium text-slate-400 mb-6 break-words" x-text="data.hero.title"></h2>
                     <p class="text-slate-400 text-lg mb-8 max-w-lg leading-relaxed" x-text="data.hero.description"></p>
                     
                     <div class="flex flex-wrap gap-4">
@@ -594,9 +594,9 @@
                                 <div>
                                     <p class="text-xs text-slate-500 uppercase font-semibold mb-1">Account Number</p>
                                     <div class="flex items-center gap-3">
-                                        <p class="font-mono font-bold text-2xl text-primary" x-text="data.donate.account"></p>
+                                        <p class="font-mono font-bold text-xl sm:text-2xl text-primary break-all" x-text="data.donate.account"></p>
                                         <button @click="copyToClipboard(data.donate.account)" 
-                                                class="w-8 h-8 rounded bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition-colors"
+                                                class="w-8 h-8 rounded bg-slate-800 hover:bg-slate-700 flex items-center justify-center text-slate-300 transition-colors shrink-0"
                                                 title="Copy Account Number">
                                             <i class="ph-bold" :class="copied ? 'ph-check text-green-500' : 'ph-copy'"></i>
                                         </button>
@@ -612,7 +612,7 @@
 
                         <!-- QR Side -->
                         <div class="p-8 md:p-12 flex items-center justify-center bg-slate-800/30">
-                            <div class="bg-white p-4 rounded-2xl shadow-xl w-64 h-64 relative group">
+                            <div class="bg-white p-4 rounded-2xl shadow-xl w-52 h-52 sm:w-64 sm:h-64 relative group">
                                 <img :src="data.donate.qrCodeUrl" alt="Donate QR Code" class="w-full h-full object-contain rounded-xl">
                                 <!-- QR Overlay scan effect -->
                                 <div class="absolute inset-0 border-2 border-primary rounded-2xl opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
