@@ -1,0 +1,627 @@
+<!doctype html>
+<html lang="vi">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tra Cứu & Đánh Giá Nghĩa Vụ Quân Sự 2026</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Public Sans', sans-serif;
+            background-color: #f4f7fa;
+            color: #3e4853;
+        }
+        .pc-container { padding: 30px 15px; }
+        .pc-content { max-width: 1200px; margin: 0 auto; }
+        
+        /* Welcome Banner Style */
+        .welcome-banner {
+            background: linear-gradient(135deg, #1c5dd4 0%, #2563eb 100%);
+            color: white;
+            border-radius: 12px;
+            border: none;
+            overflow: hidden;
+            margin-bottom: 24px;
+        }
+        .badge-soft {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 5px 10px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+        }
+        .banner-desc { font-size: 15px; line-height: 1.6; color: #e2e8f0; }
+        .grid-feature {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px;
+            padding: 0;
+            list-style: none;
+            margin-bottom: 20px;
+        }
+        .grid-feature li { display: flex; align-items: center; gap: 8px; font-size: 14px; }
+        .grid-feature li i { color: #facc15; font-size: 18px; }
+
+        /* Form Style */
+        .form-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            margin-bottom: 24px;
+            background: #fff;
+        }
+        .form-label { font-weight: 600; color: #475569; font-size: 14px; }
+        .form-control, .form-select { border-radius: 8px; border: 1px solid #cbd5e1; }
+        .form-control:focus, .form-select:focus { box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25); border-color: #2563eb; }
+        .form-select:disabled { background-color: #f1f5f9; cursor: not-allowed; }
+
+        /* Card Styles */
+        .hosting-card {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: #fff;
+        }
+        .hosting-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+        }
+        .plan-header-horizontal {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .plan-icon-big i {
+            font-size: 40px;
+            color: #2563eb;
+            background: #eff6ff;
+            padding: 10px;
+            border-radius: 10px;
+        }
+        .plan-name { font-weight: 700; font-size: 16px; color: #1e293b; text-transform: uppercase; }
+        .hosting-price { font-size: 14px; font-weight: 600; color: #64748b; }
+        .hosting-price.danger { color: #dc3545; }
+        .hosting-price.success { color: #198754; }
+        .hosting-price.warning { color: #d97706; }
+        .card-divider { height: 1px; background: #e2e8f0; margin: 15px 0; }
+        
+        /* List Specs */
+        .hosting-spec { padding: 0; margin-bottom: 20px; }
+        .hosting-spec li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 8px 0;
+            font-size: 14px;
+            border-bottom: 1px dashed #e2e8f0;
+        }
+        .hosting-spec li:last-child { border-bottom: none; }
+        .spec-left { display: flex; align-items: center; gap: 8px; color: #475569; }
+        .spec-left i { color: #64748b; font-size: 16px; }
+
+        /* Tab Switcher */
+        .service-panel { display: none; animation: fadeIn 0.4s ease; }
+        .service-panel.active { display: block; }
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        
+        .service-switch-sm {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 10px 18px;
+            border-radius: 10px;
+            border: 2px solid transparent;
+            background: #fff;
+            color: #2563eb;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            text-decoration: none;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .service-switch-sm i { font-size: 18px; }
+        .service-switch-sm:hover {
+            border-color: #477bec; background: #eff6ff;
+            box-shadow: 0 6px 18px rgba(37, 99, 235, 0.15); transform: translateY(-1px);
+        }
+        .service-switch-sm.active {
+            border-color: #1c5dd4; background: #1c5dd4; color: #fff;
+            box-shadow: 0 8px 22px rgba(37, 99, 235, 0.35);
+        }
+        .service-switch-sm.active i { color: #fff; }
+
+        #result-section { display: none; } /* Ẩn kết quả lúc đầu */
+    </style>
+</head>
+
+<body>
+    <div class="pc-container">
+        <div class="pc-content">
+            
+            <!-- Banner -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="card welcome-banner">
+                        <div class="card-body">
+                            <div class="row align-items-center">
+                                <div class="col-lg-8">
+                                    <div class="p-4 p-lg-5">
+                                        <span class="badge badge-soft mb-3">
+                                            <i class="bx bx-radar me-1"></i> HỆ THỐNG ĐÁNH GIÁ TỰ ĐỘNG
+                                        </span>
+                                        <h2 class="mb-3" style="color: white; font-weight: 700;">TRA CỨU NGHĨA VỤ QUÂN SỰ 2026</h2>
+                                        <p class="banner-desc mb-4">
+                                            Nhập thông tin cá nhân của bạn vào biểu mẫu bên dưới. Hệ thống sẽ phân tích tự động điều kiện trúng tuyển dựa trên Luật NVQS và Thông tư 105/2023/TT-BQP, 148/2018/TT-BQP.
+                                        </p>
+                                        <ul class="banner-list grid-feature">
+                                            <li><i class="bx bx-check-shield"></i> Tính toán Độ tuổi chính xác</li>
+                                            <li><i class="bx bx-check-shield"></i> Đánh giá Trình độ văn hóa</li>
+                                            <li><i class="bx bx-check-shield"></i> Phân loại BMI chuẩn y tế</li>
+                                            <li><i class="bx bx-check-shield"></i> Cập nhật luật mới nhất</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-lg-4 text-center d-none d-lg-block">
+                                    <i class="bx bxs-calculator" style="font-size: 180px; color: rgba(255,255,255,0.2);"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Form Nhập Liệu -->
+            <div class="card form-card">
+                <div class="card-body p-4">
+                    <h5 class="mb-4 text-primary"><i class="bx bx-edit-alt me-2"></i>Nhập Thông Tin Cá Nhân</h5>
+                    <form id="nvqsForm">
+                        <div class="row g-3">
+                            <div class="col-md-4">
+                                <label class="form-label">Năm sinh</label>
+                                <input type="number" class="form-control" id="birthYear" placeholder="VD: 2003" required min="1990" max="2010">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Trình độ học vấn</label>
+                                <select class="form-select" id="education" required>
+                                    <option value="highschool">Từ lớp 8 đến lớp 12</option>
+                                    <option value="college">Đang/Đã học CĐ, Đại học</option>
+                                    <option value="under8">Dưới lớp 8</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Đã nộp giấy hoãn CĐ/ĐH?</label>
+                                <select class="form-select" id="deferment" required disabled>
+                                    <option value="no">Chưa nộp / Không áp dụng</option>
+                                    <option value="yes">Đã nộp giấy xác nhận CĐ/ĐH</option>
+                                </select>
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Chiều cao (cm)</label>
+                                <input type="number" class="form-control" id="height" placeholder="VD: 170" required min="140" max="220">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Cân nặng (kg)</label>
+                                <input type="number" class="form-control" id="weight" step="0.1" placeholder="VD: 65" required min="35" max="150">
+                            </div>
+                            <div class="col-md-4">
+                                <label class="form-label">Độ cận (Diop)</label>
+                                <input type="number" class="form-control" id="eyesight" step="0.25" placeholder="VD: 0 hoặc 1.5" required min="0" max="10">
+                            </div>
+                        </div>
+                        <div class="mt-4 text-end">
+                            <button type="submit" class="btn btn-primary px-4 py-2" style="border-radius: 8px; font-weight: 600;">
+                                <i class="bx bx-search-alt me-1"></i> Bắt Đầu Tra Cứu
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+            <!-- Tabs -->
+            <div class="d-flex justify-content-center gap-2 service-switch-wrap mt-2 mb-4" id="tabs-section" style="display: none !important;">
+                <a href="javascript:void(0)" class="service-switch-sm active" data-target="danh-gia">
+                    <i class="bx bx-user-circle"></i>
+                    <span>Kết Quả Đánh Giá Cá Nhân</span>
+                </a>
+                <a href="javascript:void(0)" class="service-switch-sm" data-target="trich-luat">
+                    <i class="bx bx-book-bookmark"></i>
+                    <span>Trích Lục Luật NVQS</span>
+                </a>
+            </div>
+
+            <!-- Panel Kết Quả (Mặc định ẩn, hiện ra khi submit form) -->
+            <div class="service-panel active" id="danh-gia">
+                <div class="row justify-content-center g-4" id="result-section">
+                    
+                    <!-- Tuổi -->
+                    <div class="col-12 col-md-6">
+                        <div class="card hosting-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <div class="plan-header-horizontal">
+                                    <div class="plan-icon-big"><i class="bx bx-calendar-check"></i></div>
+                                    <div class="plan-info">
+                                        <div class="plan-name">TIÊU CHÍ ĐỘ TUỔI</div>
+                                        <div class="hosting-price" id="res-age-status">Đang tính toán...</div>
+                                    </div>
+                                </div>
+                                <div class="card-divider"></div>
+                                <ul class="hosting-spec list-unstyled text-start flex-grow-1">
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-user"></i> Độ tuổi năm 2026</div>
+                                        <strong id="res-age-val">-- tuổi</strong>
+                                    </li>
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-history"></i> Lịch sử hoãn</div>
+                                        <span id="res-def-val">--</span>
+                                    </li>
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-calendar-x"></i> Độ tuổi hết hạn gọi</div>
+                                        <span id="res-maxage-val">-- tuổi</span>
+                                    </li>
+                                </ul>
+                                <button id="btn-age-result" class="btn w-100 mt-auto"><i class="bx bx-loader"></i> ...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Trình độ văn hóa -->
+                    <div class="col-12 col-md-6">
+                        <div class="card hosting-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <div class="plan-header-horizontal">
+                                    <div class="plan-icon-big"><i class="bx bx-book-reader"></i></div>
+                                    <div class="plan-info">
+                                        <div class="plan-name">TRÌNH ĐỘ VĂN HÓA</div>
+                                        <div class="hosting-price" id="res-edu-status">Đang tính toán...</div>
+                                    </div>
+                                </div>
+                                <div class="card-divider"></div>
+                                <ul class="hosting-spec list-unstyled text-start flex-grow-1">
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-certification"></i> Học vấn hiện tại</div>
+                                        <strong id="res-edu-level-val">--</strong>
+                                    </li>
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-check-shield"></i> Tiêu chuẩn tối thiểu</div>
+                                        <span>Từ lớp 8 trở lên</span>
+                                    </li>
+                                </ul>
+                                <button id="btn-edu-result" class="btn w-100 mt-auto"><i class="bx bx-loader"></i> ...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Thể lực -->
+                    <div class="col-12 col-md-6">
+                        <div class="card hosting-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <div class="plan-header-horizontal">
+                                    <div class="plan-icon-big"><i class="bx bx-body"></i></div>
+                                    <div class="plan-info">
+                                        <div class="plan-name">THỂ LỰC (BMI)</div>
+                                        <div class="hosting-price" id="res-bmi-status">Đang tính toán...</div>
+                                    </div>
+                                </div>
+                                <div class="card-divider"></div>
+                                <ul class="hosting-spec list-unstyled text-start flex-grow-1">
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-ruler"></i> Chiều cao</div>
+                                        <strong id="res-height-val">-- cm</strong>
+                                    </li>
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-dumbbell"></i> Cân nặng</div>
+                                        <strong id="res-weight-val">-- kg</strong>
+                                    </li>
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-calculator"></i> Chỉ số BMI</div>
+                                        <strong id="res-bmi-val">--</strong>
+                                    </li>
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-target-lock"></i> Tiêu chuẩn loại trừ</div>
+                                        <span>BMI ≥ 30 hoặc < 18.5</span>
+                                    </li>
+                                </ul>
+                                <button id="btn-bmi-result" class="btn w-100 mt-auto"><i class="bx bx-loader"></i> ...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Mắt -->
+                    <div class="col-12 col-md-6">
+                        <div class="card hosting-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <div class="plan-header-horizontal">
+                                    <div class="plan-icon-big"><i class="bx bx-glasses"></i></div>
+                                    <div class="plan-info">
+                                        <div class="plan-name">THỊ LỰC (MẮT)</div>
+                                        <div class="hosting-price" id="res-eye-status">Đang tính toán...</div>
+                                    </div>
+                                </div>
+                                <div class="card-divider"></div>
+                                <ul class="hosting-spec list-unstyled text-start flex-grow-1">
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-show"></i> Tình trạng</div>
+                                        <strong id="res-eye-val">-- Diop</strong>
+                                    </li>
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-minus-circle"></i> Tiêu chuẩn đạt</div>
+                                        <span>Cận < 1.5 Diop</span>
+                                    </li>
+                                    <li>
+                                        <div class="spec-left"><i class="bx bx-plus-circle"></i> Từ 1.5 Diop trở lên</div>
+                                        <span style="color: #ef4444;">Loại 4, 5, 6 (Rớt)</span>
+                                    </li>
+                                </ul>
+                                <button id="btn-eye-result" class="btn w-100 mt-auto"><i class="bx bx-loader"></i> ...</button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Panel Trích Luật -->
+            <div class="service-panel" id="trich-luat">
+                <div class="row justify-content-center g-4">
+                    
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <div class="card hosting-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="mb-3" style="color: #2563eb;"><i class="bx bxs-gavel me-2"></i>Luật NVQS 2015 (Độ tuổi)</h5>
+                                <div class="card-divider mt-0"></div>
+                                <p class="text-muted" style="font-size: 14px; text-align: justify;">
+                                    <strong>Điều 30. Độ tuổi gọi nhập ngũ</strong><br><br>
+                                    Công dân nam đủ 18 tuổi được gọi nhập ngũ; độ tuổi gọi nhập ngũ từ đủ 18 tuổi đến hết 25 tuổi.<br><br>
+                                    Trường hợp công dân nam được đào tạo trình độ cao đẳng, đại học <strong>đã được tạm hoãn gọi nhập ngũ</strong> trong thời gian một khóa đào tạo của một trình độ đào tạo thì tuyển chọn và gọi nhập ngũ đến hết 27 tuổi.
+                                </p>
+                                <a href="https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Luat-nghia-vu-quan-su-2015-282384.aspx" target="_blank" class="mt-auto btn btn-sm btn-outline-primary" style="font-weight: 500;"><i class="bx bx-link-external me-1"></i> Xem trên Thư Viện Pháp Luật</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <div class="card hosting-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="mb-3" style="color: #2563eb;"><i class="bx bxs-graduation me-2"></i>Thông tư 148/2018 (Văn hóa)</h5>
+                                <div class="card-divider mt-0"></div>
+                                <p class="text-muted" style="font-size: 14px; text-align: justify;">
+                                    <strong>Điều 4. Tiêu chuẩn văn hóa</strong><br><br>
+                                    Tuyển chọn và gọi nhập ngũ những công dân có trình độ văn hóa <strong>lớp 8 trở lên</strong>, lấy từ cao xuống thấp.<br><br>
+                                    Những địa phương có khó khăn không đảm bảo đủ chỉ tiêu giao quân thì báo cáo cấp có thẩm quyền xem xét, quyết định được tuyển chọn số công dân có trình độ văn hóa lớp 7.
+                                </p>
+                                <a href="https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Thong-tu-148-2018-TT-BQP-tuyen-chon-va-goi-cong-dan-nhap-ngu-388275.aspx" target="_blank" class="mt-auto btn btn-sm btn-outline-primary" style="font-weight: 500;"><i class="bx bx-link-external me-1"></i> Xem trên Thư Viện Pháp Luật</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <div class="card hosting-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="mb-3" style="color: #2563eb;"><i class="bx bxs-file me-2"></i>Thông tư 105/2023 (BMI)</h5>
+                                <div class="card-divider mt-0"></div>
+                                <p class="text-muted" style="font-size: 14px; text-align: justify;">
+                                    <strong>Bảng số 1: Tiêu chuẩn phân loại theo thể lực (Nam)</strong><br><br>
+                                    Phân loại theo chỉ số khối cơ thể (BMI):<br>
+                                    - Điểm 1 (Loại 1): 18.5 ≤ BMI < 25.0<br>
+                                    - Điểm 2 (Loại 2): 25.0 ≤ BMI < 27.0<br>
+                                    - Điểm 3 (Loại 3): 27.0 ≤ BMI < 30.0<br>
+                                    - <strong>Điểm 4 (Loại 4): BMI ≥ 30.0 (Thuộc diện không đủ điều kiện nhập ngũ)</strong>
+                                </p>
+                                <a href="https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Thong-tu-105-2023-TT-BQP-tieu-chuan-kham-suc-khoe-nghia-vu-quan-su-cong-an-nhan-dan-590453.aspx" target="_blank" class="mt-auto btn btn-sm btn-outline-primary" style="font-weight: 500;"><i class="bx bx-link-external me-1"></i> Xem trên Thư Viện Pháp Luật</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <div class="card hosting-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="mb-3" style="color: #2563eb;"><i class="bx bxs-low-vision me-2"></i>Thông tư 105/2023 (Mắt)</h5>
+                                <div class="card-divider mt-0"></div>
+                                <p class="text-muted" style="font-size: 14px; text-align: justify;">
+                                    <strong>Chỉ tiêu về Mắt (Khúc xạ)</strong><br><br>
+                                    Theo quy định khám sức khỏe mới nhất:<br>
+                                    - Chỉ gọi nhập ngũ những công dân có sức khỏe Loại 1, 2, 3.<br>
+                                    - <strong>KHÔNG GỌI</strong> nhập ngũ công dân mắc các tật khúc xạ về mắt: Cận thị từ <strong>1.5 diop trở lên</strong>, viễn thị các mức độ; loạn thị từ 01 diop trở lên.
+                                </p>
+                                <a href="https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Thong-tu-105-2023-TT-BQP-tieu-chuan-kham-suc-khoe-nghia-vu-quan-su-cong-an-nhan-dan-590453.aspx" target="_blank" class="mt-auto btn btn-sm btn-outline-primary" style="font-weight: 500;"><i class="bx bx-link-external me-1"></i> Xem trên Thư Viện Pháp Luật</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-12 col-md-6 col-xl-4">
+                        <div class="card hosting-card h-100">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="mb-3" style="color: #2563eb;"><i class="bx bxs-clinic me-2"></i>Thông tư 105/2023 (Khám Sơ Tuyển)</h5>
+                                <div class="card-divider mt-0"></div>
+                                <p class="text-muted" style="font-size: 14px; text-align: justify;">
+                                    <strong>Quy định về việc Khám sơ tuyển (Điều 7)</strong><br><br>
+                                    - <strong>Nơi khám:</strong> Trạm y tế tuyến xã/phường.<br>
+                                    - <strong>Nội dung khám sơ tuyển bao gồm:</strong><br>
+                                    + Khai thác tiền sử bệnh tật bản thân và gia đình.<br>
+                                    + Khám thể lực (đo chiều cao, cân nặng, vòng ngực).<br>
+                                    + Phát hiện những trường hợp không đủ sức khỏe về thể lực, có dị tật, dị dạng hoặc các bệnh lý thuộc diện miễn đăng ký nghĩa vụ quân sự.<br>
+                                    + Kiểm tra mạch, huyết áp...
+                                </p>
+                                <a href="https://thuvienphapluat.vn/phap-luat/ho-tro-phap-luat/kham-so-tuyen-nghia-vu-quan-su-2025-kham-nhung-gi-kham-so-tuyen-nghia-vu-quan-su-2025-o-dau-843869-178708.html" target="_blank" class="mt-auto btn btn-sm btn-outline-primary" style="font-weight: 500;"><i class="bx bx-link-external me-1"></i> Xem bài viết Thư Viện Pháp Luật</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        // Xử lý bật/tắt ô chọn Giấy hoãn khi thay đổi học vấn
+        document.getElementById('education').addEventListener('change', function() {
+            const defSelect = document.getElementById('deferment');
+            if(this.value === 'college') {
+                defSelect.disabled = false;
+            } else {
+                defSelect.disabled = true;
+                defSelect.value = 'no'; // Reset về trạng thái chưa nộp
+            }
+        });
+
+        // Logic chuyển Tab
+        document.querySelectorAll('.service-switch-sm').forEach(btn => {
+            btn.addEventListener('click', function () {
+                document.querySelectorAll('.service-switch-sm').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                const target = this.dataset.target;
+                document.querySelectorAll('.service-panel').forEach(panel => panel.classList.remove('active'));
+                document.getElementById(target).classList.add('active');
+            });
+        });
+
+        // Xử lý Form Tính toán
+        document.getElementById('nvqsForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Lấy dữ liệu từ Form
+            const birthYear = parseInt(document.getElementById('birthYear').value);
+            const education = document.getElementById('education').value;
+            const deferment = document.getElementById('deferment').value;
+            const height = parseFloat(document.getElementById('height').value);
+            const weight = parseFloat(document.getElementById('weight').value);
+            const eyesight = parseFloat(document.getElementById('eyesight').value);
+
+            // Năm xét tuyển mặc định là 2026
+            const callYear = 2026; 
+
+            // 1. TÍNH TOÁN ĐỘ TUỔI
+            const age = callYear - birthYear;
+            // Chỉ gia hạn lên 27 tuổi nếu ĐÃ NỘP giấy hoãn CĐ/ĐH
+            const maxAge = (education === 'college' && deferment === 'yes') ? 27 : 25;
+            
+            let isAgePass = false;
+            let ageStatusClass = 'danger';
+            let ageStatusText = 'Hết tuổi gọi nhập ngũ';
+
+            if (age < 18) {
+                ageStatusText = 'Chưa đủ tuổi nhập ngũ';
+            } else if (age <= maxAge) {
+                isAgePass = true;
+                ageStatusClass = 'success';
+                ageStatusText = 'Trong độ tuổi nhập ngũ';
+            }
+
+            document.getElementById('res-age-val').innerText = age + ' tuổi';
+            document.getElementById('res-def-val').innerText = (deferment === 'yes') ? 'Đã hoãn CĐ/ĐH' : 'Chưa nộp giấy hoãn';
+            document.getElementById('res-maxage-val').innerText = 'Hết ' + maxAge + ' tuổi';
+            
+            const ageStatusEl = document.getElementById('res-age-status');
+            ageStatusEl.className = 'hosting-price ' + ageStatusClass;
+            ageStatusEl.innerText = ageStatusText;
+
+            const btnAge = document.getElementById('btn-age-result');
+            btnAge.className = 'btn w-100 mt-auto ' + (isAgePass ? 'btn-outline-success' : 'btn-danger');
+            btnAge.innerHTML = isAgePass ? '<i class="bx bx-check"></i> Đạt Yêu Cầu' : '<i class="bx bx-x"></i> Không Đạt';
+
+
+            // 2. TÍNH TOÁN TRÌNH ĐỘ VĂN HÓA
+            let isEduPass = true;
+            let eduStatusClass = 'success';
+            let eduStatusText = 'Đủ tiêu chuẩn văn hóa';
+            let eduLevelText = '';
+
+            if (education === 'under8') {
+                isEduPass = false;
+                eduStatusClass = 'danger';
+                eduStatusText = 'Chưa đạt chuẩn (Dưới lớp 8)';
+                eduLevelText = 'Dưới lớp 8';
+            } else if (education === 'highschool') {
+                eduLevelText = 'Từ lớp 8 đến 12';
+            } else {
+                eduLevelText = 'Cao đẳng / Đại học';
+            }
+
+            document.getElementById('res-edu-level-val').innerText = eduLevelText;
+            
+            const eduStatusEl = document.getElementById('res-edu-status');
+            eduStatusEl.className = 'hosting-price ' + eduStatusClass;
+            eduStatusEl.innerText = eduStatusText;
+
+            const btnEdu = document.getElementById('btn-edu-result');
+            btnEdu.className = 'btn w-100 mt-auto ' + (isEduPass ? 'btn-outline-success' : 'btn-danger');
+            btnEdu.innerHTML = isEduPass ? '<i class="bx bx-check"></i> Đạt Yêu Cầu' : '<i class="bx bx-x"></i> Không Đạt (Rớt)';
+
+
+            // 3. TÍNH TOÁN BMI
+            const heightM = height / 100;
+            const bmi = (weight / (heightM * heightM)).toFixed(1);
+            let isBmiPass = true;
+            let bmiStatusClass = 'success';
+            let bmiStatusText = 'Thể lực Đạt (Loại 1,2,3)';
+
+            if (bmi >= 30) {
+                isBmiPass = false;
+                bmiStatusClass = 'danger';
+                bmiStatusText = 'Loại 4 (Béo phì)';
+            } else if (bmi < 18.5) {
+                isBmiPass = false;
+                bmiStatusClass = 'warning';
+                bmiStatusText = 'Thiếu cân (Dưới tiêu chuẩn)';
+            }
+
+            document.getElementById('res-height-val').innerText = height + ' cm';
+            document.getElementById('res-weight-val').innerText = weight + ' kg';
+            
+            const bmiValEl = document.getElementById('res-bmi-val');
+            bmiValEl.innerText = bmi;
+            bmiValEl.style.color = isBmiPass ? '#198754' : '#ef4444';
+
+            const bmiStatusEl = document.getElementById('res-bmi-status');
+            bmiStatusEl.className = 'hosting-price ' + bmiStatusClass;
+            bmiStatusEl.innerText = bmiStatusText;
+
+            const btnBmi = document.getElementById('btn-bmi-result');
+            btnBmi.className = 'btn w-100 mt-auto ' + (isBmiPass ? 'btn-outline-success' : (bmi < 18.5 ? 'btn-warning text-dark' : 'btn-danger'));
+            btnBmi.innerHTML = isBmiPass ? '<i class="bx bx-check"></i> Đạt Yêu Cầu' : '<i class="bx bx-x"></i> Không Đạt';
+
+
+            // 4. TÍNH TOÁN MẮT
+            let isEyePass = true;
+            let eyeStatusClass = 'success';
+            let eyeStatusText = 'Mắt tốt (Đạt yêu cầu)';
+
+            if (eyesight >= 1.5) {
+                isEyePass = false;
+                eyeStatusClass = 'danger';
+                eyeStatusText = 'Cận thị (Sức khỏe loại 4,5,6)';
+            } else if (eyesight > 0 && eyesight < 1.5) {
+                eyeStatusClass = 'warning';
+                eyeStatusText = 'Cận nhẹ (Vẫn gọi nhập ngũ)';
+            }
+
+            document.getElementById('res-eye-val').innerText = eyesight === 0 ? 'Không cận' : 'Cận ' + eyesight + ' Diop';
+            
+            const eyeStatusEl = document.getElementById('res-eye-status');
+            eyeStatusEl.className = 'hosting-price ' + eyeStatusClass;
+            eyeStatusEl.innerText = eyeStatusText;
+
+            const btnEye = document.getElementById('btn-eye-result');
+            btnEye.className = 'btn w-100 mt-auto ' + (isEyePass ? 'btn-outline-success' : 'btn-danger');
+            btnEye.innerHTML = isEyePass ? '<i class="bx bx-check"></i> Đạt Yêu Cầu' : '<i class="bx bx-x"></i> Rớt (Không gọi)';
+
+            // Hiển thị section kết quả và Tabs
+            document.getElementById('tabs-section').style.setProperty('display', 'flex', 'important');
+            document.getElementById('result-section').style.display = 'flex';
+            
+            // Cuộn mượt mà
+            document.getElementById('tabs-section').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        });
+    </script>
+</body>
+</html>
