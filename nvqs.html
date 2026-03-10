@@ -3,13 +3,35 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tra Cứu & Đánh Giá Nghĩa Vụ Quân Sự 2026</title>
     
+    <!-- Primary Meta Tags -->
+    <title>Tra Cứu & Đánh Giá Nghĩa Vụ Quân Sự 2026</title>
+    <meta name="title" content="Tra Cứu & Đánh Giá Nghĩa Vụ Quân Sự 2026" />
+    <meta name="description" content="Công cụ tự động tính toán và đánh giá điều kiện trúng tuyển Nghĩa vụ Quân sự 2026 dựa trên độ tuổi, trình độ văn hóa, BMI và thị lực theo Luật NVQS mới nhất." />
+    <meta name="keywords" content="nghĩa vụ quân sự 2026, khám nghĩa vụ quân sự, độ tuổi nghĩa vụ quân sự, tiêu chuẩn sức khỏe nvqs, cách tính bmi nvqs, cận thị có đi nghĩa vụ không, luật nghĩa vụ quân sự" />
+    <meta name="author" content="Your Name or Company" />
+    <link rel="canonical" href="URL_TRANG_WEB_CUA_BAN" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="URL_TRANG_WEB_CUA_BAN" />
+    <meta property="og:title" content="Tra Cứu & Đánh Giá Nghĩa Vụ Quân Sự 2026" />
+    <meta property="og:description" content="Công cụ tự động tính toán và đánh giá điều kiện trúng tuyển Nghĩa vụ Quân sự 2026 dựa trên độ tuổi, trình độ văn hóa, BMI và thị lực theo Luật NVQS mới nhất." />
+    <meta property="og:image" content="URL_HINH_ANH_CUA_BAN/thumbnail.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="URL_TRANG_WEB_CUA_BAN" />
+    <meta property="twitter:title" content="Tra Cứu & Đánh Giá Nghĩa Vụ Quân Sự 2026" />
+    <meta property="twitter:description" content="Công cụ tự động tính toán và đánh giá điều kiện trúng tuyển Nghĩa vụ Quân sự 2026 dựa trên độ tuổi, trình độ văn hóa, BMI và thị lực theo Luật NVQS mới nhất." />
+    <meta property="twitter:image" content="URL_HINH_ANH_CUA_BAN/thumbnail.jpg" />
+
     <link href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
     <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 
     <style>
         body {
@@ -59,7 +81,7 @@
         .form-label { font-weight: 600; color: #475569; font-size: 14px; }
         .form-control, .form-select { border-radius: 8px; border: 1px solid #cbd5e1; }
         .form-control:focus, .form-select:focus { box-shadow: 0 0 0 0.25rem rgba(37, 99, 235, 0.25); border-color: #2563eb; }
-        .form-select:disabled { background-color: #f1f5f9; cursor: not-allowed; }
+        .form-control:disabled, .form-select:disabled { background-color: #f1f5f9; cursor: not-allowed; }
 
         /* Card Styles */
         .hosting-card {
@@ -140,6 +162,16 @@
         .service-switch-sm.active i { color: #fff; }
 
         #result-section { display: none; } /* Ẩn kết quả lúc đầu */
+        
+        /* FAQ & Table styles */
+        .accordion-button:not(.collapsed) {
+            color: #1c5dd4;
+            background-color: #eff6ff;
+            font-weight: 600;
+        }
+        .accordion-button { font-weight: 500; }
+        .table-responsive { box-shadow: 0 4px 15px rgba(0,0,0,0.03); border-radius: 12px; background: #fff; }
+        .table thead th { background-color: #f8fafc; color: #475569; border-bottom-width: 2px; }
     </style>
 </head>
 
@@ -166,7 +198,7 @@
                                             <li><i class="bx bx-check-shield"></i> Tính toán Độ tuổi chính xác</li>
                                             <li><i class="bx bx-check-shield"></i> Đánh giá Trình độ văn hóa</li>
                                             <li><i class="bx bx-check-shield"></i> Phân loại BMI chuẩn y tế</li>
-                                            <li><i class="bx bx-check-shield"></i> Cập nhật luật mới nhất</li>
+                                            <li><i class="bx bx-check-shield"></i> Đánh giá Cận/Viễn/Loạn chuẩn xác</li>
                                         </ul>
                                     </div>
                                 </div>
@@ -204,17 +236,26 @@
                                     <option value="yes">Đã nộp giấy xác nhận CĐ/ĐH</option>
                                 </select>
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label class="form-label">Chiều cao (cm)</label>
                                 <input type="number" class="form-control" id="height" placeholder="VD: 170" required min="140" max="220">
                             </div>
-                            <div class="col-md-4">
+                            <div class="col-md-3">
                                 <label class="form-label">Cân nặng (kg)</label>
                                 <input type="number" class="form-control" id="weight" step="0.1" placeholder="VD: 65" required min="35" max="150">
                             </div>
-                            <div class="col-md-4">
-                                <label class="form-label">Độ cận (Diop)</label>
-                                <input type="number" class="form-control" id="eyesight" step="0.25" placeholder="VD: 0 hoặc 1.5" required min="0" max="10">
+                            <div class="col-md-3">
+                                <label class="form-label">Tật khúc xạ</label>
+                                <select class="form-select" id="eyeType" required>
+                                    <option value="none">Mắt bình thường</option>
+                                    <option value="can">Cận thị</option>
+                                    <option value="vien">Viễn thị</option>
+                                    <option value="loan">Loạn thị</option>
+                                </select>
+                            </div>
+                            <div class="col-md-3">
+                                <label class="form-label">Độ (Diop)</label>
+                                <input type="number" class="form-control" id="eyesight" step="0.25" placeholder="VD: 1.5" value="0" min="0" max="15" disabled>
                             </div>
                         </div>
                         <div class="mt-4 text-end">
@@ -350,15 +391,15 @@
                                 <ul class="hosting-spec list-unstyled text-start flex-grow-1">
                                     <li>
                                         <div class="spec-left"><i class="bx bx-show"></i> Tình trạng</div>
-                                        <strong id="res-eye-val">-- Diop</strong>
+                                        <strong id="res-eye-val">--</strong>
                                     </li>
                                     <li>
-                                        <div class="spec-left"><i class="bx bx-minus-circle"></i> Tiêu chuẩn đạt</div>
-                                        <span>Cận < 1.5 Diop</span>
+                                        <div class="spec-left"><i class="bx bx-check-circle"></i> Tiêu chuẩn đạt</div>
+                                        <span id="res-eye-std-pass">--</span>
                                     </li>
                                     <li>
-                                        <div class="spec-left"><i class="bx bx-plus-circle"></i> Từ 1.5 Diop trở lên</div>
-                                        <span style="color: #ef4444;">Loại 4, 5, 6 (Rớt)</span>
+                                        <div class="spec-left"><i class="bx bx-x-circle"></i> Tiêu chuẩn rớt</div>
+                                        <span id="res-eye-std-fail" style="color: #ef4444;">--</span>
                                     </li>
                                 </ul>
                                 <button id="btn-eye-result" class="btn w-100 mt-auto"><i class="bx bx-loader"></i> ...</button>
@@ -379,9 +420,10 @@
                                 <h5 class="mb-3" style="color: #2563eb;"><i class="bx bxs-gavel me-2"></i>Luật NVQS 2015 (Độ tuổi)</h5>
                                 <div class="card-divider mt-0"></div>
                                 <p class="text-muted" style="font-size: 14px; text-align: justify;">
-                                    <strong>Điều 30. Độ tuổi gọi nhập ngũ</strong><br><br>
-                                    Công dân nam đủ 18 tuổi được gọi nhập ngũ; độ tuổi gọi nhập ngũ từ đủ 18 tuổi đến hết 25 tuổi.<br><br>
-                                    Trường hợp công dân nam được đào tạo trình độ cao đẳng, đại học <strong>đã được tạm hoãn gọi nhập ngũ</strong> trong thời gian một khóa đào tạo của một trình độ đào tạo thì tuyển chọn và gọi nhập ngũ đến hết 27 tuổi.
+                                    <strong>Căn cứ theo Điều 30 Luật Nghĩa vụ quân sự 2015 quy định về độ tuổi gọi nhập ngũ như sau:</strong><br><br>
+                                    "Công dân đủ 18 tuổi được gọi nhập ngũ; độ tuổi gọi nhập ngũ từ đủ 18 tuổi đến hết 25 tuổi; công dân được đào tạo trình độ cao đẳng, đại học đã được tạm hoãn gọi nhập ngũ thì độ tuổi gọi nhập ngũ đến hết 27 tuổi."<br><br>
+                                    <span class="text-dark fw-bold">Giải thích:</span> Như vậy, từ 26 tuổi trở đi thì không còn thuộc độ tuổi gọi đi nghĩa vụ quân sự nữa. Tuy nhiên, đối với công dân học cao đẳng, đại học đã được tạm hoãn gọi nhập ngũ thì từ 28 tuổi trở đi mới hết gọi đi nghĩa vụ quân sự.<br><br>
+                                    <em>Cre: Điều 30, Luật Nghĩa vụ quân sự 2015 (Luật số: 78/2015/QH13 ban hành ngày 19/06/2015).</em>
                                 </p>
                                 <a href="https://thuvienphapluat.vn/van-ban/Bo-may-hanh-chinh/Luat-nghia-vu-quan-su-2015-282384.aspx" target="_blank" class="mt-auto btn btn-sm btn-outline-primary" style="font-weight: 500;"><i class="bx bx-link-external me-1"></i> Xem trên Thư Viện Pháp Luật</a>
                             </div>
@@ -430,7 +472,10 @@
                                     <strong>Chỉ tiêu về Mắt (Khúc xạ)</strong><br><br>
                                     Theo quy định khám sức khỏe mới nhất:<br>
                                     - Chỉ gọi nhập ngũ những công dân có sức khỏe Loại 1, 2, 3.<br>
-                                    - <strong>KHÔNG GỌI</strong> nhập ngũ công dân mắc các tật khúc xạ về mắt: Cận thị từ <strong>1.5 diop trở lên</strong>, viễn thị các mức độ; loạn thị từ 01 diop trở lên.
+                                    - <strong>KHÔNG GỌI</strong> nhập ngũ công dân mắc các tật khúc xạ về mắt:<br>
+                                    + Cận thị từ <strong>1.5 diop trở lên</strong>.<br>
+                                    + Viễn thị <strong>các mức độ</strong>.<br>
+                                    + Loạn thị từ <strong>01 diop trở lên</strong>.
                                 </p>
                                 <a href="https://thuvienphapluat.vn/van-ban/The-thao-Y-te/Thong-tu-105-2023-TT-BQP-tieu-chuan-kham-suc-khoe-nghia-vu-quan-su-cong-an-nhan-dan-590453.aspx" target="_blank" class="mt-auto btn btn-sm btn-outline-primary" style="font-weight: 500;"><i class="bx bx-link-external me-1"></i> Xem trên Thư Viện Pháp Luật</a>
                             </div>
@@ -459,6 +504,115 @@
                 </div>
             </div>
 
+            <hr class="my-5 text-muted">
+
+            <!-- FAQ Section -->
+            <div class="mt-4">
+                <h4 class="mb-4 fw-bold" style="color: #1e293b;"><i class="bx bx-help-circle me-2 text-primary"></i>Câu Hỏi Thường Gặp (FAQ)</h4>
+                <div class="accordion" id="faqAccordion">
+                    <div class="accordion-item border-0 mb-3 shadow-sm" style="border-radius: 8px; overflow: hidden;">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                Cận bao nhiêu độ thì không phải đi Nghĩa vụ quân sự?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Theo Thông tư 105/2023/TT-BQP, những người cận thị từ <strong>1.5 Diop trở lên</strong> sẽ bị xếp vào sức khỏe Loại 4, 5 hoặc 6 và sẽ <strong>không được gọi nhập ngũ</strong>. Cận dưới 1.5 Diop vẫn được gọi nhập ngũ bình thường nếu các tiêu chí khác đạt.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item border-0 mb-3 shadow-sm" style="border-radius: 8px; overflow: hidden;">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Bị Viễn thị và Loạn thị có được miễn NVQS không?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Có. Theo luật mới, người mắc bệnh <strong>Viễn thị ở mọi mức độ</strong> (dù nặng hay nhẹ) đều không đủ điều kiện nhập ngũ. Riêng đối với Loạn thị, nếu bị loạn từ <strong>1.0 Diop trở lên</strong> sẽ không được gọi nhập ngũ.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 mb-3 shadow-sm" style="border-radius: 8px; overflow: hidden;">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Xăm hình có đi NVQS không?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Hiện nay, Bộ Quốc phòng không còn quy định cấm hoàn toàn người xăm hình nhập ngũ. Tuy nhiên, nếu hình xăm có nội dung chống phá chế độ, mang tính chất kỳ dị, kinh dị, kích động bạo lực, hoặc xăm ở các vị trí hở (mặt, cổ, tay) gây phản cảm thì có thể sẽ không được xét tuyển (tùy hội đồng khám xét).
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="accordion-item border-0 mb-3 shadow-sm" style="border-radius: 8px; overflow: hidden;">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Đang học đại học có bị gọi khám NVQS không?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
+                            <div class="accordion-body text-muted">
+                                Nếu bạn đã nộp <strong>Giấy xác nhận sinh viên</strong> (đang theo học hệ chính quy) về Ban Chỉ huy Quân sự địa phương, bạn sẽ được tạm hoãn gọi nhập ngũ. Tuy nhiên, bạn vẫn có thể nhận được lệnh gọi <em>khám sơ tuyển</em> để quản lý nguồn. Thời hạn gọi nhập ngũ của bạn sẽ kéo dài đến hết 27 tuổi.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Scoring Table Section -->
+            <div class="mt-5 mb-4">
+                <h4 class="mb-4 fw-bold" style="color: #1e293b;"><i class="bx bx-table me-2 text-primary"></i>Bảng Chấm Tiêu Chí Khám Sức Khỏe (Phân Loại)</h4>
+                <p class="text-muted mb-3">Mỗi chỉ tiêu (mắt, chiều cao, cân nặng, răng, tai mũi họng...) sẽ được chấm điểm từ 1 đến 6. Sức khỏe được phân loại dựa trên điểm số <strong>thấp nhất</strong> trong các chỉ tiêu của bạn.</p>
+                <div class="table-responsive p-0">
+                    <table class="table table-hover table-bordered bg-white mb-0" style="border-radius: 12px; overflow: hidden;">
+                        <thead>
+                            <tr>
+                                <th scope="col" class="text-center" style="width: 15%;">Điểm / Phân Loại</th>
+                                <th scope="col" style="width: 60%;">Tình trạng sức khỏe tương ứng</th>
+                                <th scope="col" class="text-center" style="width: 25%;">Đủ điều kiện nhập ngũ?</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="text-center align-middle fw-bold" style="color: #16a34a;">Loại 1</td>
+                                <td>Tất cả các chỉ tiêu đều đạt điểm 1 (Tình trạng sức khỏe rất tốt).</td>
+                                <td class="text-center align-middle"><span class="badge bg-success px-3 py-2">Có gọi</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center align-middle fw-bold" style="color: #2563eb;">Loại 2</td>
+                                <td>Có ít nhất 1 chỉ tiêu bị điểm 2 (Tình trạng sức khỏe tốt).</td>
+                                <td class="text-center align-middle"><span class="badge bg-success px-3 py-2">Có gọi</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center align-middle fw-bold" style="color: #d97706;">Loại 3</td>
+                                <td>Có ít nhất 1 chỉ tiêu bị điểm 3 (Tình trạng sức khỏe khá).</td>
+                                <td class="text-center align-middle"><span class="badge bg-success px-3 py-2">Có gọi</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center align-middle fw-bold" style="color: #dc3545;">Loại 4</td>
+                                <td>Có ít nhất 1 chỉ tiêu bị điểm 4 (Tình trạng sức khỏe trung bình).<br><small class="text-muted">VD: BMI ≥ 30, Cận từ 1.5 - dưới 3 Diop.</small></td>
+                                <td class="text-center align-middle"><span class="badge bg-danger px-3 py-2">Không gọi</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center align-middle fw-bold" style="color: #dc3545;">Loại 5</td>
+                                <td>Có ít nhất 1 chỉ tiêu bị điểm 5 (Tình trạng sức khỏe kém).</td>
+                                <td class="text-center align-middle"><span class="badge bg-danger px-3 py-2">Không gọi</span></td>
+                            </tr>
+                            <tr>
+                                <td class="text-center align-middle fw-bold" style="color: #dc3545;">Loại 6</td>
+                                <td>Có ít nhất 1 chỉ tiêu bị điểm 6 (Tình trạng sức khỏe rất kém).</td>
+                                <td class="text-center align-middle"><span class="badge bg-danger px-3 py-2">Không gọi</span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
         </div>
     </div>
 
@@ -471,6 +625,18 @@
             } else {
                 defSelect.disabled = true;
                 defSelect.value = 'no'; // Reset về trạng thái chưa nộp
+            }
+        });
+
+        // Xử lý bật/tắt ô nhập Độ Diop khi chọn loại tật khúc xạ
+        document.getElementById('eyeType').addEventListener('change', function() {
+            const eyeInput = document.getElementById('eyesight');
+            if(this.value === 'none') {
+                eyeInput.disabled = true;
+                eyeInput.value = 0;
+            } else {
+                eyeInput.disabled = false;
+                if(eyeInput.value == 0) eyeInput.value = ''; // Xóa số 0 để user dễ nhập
             }
         });
 
@@ -495,7 +661,9 @@
             const deferment = document.getElementById('deferment').value;
             const height = parseFloat(document.getElementById('height').value);
             const weight = parseFloat(document.getElementById('weight').value);
-            const eyesight = parseFloat(document.getElementById('eyesight').value);
+            
+            const eyeType = document.getElementById('eyeType').value;
+            const eyesight = parseFloat(document.getElementById('eyesight').value) || 0;
 
             // Năm xét tuyển mặc định là 2026
             const callYear = 2026; 
@@ -591,21 +759,55 @@
             btnBmi.innerHTML = isBmiPass ? '<i class="bx bx-check"></i> Đạt Yêu Cầu' : '<i class="bx bx-x"></i> Không Đạt';
 
 
-            // 4. TÍNH TOÁN MẮT
+            // 4. TÍNH TOÁN MẮT (MỚI THEO CẬN/VIỄN/LOẠN)
             let isEyePass = true;
             let eyeStatusClass = 'success';
             let eyeStatusText = 'Mắt tốt (Đạt yêu cầu)';
+            let eyeConditionText = 'Không có tật khúc xạ';
+            let eyePassStdText = 'Không bị bệnh về mắt';
+            let eyeFailStdText = 'Không áp dụng';
 
-            if (eyesight >= 1.5) {
-                isEyePass = false;
-                eyeStatusClass = 'danger';
-                eyeStatusText = 'Cận thị (Sức khỏe loại 4,5,6)';
-            } else if (eyesight > 0 && eyesight < 1.5) {
-                eyeStatusClass = 'warning';
-                eyeStatusText = 'Cận nhẹ (Vẫn gọi nhập ngũ)';
+            if (eyeType === 'can') {
+                eyeConditionText = 'Cận thị ' + eyesight + ' Diop';
+                eyePassStdText = 'Cận < 1.5 Diop';
+                eyeFailStdText = 'Từ 1.5 Diop trở lên';
+                
+                if (eyesight >= 1.5) {
+                    isEyePass = false;
+                    eyeStatusClass = 'danger';
+                    eyeStatusText = 'Cận thị (Sức khỏe loại 4,5,6)';
+                } else if (eyesight > 0) {
+                    eyeStatusClass = 'warning';
+                    eyeStatusText = 'Cận nhẹ (Vẫn gọi NVQS)';
+                }
+            } else if (eyeType === 'vien') {
+                eyeConditionText = 'Viễn thị ' + eyesight + ' Diop';
+                eyePassStdText = 'Không viễn thị';
+                eyeFailStdText = 'Viễn thị mọi mức độ';
+                
+                if (eyesight > 0) {
+                    isEyePass = false;
+                    eyeStatusClass = 'danger';
+                    eyeStatusText = 'Viễn thị (Rớt mọi mức độ)';
+                }
+            } else if (eyeType === 'loan') {
+                eyeConditionText = 'Loạn thị ' + eyesight + ' Diop';
+                eyePassStdText = 'Loạn < 1.0 Diop';
+                eyeFailStdText = 'Từ 1.0 Diop trở lên';
+                
+                if (eyesight >= 1.0) {
+                    isEyePass = false;
+                    eyeStatusClass = 'danger';
+                    eyeStatusText = 'Loạn thị (Không đủ tiêu chuẩn)';
+                } else if (eyesight > 0) {
+                    eyeStatusClass = 'warning';
+                    eyeStatusText = 'Loạn nhẹ (Vẫn gọi NVQS)';
+                }
             }
 
-            document.getElementById('res-eye-val').innerText = eyesight === 0 ? 'Không cận' : 'Cận ' + eyesight + ' Diop';
+            document.getElementById('res-eye-val').innerText = eyeConditionText;
+            document.getElementById('res-eye-std-pass').innerText = eyePassStdText;
+            document.getElementById('res-eye-std-fail').innerText = eyeFailStdText;
             
             const eyeStatusEl = document.getElementById('res-eye-status');
             eyeStatusEl.className = 'hosting-price ' + eyeStatusClass;
@@ -614,6 +816,7 @@
             const btnEye = document.getElementById('btn-eye-result');
             btnEye.className = 'btn w-100 mt-auto ' + (isEyePass ? 'btn-outline-success' : 'btn-danger');
             btnEye.innerHTML = isEyePass ? '<i class="bx bx-check"></i> Đạt Yêu Cầu' : '<i class="bx bx-x"></i> Rớt (Không gọi)';
+
 
             // Hiển thị section kết quả và Tabs
             document.getElementById('tabs-section').style.setProperty('display', 'flex', 'important');
