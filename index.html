@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Portfolio song ngữ Việt/Anh của Nguyễn Quốc Anh — PHP Developer. Dự án PHP, MySQL, JavaScript, Bootstrap, REST API và GitHub." />
-  <meta name="keywords" content="Nguyễn Quốc Anh, PHP Developer, MySQL, JavaScript, Bootstrap, REST API, GitHub, Ho Chi Minh City" />
+  <meta name="keywords" content="Nguyễn Quốc Anh, PHP Developer, MySQL, JavaScript, Bootstrap, REST API, GitHub, LinkedIn, Ho Chi Minh City" />
   <meta name="author" content="Nguyễn Quốc Anh" />
   <meta name="theme-color" content="#090c12" />
 
@@ -44,7 +44,6 @@
     }
 
     * { box-sizing: border-box; }
-    [hidden] { display: none !important; }
     html { scroll-behavior: smooth; }
     body {
       margin: 0;
@@ -229,15 +228,12 @@
 
     .github-hero-card {
       position: relative;
-      width: 100%;
-      min-width: 0;
       padding: 28px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: linear-gradient(145deg, var(--surface), var(--surface-2));
       box-shadow: var(--shadow);
       overflow: hidden;
-      isolation: isolate;
     }
 
     .github-hero-card::after {
@@ -253,40 +249,27 @@
     }
 
     .status {
-      position: relative;
-      z-index: 1;
       display: flex;
-      align-items: flex-start;
+      align-items: center;
       gap: 10px;
       color: var(--accent);
       font-size: .9rem;
       font-weight: 820;
-      line-height: 1.45;
     }
 
     .status-dot {
       width: 10px;
       height: 10px;
-      flex: 0 0 auto;
-      margin-top: .27rem;
       border-radius: 50%;
       background: var(--accent);
       box-shadow: 0 0 0 7px rgba(118, 243, 189, .12);
     }
 
     .profile-row {
-      position: relative;
-      z-index: 1;
-      display: grid;
-      grid-template-columns: 78px minmax(0, 1fr);
+      display: flex;
       align-items: center;
       gap: 17px;
-      min-width: 0;
       margin: 28px 0 21px;
-    }
-
-    .profile-identity {
-      min-width: 0;
     }
 
     .avatar {
@@ -311,38 +294,22 @@
       margin: 0;
       font-size: 1.25rem;
       line-height: 1.2;
-      overflow-wrap: anywhere;
     }
 
     .profile-login {
-      display: block;
-      max-width: 100%;
-      margin-top: 3px;
-      overflow: hidden;
       color: var(--muted);
       font-size: .92rem;
-      text-overflow: ellipsis;
-      white-space: nowrap;
     }
 
     .profile-stats {
-      position: relative;
-      z-index: 1;
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(3, 1fr);
       gap: 9px;
-      min-width: 0;
       margin: 20px 0;
     }
 
     .profile-stat {
-      display: flex;
-      min-width: 0;
-      min-height: 88px;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      padding: 13px 8px;
+      padding: 13px 10px;
       border: 1px solid var(--line);
       border-radius: 13px;
       background: color-mix(in srgb, var(--bg) 35%, transparent);
@@ -352,30 +319,18 @@
     .profile-stat strong {
       display: block;
       font-size: 1.08rem;
-      line-height: 1.15;
     }
 
     .profile-stat span {
-      display: block;
-      margin-top: 7px;
       color: var(--muted);
       font-size: .73rem;
-      line-height: 1.35;
     }
 
     .quick-info {
-      position: relative;
-      z-index: 1;
       display: grid;
-      min-width: 0;
       gap: 11px;
       color: var(--muted);
       font-size: .92rem;
-    }
-
-    .quick-info > * {
-      min-width: 0;
-      overflow-wrap: anywhere;
     }
 
     .quick-info a:hover { color: var(--text); }
@@ -887,64 +842,6 @@
       .profile-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
     }
 
-    @media (max-width: 430px) {
-      .github-hero-card {
-        padding: 22px 18px;
-        border-radius: 20px;
-      }
-
-      .profile-row {
-        grid-template-columns: 66px minmax(0, 1fr);
-        gap: 14px;
-        margin: 24px 0 18px;
-      }
-
-      .avatar {
-        width: 66px;
-        height: 66px;
-        border-radius: 19px;
-      }
-
-      .avatar-placeholder {
-        font-size: 1.35rem;
-      }
-
-      .profile-name {
-        font-size: 1.08rem;
-      }
-
-      .profile-login {
-        font-size: .84rem;
-      }
-
-      .profile-stats {
-        grid-template-columns: 1fr;
-        gap: 8px;
-      }
-
-      .profile-stat {
-        min-height: 0;
-        flex-direction: row-reverse;
-        justify-content: space-between;
-        padding: 11px 13px;
-        text-align: left;
-      }
-
-      .profile-stat strong {
-        font-size: 1rem;
-      }
-
-      .profile-stat span {
-        margin-top: 0;
-        font-size: .76rem;
-      }
-
-      .quick-info {
-        gap: 10px;
-        font-size: .86rem;
-      }
-    }
-
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after {
@@ -954,6 +851,29 @@
       }
     }
   </style>
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Nguyễn Quốc Anh",
+    "alternateName": "Nguyen Quoc Anh",
+    "jobTitle": "PHP Developer",
+    "email": "mailto:nguyenquocanh.dev@gmail.com",
+    "telephone": "+84 397 215 747",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bình Tân",
+      "addressRegion": "TP. Hồ Chí Minh",
+      "addressCountry": "VN"
+    },
+    "sameAs": [
+      "https://github.com/nguyenquocanhz",
+      "https://www.linkedin.com/in/nguyenquocanhz/"
+    ]
+  }
+  </script>
+
 </head>
 
 <body>
@@ -1015,7 +935,7 @@
           <div class="profile-row">
             <div class="avatar avatar-placeholder" id="profileAvatarPlaceholder" aria-hidden="true">NQA</div>
             <img class="avatar" id="profileAvatar" src="" alt="GitHub avatar" hidden />
-            <div class="profile-identity">
+            <div>
               <h2 class="profile-name" id="profileName">Nguyễn Quốc Anh</h2>
               <a class="profile-login" id="profileLogin" href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener noreferrer">@nguyenquocanhz</a>
             </div>
@@ -1032,6 +952,7 @@
             <a href="tel:+84397215747">+84 397 215 747</a>
             <span data-i18n="location">Bình Tân, TP. Hồ Chí Minh</span>
             <a href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener noreferrer">github.com/nguyenquocanhz</a>
+            <a href="https://www.linkedin.com/in/nguyenquocanhz/" target="_blank" rel="noopener noreferrer">linkedin.com/in/nguyenquocanhz</a>
           </div>
         </aside>
       </div>
