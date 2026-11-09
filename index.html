@@ -3,67 +3,104 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Portfolio song ngữ Việt/Anh của Nguyễn Quốc Anh — PHP Developer. Dự án PHP, MySQL, JavaScript, Bootstrap, REST API và GitHub." />
-  <meta name="keywords" content="Nguyễn Quốc Anh, PHP Developer, MySQL, JavaScript, Bootstrap, REST API, GitHub, LinkedIn, Ho Chi Minh City" />
+  <meta name="description" content="Portfolio song ngữ Việt/Anh của Nguyễn Quốc Anh — PHP Developer. Dự án PHP, MySQL, JavaScript, REST API và mã nguồn mở trên GitHub." />
+  <meta name="keywords" content="Nguyễn Quốc Anh, PHP Developer, MySQL, JavaScript, Bootstrap, REST API, Go, Open Source, Termward, GitHub, LinkedIn, Ho Chi Minh City" />
   <meta name="author" content="Nguyễn Quốc Anh" />
-  <meta name="theme-color" content="#090c12" />
+  <meta name="theme-color" content="#000000" />
 
   <meta property="og:title" content="Nguyễn Quốc Anh — PHP Developer" />
-  <meta property="og:description" content="Portfolio song ngữ Việt/Anh, tự động lấy dự án công khai từ GitHub REST API." />
+  <meta property="og:description" content="Portfolio song ngữ Việt/Anh: dự án, kinh nghiệm, kỹ năng và mã nguồn mở." />
   <meta property="og:type" content="website" />
 
   <title>Nguyễn Quốc Anh | PHP Developer</title>
 
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <script>
+    // Chạy sớm để tránh nháy theme và chỉ ẩn nội dung reveal khi JS hoạt động.
+    (function () {
+      var root = document.documentElement;
+      root.classList.add("js");
+      try {
+        var saved = localStorage.getItem("portfolio-theme");
+        var prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
+        root.dataset.theme = saved || (prefersLight ? "light" : "dark");
+      } catch (e) {}
+    })();
+  </script>
+
   <style>
     :root {
-      --bg: #090c12;
-      --surface: #10151e;
-      --surface-2: #171d28;
-      --text: #f4f7fb;
-      --muted: #9aa6b7;
-      --line: rgba(255, 255, 255, .09);
-      --accent: #76f3bd;
-      --accent-2: #58c7ff;
+      --bg: #000000;
+      --surface: #0c0c0d;
+      --surface-2: #151516;
+      --text: #ffffff;
+      --muted: #a3a3a8;
+      --faint: #6e6e76;
+      --line: rgba(255, 255, 255, .11);
+      --line-strong: rgba(255, 255, 255, .24);
+      --invert-bg: #ffffff;
+      --invert-text: #000000;
+      --accent: #19c37d;
       --danger: #ff8c8c;
-      --shadow: 0 26px 90px rgba(0, 0, 0, .38);
-      --radius: 22px;
-      --max: 1160px;
+      --glow: rgba(255, 255, 255, .07);
+      --shadow: 0 30px 80px rgba(0, 0, 0, .6);
+      --radius: 24px;
+      --max: 1200px;
+      --ease: cubic-bezier(.16, 1, .3, 1);
+      --font: "Geist", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif;
+      --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
     }
 
     [data-theme="light"] {
-      --bg: #f5f7fb;
-      --surface: #ffffff;
-      --surface-2: #edf1f6;
-      --text: #111827;
-      --muted: #5f6877;
-      --line: rgba(17, 24, 39, .10);
-      --accent: #087f5b;
-      --accent-2: #0068c9;
+      --bg: #ffffff;
+      --surface: #f7f7f8;
+      --surface-2: #ececf1;
+      --text: #0d0d0d;
+      --muted: #5d5d66;
+      --faint: #8e8e98;
+      --line: rgba(0, 0, 0, .10);
+      --line-strong: rgba(0, 0, 0, .28);
+      --invert-bg: #0d0d0d;
+      --invert-text: #ffffff;
+      --accent: #0e8f5d;
       --danger: #b42318;
-      --shadow: 0 24px 70px rgba(23, 34, 51, .12);
+      --glow: rgba(0, 0, 0, .05);
+      --shadow: 0 30px 80px rgba(0, 0, 0, .10);
     }
 
     * { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
+    html { scroll-behavior: smooth; scroll-padding-top: 96px; }
+
     body {
       margin: 0;
+      overflow-x: hidden;
       color: var(--text);
-      background:
-        radial-gradient(circle at 14% 8%, rgba(88, 199, 255, .11), transparent 29rem),
-        radial-gradient(circle at 88% 22%, rgba(118, 243, 189, .10), transparent 31rem),
-        var(--bg);
-      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-      line-height: 1.65;
-      transition: background .25s ease, color .25s ease;
+      background: var(--bg);
+      font-family: var(--font);
+      font-size: 17px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      transition: background .35s ease, color .35s ease;
     }
 
     a { color: inherit; text-decoration: none; }
     img { max-width: 100%; display: block; }
+    button { font: inherit; color: inherit; }
     button, a { -webkit-tap-highlight-color: transparent; }
-    button { font: inherit; }
+    h1, h2, h3, h4, p { margin: 0; }
+    ::selection { background: var(--text); color: var(--bg); }
+
+    :focus-visible {
+      outline: 2px solid var(--text);
+      outline-offset: 3px;
+      border-radius: 6px;
+    }
 
     .container {
-      width: min(calc(100% - 40px), var(--max));
+      width: min(calc(100% - 48px), var(--max));
       margin-inline: auto;
     }
 
@@ -74,772 +111,917 @@
       z-index: 999;
       padding: 10px 14px;
       border-radius: 10px;
-      background: var(--text);
-      color: var(--bg);
+      background: var(--invert-bg);
+      color: var(--invert-text);
     }
-
     .skip-link:focus { top: 12px; }
 
+    /* ---------- Scroll progress ---------- */
+    .scroll-progress {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 120;
+      height: 2px;
+      background: var(--text);
+      transform: scaleX(var(--progress, 0));
+      transform-origin: left;
+    }
+
+    /* ---------- Header ---------- */
     .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      border-bottom: 1px solid var(--line);
-      background: color-mix(in srgb, var(--bg) 78%, transparent);
-      backdrop-filter: blur(18px);
+      position: fixed;
+      top: 14px;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      pointer-events: none;
     }
 
     .nav {
-      min-height: 72px;
+      pointer-events: auto;
+      min-height: 58px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 22px;
+      gap: 18px;
+      padding: 0 10px 0 22px;
+      border: 1px solid transparent;
+      border-radius: 999px;
+      transition: background .35s ease, border-color .35s ease, box-shadow .35s ease;
+    }
+
+    .site-header.is-scrolled .nav {
+      border-color: var(--line);
+      background: color-mix(in srgb, var(--bg) 72%, transparent);
+      -webkit-backdrop-filter: blur(20px) saturate(1.4);
+      backdrop-filter: blur(20px) saturate(1.4);
+      box-shadow: 0 10px 40px rgba(0, 0, 0, .18);
     }
 
     .brand {
-      font-size: 1.08rem;
-      font-weight: 950;
-      letter-spacing: -.04em;
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
       white-space: nowrap;
     }
-
     .brand span { color: var(--accent); }
 
     .nav-links {
       display: flex;
       align-items: center;
-      gap: 23px;
+      gap: 4px;
+      font-size: .9rem;
+      font-weight: 500;
       color: var(--muted);
-      font-size: .92rem;
-      font-weight: 750;
     }
 
-    .nav-links a:hover,
-    .nav-links a:focus-visible { color: var(--text); }
-
-    .nav-actions {
-      display: flex;
-      align-items: center;
-      gap: 9px;
+    .nav-links a {
+      padding: 8px 13px;
+      border-radius: 999px;
+      transition: color .2s ease, background .2s ease;
     }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.is-active { color: var(--text); background: var(--glow); }
+
+    .nav-actions { display: flex; align-items: center; gap: 6px; }
 
     .icon-btn,
     .lang-btn {
-      min-height: 42px;
+      height: 40px;
       display: inline-grid;
       place-items: center;
       border: 1px solid var(--line);
-      border-radius: 12px;
-      color: var(--text);
-      background: var(--surface);
+      border-radius: 999px;
+      background: transparent;
       cursor: pointer;
+      transition: border-color .2s ease, background .2s ease;
     }
-
-    .icon-btn { width: 42px; }
+    .icon-btn { width: 40px; }
     .lang-btn {
-      min-width: 58px;
+      min-width: 48px;
       padding: 0 12px;
-      font-size: .82rem;
-      font-weight: 900;
-      letter-spacing: .05em;
+      font-family: var(--mono);
+      font-size: .76rem;
+      letter-spacing: .06em;
     }
+    .icon-btn:hover, .lang-btn:hover { border-color: var(--line-strong); background: var(--glow); }
+    .mobile-menu-btn { display: none; }
 
-    .hero {
-      min-height: 78vh;
-      display: grid;
-      align-items: center;
-      padding: 112px 0 78px;
-    }
+    .theme-icon-moon { display: none; }
+    [data-theme="light"] .theme-icon-sun { display: none; }
+    [data-theme="light"] .theme-icon-moon { display: block; }
 
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.34fr .66fr;
-      gap: 56px;
-      align-items: center;
-    }
-
-    .eyebrow {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      color: var(--accent);
-      font-size: .84rem;
-      font-weight: 850;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-    }
-
-    .eyebrow::before {
-      content: "";
-      width: 34px;
-      height: 1px;
-      background: currentColor;
-    }
-
-    h1 {
-      max-width: 930px;
-      margin: 18px 0 22px;
-      font-size: clamp(3.25rem, 7.5vw, 7.35rem);
-      line-height: .92;
-      letter-spacing: -.073em;
-    }
-
-    .hero-copy {
-      max-width: 735px;
-      color: var(--muted);
-      font-size: clamp(1.02rem, 1.55vw, 1.2rem);
-    }
-
-    .hero-copy strong { color: var(--text); }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 34px;
-    }
-
+    /* ---------- Buttons ---------- */
     .btn {
-      min-height: 50px;
+      position: relative;
+      min-height: 48px;
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 9px;
-      padding: 0 19px;
-      border: 1px solid var(--line);
-      border-radius: 14px;
+      padding: 0 22px;
+      border: 1px solid var(--line-strong);
+      border-radius: 999px;
       background: transparent;
       color: var(--text);
-      font-weight: 820;
+      font-size: .95rem;
+      font-weight: 500;
       cursor: pointer;
-      transition: transform .2s ease, border-color .2s ease, background .2s ease;
+      transition: transform .5s var(--ease), background .25s ease, border-color .25s ease, color .25s ease, opacity .25s ease;
     }
-
-    .btn:hover { transform: translateY(-2px); }
+    .btn:hover { background: var(--glow); border-color: var(--text); }
+    .btn:active { transform: scale(.97); }
 
     .btn-primary {
-      color: #07130f;
       border-color: transparent;
-      background: linear-gradient(135deg, var(--accent), #b4ffd9);
+      background: var(--invert-bg);
+      color: var(--invert-text);
     }
+    .btn-primary:hover { background: var(--invert-bg); border-color: transparent; opacity: .86; }
 
-    .btn-secondary { background: var(--surface); }
+    .btn-sm { min-height: 40px; padding: 0 16px; font-size: .86rem; }
+    .btn svg { flex: 0 0 auto; transition: transform .4s var(--ease); }
+    .btn:hover .i-arrow { transform: translate(2px, -2px); }
+    .btn:hover .i-down { transform: translateY(2px); }
 
-    .github-hero-card {
+    /* ---------- Hero ---------- */
+    .hero {
       position: relative;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: linear-gradient(145deg, var(--surface), var(--surface-2));
-      box-shadow: var(--shadow);
+      min-height: 100vh;
+      min-height: 100svh;
+      display: grid;
+      align-items: center;
+      padding: 150px 0 70px;
       overflow: hidden;
     }
 
-    .github-hero-card::after {
-      content: "";
+    .hero-bg {
       position: absolute;
-      right: -75px;
-      bottom: -75px;
-      width: 190px;
-      height: 190px;
-      border-radius: 50%;
-      background: radial-gradient(circle, rgba(118, 243, 189, .25), transparent 68%);
+      inset: 0;
       pointer-events: none;
+      background-image:
+        linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 72px 72px;
+      -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 10%, transparent 75%);
+      mask-image: radial-gradient(ellipse 70% 60% at 50% 35%, #000 10%, transparent 75%);
+      opacity: .55;
     }
 
-    .status {
-      display: flex;
+    .hero-orb {
+      position: absolute;
+      left: 50%;
+      top: 34%;
+      width: min(900px, 120vw);
+      aspect-ratio: 1;
+      border-radius: 50%;
+      pointer-events: none;
+      background: radial-gradient(circle, color-mix(in srgb, var(--accent) 20%, transparent), transparent 62%);
+      filter: blur(30px);
+      transform: translate(calc(-50% + var(--px, 0px)), calc(-50% + var(--py, 0px)));
+      animation: breathe 9s ease-in-out infinite;
+    }
+
+    @keyframes breathe {
+      0%, 100% { opacity: .55; scale: 1; }
+      50% { opacity: .9; scale: 1.08; }
+    }
+
+    .hero-inner { position: relative; text-align: center; }
+
+    .status-pill {
+      display: inline-flex;
       align-items: center;
       gap: 10px;
-      color: var(--accent);
-      font-size: .9rem;
-      font-weight: 820;
+      padding: 8px 16px 8px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: color-mix(in srgb, var(--surface) 80%, transparent);
+      font-size: .86rem;
+      font-weight: 500;
     }
 
     .status-dot {
-      width: 10px;
-      height: 10px;
+      position: relative;
+      width: 8px;
+      height: 8px;
       border-radius: 50%;
       background: var(--accent);
-      box-shadow: 0 0 0 7px rgba(118, 243, 189, .12);
+    }
+    .status-dot::after {
+      content: "";
+      position: absolute;
+      inset: -5px;
+      border-radius: 50%;
+      border: 1px solid var(--accent);
+      animation: ping 2s var(--ease) infinite;
+    }
+    @keyframes ping {
+      0% { transform: scale(.5); opacity: 1; }
+      100% { transform: scale(1.6); opacity: 0; }
     }
 
-    .profile-row {
+    h1 {
+      max-width: 1000px;
+      margin: 30px auto 26px;
+      font-size: clamp(2.7rem, 8vw, 6.4rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -.05em;
+      text-wrap: balance;
+    }
+
+    .hero-copy {
+      max-width: 680px;
+      margin-inline: auto;
+      color: var(--muted);
+      font-size: clamp(1.02rem, 1.5vw, 1.2rem);
+      text-wrap: pretty;
+    }
+    .hero-copy strong { color: var(--text); font-weight: 500; }
+
+    .hero-actions {
       display: flex;
-      align-items: center;
-      gap: 17px;
-      margin: 28px 0 21px;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 38px;
     }
 
-    .avatar {
-      width: 78px;
-      height: 78px;
-      flex: 0 0 auto;
-      object-fit: cover;
-      border: 1px solid var(--line);
-      border-radius: 23px;
-      background: var(--bg);
-    }
-
-    .avatar-placeholder {
+    .hero-stats {
       display: grid;
-      place-items: center;
-      font-size: 1.65rem;
-      font-weight: 950;
-      letter-spacing: -.06em;
-    }
-
-    .profile-name {
-      margin: 0;
-      font-size: 1.25rem;
-      line-height: 1.2;
-    }
-
-    .profile-login {
-      color: var(--muted);
-      font-size: .92rem;
-    }
-
-    .profile-stats {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 9px;
-      margin: 20px 0;
-    }
-
-    .profile-stat {
-      padding: 13px 10px;
-      border: 1px solid var(--line);
-      border-radius: 13px;
-      background: color-mix(in srgb, var(--bg) 35%, transparent);
-      text-align: center;
-    }
-
-    .profile-stat strong {
-      display: block;
-      font-size: 1.08rem;
-    }
-
-    .profile-stat span {
-      color: var(--muted);
-      font-size: .73rem;
-    }
-
-    .quick-info {
-      display: grid;
-      gap: 11px;
-      color: var(--muted);
-      font-size: .92rem;
-    }
-
-    .quick-info a:hover { color: var(--text); }
-
-    .section {
-      padding: 92px 0;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 860px;
+      margin: 76px auto 0;
       border-top: 1px solid var(--line);
     }
 
-    .section-heading {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 44px;
-      margin-bottom: 48px;
+    .hero-stat { padding: 24px 12px 0; text-align: center; }
+    .hero-stat + .hero-stat { border-left: 1px solid var(--line); }
+    .hero-stat strong {
+      display: block;
+      font-size: clamp(1.5rem, 3vw, 2.2rem);
+      font-weight: 600;
+      letter-spacing: -.04em;
+      font-variant-numeric: tabular-nums;
     }
+    .hero-stat span { color: var(--muted); font-size: .84rem; }
+
+    /* ---------- Marquee ---------- */
+    .marquee {
+      overflow: hidden;
+      padding: 22px 0;
+      border-block: 1px solid var(--line);
+      -webkit-mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+      mask-image: linear-gradient(90deg, transparent, #000 12%, #000 88%, transparent);
+    }
+    .marquee-track {
+      display: flex;
+      width: max-content;
+      animation: marquee 38s linear infinite;
+    }
+    .marquee:hover .marquee-track { animation-play-state: paused; }
+    .marquee-group { display: flex; flex: 0 0 auto; }
+    .marquee-group span {
+      display: inline-flex;
+      align-items: center;
+      gap: 28px;
+      padding-right: 28px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .9rem;
+      white-space: nowrap;
+    }
+    .marquee-group span::after { content: "/"; color: var(--faint); }
+    @keyframes marquee { to { transform: translateX(-50%); } }
+
+    /* ---------- Sections ---------- */
+    .section { padding: clamp(84px, 11vw, 150px) 0; }
+    .section + .section { border-top: 1px solid var(--line); }
+
+    .section-heading { max-width: 860px; margin-bottom: clamp(40px, 6vw, 72px); }
 
     .section-kicker {
-      color: var(--accent);
-      font-size: .81rem;
-      font-weight: 900;
-      letter-spacing: .13em;
+      display: inline-block;
+      margin-bottom: 18px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .8rem;
+      letter-spacing: .08em;
       text-transform: uppercase;
     }
 
     .section-title {
-      margin: 0;
-      font-size: clamp(2.2rem, 5vw, 4.6rem);
-      line-height: 1;
-      letter-spacing: -.055em;
+      font-size: clamp(2rem, 5vw, 3.9rem);
+      font-weight: 600;
+      line-height: 1.04;
+      letter-spacing: -.045em;
+      text-wrap: balance;
     }
 
-    .about-grid {
-      display: grid;
-      grid-template-columns: .9fr 1.1fr;
-      gap: 20px;
+    .section-lead {
+      max-width: 640px;
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 1.08rem;
     }
 
+    /* ---------- Cards + spotlight hover ---------- */
     .card {
-      padding: 28px;
+      position: relative;
+      padding: 30px;
       border: 1px solid var(--line);
       border-radius: var(--radius);
       background: var(--surface);
+      overflow: hidden;
+      transition: border-color .3s ease, transform .6s var(--ease);
     }
 
-    .card h3 {
-      margin: 0 0 13px;
-      font-size: 1.18rem;
+    .spot::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), var(--glow), transparent 60%);
+      transition: opacity .35s ease;
     }
+    .spot:hover::before { opacity: 1; }
+    .spot:hover { border-color: var(--line-strong); }
 
-    .card p {
-      margin: 0;
-      color: var(--muted);
+    .card h3 { font-size: 1.22rem; font-weight: 600; letter-spacing: -.02em; }
+    .card p { color: var(--muted); }
+
+    /* ---------- About ---------- */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 16px;
     }
+    .about-grid .card h3 { margin-bottom: 14px; }
 
     .stat-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 11px;
-      margin-top: 24px;
+      gap: 10px;
+      margin-top: 30px;
     }
-
     .stat {
-      padding: 17px;
+      padding: 18px 16px;
       border: 1px solid var(--line);
       border-radius: 16px;
-      background: var(--surface-2);
+      background: var(--bg);
     }
-
     .stat strong {
       display: block;
-      font-size: 1.5rem;
-      letter-spacing: -.05em;
+      font-size: 1.7rem;
+      font-weight: 600;
+      letter-spacing: -.04em;
+      font-variant-numeric: tabular-nums;
     }
+    .stat span { color: var(--muted); font-size: .82rem; }
 
-    .stat span {
-      color: var(--muted);
-      font-size: .83rem;
-    }
-
-    .skill-groups {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 17px;
-    }
-
-    .skill-group {
-      padding: 24px;
+    .profile-row { display: flex; align-items: center; gap: 16px; margin-top: 28px; }
+    .avatar {
+      width: 60px;
+      height: 60px;
+      flex: 0 0 auto;
+      object-fit: cover;
       border: 1px solid var(--line);
-      border-radius: 18px;
-      background: var(--surface);
+      border-radius: 50%;
+      background: var(--surface-2);
     }
+    .avatar-placeholder {
+      display: grid;
+      place-items: center;
+      font-size: .95rem;
+      font-weight: 700;
+      letter-spacing: -.03em;
+    }
+    .profile-name { font-size: 1.02rem; font-weight: 600; line-height: 1.3; }
+    .profile-login { color: var(--muted); font-family: var(--mono); font-size: .84rem; }
+    .profile-login:hover { color: var(--text); }
 
+    /* ---------- Skills ---------- */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
     .skill-group h3 {
-      margin: 0 0 16px;
-      font-size: 1rem;
-    }
-
-    .tags {
       display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 20px;
+      font-size: 1.05rem;
+    }
+    .skill-group h3 small {
+      color: var(--faint);
+      font-family: var(--mono);
+      font-size: .74rem;
+      font-weight: 400;
     }
 
-    .tag,
-    .badge {
+    .tags { display: flex; flex-wrap: wrap; gap: 8px; }
+    .tag {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
-      padding: 7px 10px;
+      padding: 6px 12px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: var(--surface-2);
       color: var(--muted);
-      font-size: .82rem;
-      font-weight: 720;
+      font-size: .84rem;
+      transition: color .2s ease, border-color .2s ease, background .2s ease;
     }
+    .tag:hover { color: var(--text); border-color: var(--line-strong); background: var(--glow); }
 
-    .projects {
+    /* ---------- Projects ---------- */
+    .projects-grid {
       display: grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: 18px;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
     }
 
     .project {
-      grid-column: span 6;
-      min-height: 330px;
+      min-height: 340px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background:
-        linear-gradient(160deg, rgba(88, 199, 255, .07), transparent 42%),
-        var(--surface);
-      transition: transform .2s ease, border-color .2s ease;
+      gap: 28px;
+      padding: clamp(26px, 3.4vw, 40px);
     }
-
-    .project:hover {
-      transform: translateY(-4px);
-      border-color: color-mix(in srgb, var(--accent) 42%, var(--line));
-    }
-
-    .project.featured {
-      grid-column: span 12;
-      min-height: 390px;
-      background:
-        radial-gradient(circle at 90% 20%, rgba(118, 243, 189, .14), transparent 18rem),
-        linear-gradient(160deg, rgba(88, 199, 255, .08), transparent 48%),
-        var(--surface);
-    }
+    .project.featured { grid-column: 1 / -1; min-height: 380px; }
+    .project:hover { transform: translateY(-4px); }
 
     .project-index {
-      color: var(--accent);
-      font-size: .81rem;
-      font-weight: 900;
-      letter-spacing: .12em;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .78rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .project-arrow {
+      width: 38px;
+      height: 38px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      color: var(--text);
+      transition: transform .5s var(--ease), background .3s ease, color .3s ease, border-color .3s ease;
+    }
+    .project:hover .project-arrow {
+      transform: rotate(45deg);
+      background: var(--invert-bg);
+      color: var(--invert-text);
+      border-color: transparent;
     }
 
     .project h3 {
-      margin: 16px 0 12px;
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      line-height: 1.05;
+      margin: 22px 0 14px;
+      font-size: clamp(1.5rem, 3vw, 2.4rem);
+      line-height: 1.08;
       letter-spacing: -.04em;
     }
+    .project p { max-width: 720px; }
+    .project .tags { margin-top: 22px; }
 
-    .project p {
-      max-width: 760px;
-      color: var(--muted);
+    .text-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      font-size: .92rem;
+      font-weight: 500;
+      background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+      transition: background-size .45s var(--ease);
     }
+    .text-link:hover { background-size: 100% 1px; }
+    /* Phủ toàn bộ card để cả thẻ đều bấm được */
+    .project .text-link.stretch::after { content: ""; position: absolute; inset: 0; }
 
-    .project-meta {
-      display: flex;
-      flex-wrap: wrap;
+    /* ---------- Open source ---------- */
+    .oss-feature {
+      display: grid;
+      grid-template-columns: 1fr 1.05fr;
+      gap: clamp(26px, 4vw, 56px);
+      align-items: center;
+      padding: clamp(26px, 4vw, 52px);
+      margin-bottom: 16px;
+    }
+    .oss-badge {
+      display: inline-flex;
+      align-items: center;
       gap: 8px;
-      margin-top: 22px;
-    }
-
-    .project-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 17px;
-      margin-top: 25px;
-      font-size: .9rem;
-      font-weight: 820;
-    }
-
-    .project-links a {
-      border-bottom: 1px solid var(--line);
-      color: var(--text);
-    }
-
-    .project-links a:hover { color: var(--accent); }
-
-    .github-panel {
-      padding: 26px;
+      padding: 5px 12px;
       border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
+      border-radius: 999px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .74rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
     }
+    .oss-feature h3 {
+      margin: 20px 0 14px;
+      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      line-height: 1;
+      letter-spacing: -.05em;
+    }
+    .oss-points {
+      display: grid;
+      gap: 10px;
+      margin: 24px 0 0;
+      padding: 0;
+      list-style: none;
+      color: var(--muted);
+      font-size: .96rem;
+    }
+    .oss-points li { display: flex; gap: 12px; align-items: baseline; }
+    .oss-points li::before {
+      content: "";
+      flex: 0 0 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    .oss-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 30px; }
+    .oss-meta { color: var(--muted); font-family: var(--mono); font-size: .82rem; }
+
+    .terminal {
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      background: #050505;
+      color: #e8e8ea;
+      box-shadow: var(--shadow);
+      overflow: hidden;
+      font-family: var(--mono);
+      font-size: .84rem;
+      line-height: 1.75;
+    }
+    .terminal-bar {
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      padding: 12px 15px;
+      border-bottom: 1px solid rgba(255, 255, 255, .1);
+      color: #8a8a93;
+      font-size: .74rem;
+    }
+    .terminal-bar i { width: 10px; height: 10px; border-radius: 50%; background: #2c2c30; }
+    .terminal-bar span { margin-left: 8px; }
+    .terminal-body {
+      min-height: 250px;
+      margin: 0;
+      padding: 18px 20px 22px;
+      white-space: pre-wrap;
+      overflow-wrap: anywhere;
+      font: inherit;
+    }
+    .t-prompt { color: #19c37d; }
+    .t-dim { color: #8a8a93; }
+    .t-caret {
+      display: inline-block;
+      width: 8px;
+      height: 1.05em;
+      vertical-align: text-bottom;
+      background: #e8e8ea;
+      animation: blink 1s steps(1) infinite;
+    }
+    @keyframes blink { 50% { opacity: 0; } }
 
     .github-toolbar {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 18px;
-      margin-bottom: 22px;
-    }
-
-    .github-toolbar p {
-      margin: 0;
-      color: var(--muted);
-      font-size: .93rem;
-    }
-
-    .repo-filters {
-      display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-bottom: 20px;
+      gap: 14px;
+      margin: 44px 0 20px;
     }
-
+    .repo-filters { display: flex; flex-wrap: wrap; gap: 8px; }
     .filter-btn {
-      padding: 8px 12px;
+      padding: 8px 15px;
       border: 1px solid var(--line);
       border-radius: 999px;
-      background: var(--surface-2);
+      background: transparent;
       color: var(--muted);
-      font-size: .82rem;
-      font-weight: 760;
+      font-size: .84rem;
       cursor: pointer;
+      transition: color .2s ease, background .2s ease, border-color .2s ease;
     }
-
-    .filter-btn:hover,
-    .filter-btn.is-active {
-      color: #07130f;
-      border-color: transparent;
-      background: var(--accent);
-    }
+    .filter-btn:hover { color: var(--text); border-color: var(--line-strong); }
+    .filter-btn.is-active { color: var(--invert-text); border-color: transparent; background: var(--invert-bg); }
 
     .repo-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 15px;
+      gap: 16px;
     }
-
     .repo-card {
-      min-height: 250px;
+      min-height: 230px;
       display: flex;
       flex-direction: column;
-      padding: 21px;
-      border: 1px solid var(--line);
-      border-radius: 17px;
-      background: var(--surface-2);
-      transition: transform .2s ease, border-color .2s ease;
+      padding: 24px;
+      border-radius: 20px;
+      animation: rise .7s var(--ease) both;
+      animation-delay: calc(var(--i, 0) * 60ms);
     }
+    .repo-card:hover { transform: translateY(-4px); }
+    @keyframes rise { from { opacity: 0; transform: translateY(18px); } }
 
-    .repo-card:hover {
-      transform: translateY(-3px);
-      border-color: color-mix(in srgb, var(--accent-2) 42%, var(--line));
+    .repo-top { display: flex; align-items: flex-start; justify-content: space-between; gap: 12px; }
+    .repo-name { font-size: 1.05rem; font-weight: 600; line-height: 1.3; overflow-wrap: anywhere; }
+    .repo-name a::after { content: ""; position: absolute; inset: 0; }
+    .repo-card .project-arrow { width: 32px; height: 32px; flex: 0 0 auto; }
+    .repo-card:hover .project-arrow {
+      transform: rotate(45deg);
+      background: var(--invert-bg);
+      color: var(--invert-text);
+      border-color: transparent;
     }
-
-    .repo-top {
-      display: flex;
-      align-items: flex-start;
-      justify-content: space-between;
-      gap: 12px;
-    }
-
-    .repo-name {
-      margin: 0;
-      font-size: 1.07rem;
-      line-height: 1.3;
-      overflow-wrap: anywhere;
-    }
-
-    .repo-visibility {
-      flex: 0 0 auto;
-      padding: 4px 7px;
-      border: 1px solid var(--line);
-      border-radius: 999px;
-      color: var(--muted);
-      font-size: .67rem;
-      text-transform: uppercase;
-    }
-
     .repo-desc {
       flex: 1;
-      margin: 13px 0 18px;
-      color: var(--muted);
+      margin: 12px 0 18px;
       font-size: .9rem;
+      display: -webkit-box;
+      -webkit-line-clamp: 4;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
-
-    .repo-topics {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 17px;
-    }
-
-    .repo-topic {
-      padding: 4px 7px;
-      border-radius: 999px;
-      color: var(--accent-2);
-      background: color-mix(in srgb, var(--accent-2) 10%, transparent);
-      font-size: .69rem;
-      font-weight: 700;
-    }
-
     .repo-footer {
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 10px;
+      flex-wrap: wrap;
+      gap: 8px 12px;
       padding-top: 14px;
       border-top: 1px solid var(--line);
       color: var(--muted);
-      font-size: .76rem;
+      font-family: var(--mono);
+      font-size: .74rem;
     }
+    .repo-metrics { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; }
+    .repo-demo { position: relative; z-index: 1; color: var(--text); }
+    .repo-demo:hover { text-decoration: underline; }
+    .language-dot { width: 8px; height: 8px; display: inline-block; margin-right: 4px; border-radius: 50%; background: var(--text); }
 
-    .repo-metrics {
-      display: flex;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 10px;
-    }
-
-    .language-dot {
-      width: 9px;
-      height: 9px;
-      display: inline-block;
-      border-radius: 50%;
-      background: var(--accent-2);
-    }
-
-    .repo-actions {
-      display: flex;
-      justify-content: center;
-      margin-top: 22px;
-    }
-
+    .repo-actions { display: flex; justify-content: center; margin-top: 26px; }
     .github-state {
       grid-column: 1 / -1;
-      padding: 34px;
-      border: 1px dashed var(--line);
-      border-radius: 16px;
+      padding: 38px;
+      border: 1px dashed var(--line-strong);
+      border-radius: 20px;
       color: var(--muted);
       text-align: center;
     }
-
     .github-state.error { color: var(--danger); }
+    .github-state a { text-decoration: underline; }
 
     .skeleton {
       position: relative;
       overflow: hidden;
-      min-height: 250px;
+      min-height: 230px;
       border: 1px solid var(--line);
-      border-radius: 17px;
-      background: var(--surface-2);
+      border-radius: 20px;
+      background: var(--surface);
     }
-
     .skeleton::after {
       content: "";
       position: absolute;
       inset: 0;
       transform: translateX(-100%);
-      background: linear-gradient(90deg, transparent, rgba(255,255,255,.06), transparent);
-      animation: shine 1.25s infinite;
+      background: linear-gradient(90deg, transparent, var(--glow), transparent);
+      animation: shine 1.3s infinite;
     }
-
     @keyframes shine { to { transform: translateX(100%); } }
 
-    .timeline {
-      display: grid;
-      gap: 15px;
+    /* ---------- Timeline ---------- */
+    .timeline { position: relative; max-width: 940px; }
+    .timeline-rail,
+    .timeline-fill {
+      position: absolute;
+      left: 7px;
+      top: 8px;
+      bottom: 8px;
+      width: 1px;
+      background: var(--line);
+    }
+    .timeline-fill {
+      background: var(--text);
+      transform: scaleY(var(--fill, 0));
+      transform-origin: top;
     }
 
-    .timeline-item {
-      display: grid;
-      grid-template-columns: 220px 1fr;
-      gap: 28px;
-      padding: 28px;
-      border: 1px solid var(--line);
-      border-radius: var(--radius);
-      background: var(--surface);
+    .timeline-item { position: relative; padding: 0 0 46px 46px; }
+    .timeline-item:last-child { padding-bottom: 0; }
+    .timeline-dot {
+      position: absolute;
+      left: 0;
+      top: 5px;
+      width: 15px;
+      height: 15px;
+      border: 1px solid var(--line-strong);
+      border-radius: 50%;
+      background: var(--bg);
+      transition: background .4s ease, border-color .4s ease, box-shadow .4s ease;
     }
-
-    .timeline-time {
-      color: var(--accent);
-      font-size: .91rem;
-      font-weight: 850;
+    .timeline-item.is-active .timeline-dot {
+      border-color: var(--text);
+      background: var(--text);
+      box-shadow: 0 0 0 6px var(--glow);
     }
-
-    .timeline-item h3 {
-      margin: 0 0 4px;
-      font-size: 1.23rem;
-    }
-
-    .timeline-item h4 {
-      margin: 0 0 14px;
-      color: var(--muted);
-      font-size: .96rem;
-    }
-
-    .timeline-item ul {
-      margin: 0;
-      padding-left: 20px;
-      color: var(--muted);
-    }
-
-    .contact-panel {
-      padding: clamp(34px, 7vw, 72px);
-      border: 1px solid var(--line);
-      border-radius: 32px;
-      background:
-        radial-gradient(circle at 10% 10%, rgba(88, 199, 255, .13), transparent 24rem),
-        radial-gradient(circle at 90% 80%, rgba(118, 243, 189, .14), transparent 22rem),
-        var(--surface);
-      text-align: center;
-    }
-
-    .contact-panel h2 {
-      max-width: 790px;
-      margin: 0 auto 18px;
-      font-size: clamp(2.45rem, 7vw, 5.75rem);
-      line-height: .98;
-      letter-spacing: -.064em;
-    }
-
-    .contact-panel p {
-      max-width: 680px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 1.03rem;
-    }
-
-    .contact-links {
+    .timeline-meta {
       display: flex;
       flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      margin-top: 30px;
-    }
-
-    footer {
-      padding: 34px 0;
-      color: var(--muted);
-      font-size: .88rem;
-    }
-
-    .footer-row {
-      display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 20px;
+      gap: 10px;
+      margin-bottom: 14px;
+      color: var(--muted);
+      font-family: var(--mono);
+      font-size: .8rem;
+    }
+    .timeline-type {
+      padding: 3px 10px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      font-size: .7rem;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+    .timeline-card h3 { font-size: 1.4rem; line-height: 1.25; letter-spacing: -.03em; }
+    .timeline-card h4 { margin: 4px 0 16px; color: var(--muted); font-size: 1rem; font-weight: 400; }
+    .timeline-card ul { margin: 0; padding-left: 19px; color: var(--muted); }
+    .timeline-card li + li { margin-top: 6px; }
+    .timeline-card .tags { margin-top: 18px; }
+
+    /* ---------- Contact ---------- */
+    .contact-head { text-align: center; }
+    .contact-head h2 {
+      max-width: 900px;
+      margin: 26px auto 20px;
+      font-size: clamp(2.4rem, 7vw, 5.6rem);
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -.05em;
+      text-wrap: balance;
+    }
+    .contact-head p { max-width: 620px; margin-inline: auto; color: var(--muted); font-size: 1.08rem; }
+
+    .contact-email {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      margin-top: 34px;
+      padding: 8px 8px 8px 22px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: var(--surface);
+      font-family: var(--mono);
+      font-size: clamp(.8rem, 2.6vw, .98rem);
     }
 
-    .mobile-menu-btn { display: none; }
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 56px;
+    }
+    .contact-card {
+      display: flex;
+      flex-direction: column;
+      gap: 34px;
+      padding: 24px;
+      border-radius: 20px;
+      cursor: pointer;
+    }
+    .contact-card:hover { transform: translateY(-4px); }
+    .contact-card-top { display: flex; align-items: center; justify-content: space-between; }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+    }
+    .contact-card .project-arrow { width: 32px; height: 32px; border-color: transparent; color: var(--muted); }
+    .contact-card:hover .project-arrow { transform: rotate(45deg); color: var(--text); }
+    .contact-card strong { display: block; font-size: 1.05rem; font-weight: 600; }
+    .contact-card span { color: var(--muted); font-size: .86rem; overflow-wrap: anywhere; }
 
-    @media (max-width: 980px) {
-      .repo-grid { grid-template-columns: repeat(2, 1fr); }
+    /* ---------- Footer ---------- */
+    footer { padding: 34px 0 44px; border-top: 1px solid var(--line); color: var(--muted); font-size: .86rem; }
+    .footer-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+
+    .to-top {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 90;
+      width: 46px;
+      height: 46px;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      background: color-mix(in srgb, var(--bg) 75%, transparent);
+      -webkit-backdrop-filter: blur(14px);
+      backdrop-filter: blur(14px);
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(14px);
+      pointer-events: none;
+      transition: opacity .3s ease, transform .5s var(--ease), border-color .2s ease;
+    }
+    .to-top.is-visible { opacity: 1; transform: none; pointer-events: auto; }
+    .to-top:hover { border-color: var(--text); }
+
+    .toast {
+      position: fixed;
+      left: 50%;
+      bottom: 28px;
+      z-index: 130;
+      padding: 11px 20px;
+      border-radius: 999px;
+      background: var(--invert-bg);
+      color: var(--invert-text);
+      font-size: .9rem;
+      font-weight: 500;
+      opacity: 0;
+      transform: translate(-50%, 16px);
+      pointer-events: none;
+      transition: opacity .3s ease, transform .5s var(--ease);
+    }
+    .toast.is-visible { opacity: 1; transform: translate(-50%, 0); }
+
+    /* ---------- Scroll reveal ---------- */
+    .js [data-reveal] {
+      opacity: 0;
+      transform: translateY(28px);
+      filter: blur(6px);
+      transition: opacity .9s var(--ease), transform .9s var(--ease), filter .9s var(--ease);
+      transition-delay: calc(var(--d, 0) * 90ms);
+    }
+    .js [data-reveal].is-visible { opacity: 1; transform: none; filter: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 1023px) {
+      .skills-grid, .repo-grid { grid-template-columns: repeat(2, 1fr); }
+      .contact-grid { grid-template-columns: repeat(2, 1fr); }
+      .oss-feature { grid-template-columns: 1fr; }
     }
 
     @media (max-width: 900px) {
       .nav-links {
         position: fixed;
-        inset: 72px 20px auto;
+        inset: 82px 16px auto;
         display: none;
         flex-direction: column;
         align-items: stretch;
-        gap: 0;
-        padding: 12px;
+        gap: 2px;
+        padding: 10px;
         border: 1px solid var(--line);
-        border-radius: 18px;
+        border-radius: 22px;
         background: var(--surface);
         box-shadow: var(--shadow);
       }
-
       .nav-links.is-open { display: flex; }
-      .nav-links a { padding: 12px; border-radius: 10px; }
+      .nav-links a { padding: 13px 14px; font-size: 1rem; }
       .mobile-menu-btn { display: inline-grid; }
-
-      .hero-grid,
-      .about-grid,
-      .section-heading,
-      .timeline-item {
-        grid-template-columns: 1fr;
+      .site-header .nav {
+        border-color: var(--line);
+        background: color-mix(in srgb, var(--bg) 72%, transparent);
+        -webkit-backdrop-filter: blur(20px);
+        backdrop-filter: blur(20px);
       }
-
-      .hero { padding-top: 80px; }
-      .github-hero-card { max-width: 540px; }
-      .section-heading { gap: 14px; }
-      .project,
-      .project.featured { grid-column: span 12; }
-      .timeline-item { gap: 10px; }
+      .about-grid { grid-template-columns: 1fr; }
     }
 
-    @media (max-width: 680px) {
-      .container { width: min(calc(100% - 24px), var(--max)); }
-      .hero { padding: 64px 0 58px; }
-      h1 { font-size: clamp(3rem, 17vw, 5rem); }
-      .section { padding: 70px 0; }
-      .skill-groups,
-      .stat-grid,
-      .repo-grid { grid-template-columns: 1fr; }
+    @media (max-width: 767px) {
+      body { font-size: 16px; }
+      .container { width: min(calc(100% - 32px), var(--max)); }
+      .hero { padding: 124px 0 56px; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); margin-top: 56px; }
+      .hero-stat { padding: 20px 8px; }
+      .hero-stat:nth-child(3) { border-left: 0; }
+      .hero-stat:nth-child(n+3) { border-top: 1px solid var(--line); }
+      .skills-grid, .projects-grid, .repo-grid { grid-template-columns: 1fr; }
+      .project, .project.featured { min-height: 0; }
+      .card { padding: 24px; }
+      .timeline-item { padding-left: 36px; }
+      .footer-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+      .nav-cv { display: none; }
+    }
+
+    @media (max-width: 480px) {
       .hero-actions .btn { width: 100%; }
-      .github-toolbar { align-items: flex-start; flex-direction: column; }
-      .footer-row { align-items: flex-start; flex-direction: column; }
-      .profile-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+      .stat-grid { grid-template-columns: 1fr; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .contact-card { gap: 20px; }
+      .contact-email { flex-direction: column; padding: 16px; border-radius: 22px; }
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -848,7 +1030,17 @@
         animation-duration: .01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: .01ms !important;
+        transition-delay: 0ms !important;
       }
+      .js [data-reveal] { opacity: 1; transform: none; filter: none; }
+      .marquee-track { animation: none; }
+    }
+
+    @media print {
+      .site-header, .scroll-progress, .to-top, .toast, .hero-bg, .hero-orb, .marquee { display: none !important; }
+      .js [data-reveal] { opacity: 1; transform: none; filter: none; }
+      .hero { min-height: 0; padding: 20px 0; }
+      .section { padding: 28px 0; }
     }
   </style>
 
@@ -869,17 +1061,18 @@
     },
     "sameAs": [
       "https://github.com/nguyenquocanhz",
-      "https://www.linkedin.com/in/nguyenquocanhz/"
+      "https://www.linkedin.com/in/nguyenquocanhz/",
+      "https://t.me/nqatech2003"
     ]
   }
   </script>
-
 </head>
 
 <body>
   <a class="skip-link" href="#main" data-i18n="skip">Bỏ qua đến nội dung chính</a>
+  <div class="scroll-progress" aria-hidden="true"></div>
 
-  <header class="site-header">
+  <header class="site-header" id="siteHeader">
     <div class="container nav">
       <a class="brand" href="#top" aria-label="Trang chủ">NQA<span>.</span></a>
 
@@ -887,217 +1080,252 @@
         <a href="#about" data-i18n="navAbout">Giới thiệu</a>
         <a href="#skills" data-i18n="navSkills">Kỹ năng</a>
         <a href="#projects" data-i18n="navProjects">Dự án</a>
-        <a href="#github" data-i18n="navGithub">GitHub</a>
+        <a href="#opensource" data-i18n="navOss">Mã nguồn mở</a>
         <a href="#experience" data-i18n="navExperience">Kinh nghiệm</a>
         <a href="#contact" data-i18n="navContact">Liên hệ</a>
       </nav>
 
       <div class="nav-actions">
+        <a class="btn btn-primary btn-sm nav-cv" href="CV_Nguyen_Quoc_Anh_Harvard_ATS.pdf" download>
+          <span data-i18n="navCv">Tải CV</span>
+          <svg class="i-down" width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </a>
         <button class="lang-btn" id="langToggle" type="button" aria-label="Switch to English">EN</button>
-
-        <button class="icon-btn" id="themeToggle" type="button" aria-label="Đổi giao diện sáng tối" title="Đổi giao diện">
-          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.64 5.64l1.42 1.42M16.94 16.94l1.42 1.42M18.36 5.64l-1.42 1.42M7.06 16.94l-1.42 1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-            <circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/>
-          </svg>
+        <button class="icon-btn" id="themeToggle" type="button" aria-label="Đổi giao diện sáng tối">
+          <svg class="theme-icon-sun" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 3v2M12 19v2M3 12h2M19 12h2M5.64 5.64l1.42 1.42M16.94 16.94l1.42 1.42M18.36 5.64l-1.42 1.42M7.06 16.94l-1.42 1.42" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/><circle cx="12" cy="12" r="4" stroke="currentColor" stroke-width="1.8"/></svg>
+          <svg class="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 14.5A8 8 0 019.5 4a8 8 0 1010.5 10.5z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
         </button>
-
-        <button class="icon-btn mobile-menu-btn" id="menuToggle" type="button" aria-label="Mở menu" aria-expanded="false">
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-            <path d="M4 7h16M4 12h16M4 17h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
-          </svg>
+        <button class="icon-btn mobile-menu-btn" id="menuToggle" type="button" aria-label="Mở menu" aria-expanded="false" aria-controls="mainNav">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M4 8h16M4 16h16" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
         </button>
       </div>
     </div>
   </header>
 
   <main id="main">
+    <!-- ================= HERO ================= -->
     <section class="hero" id="top">
-      <div class="container hero-grid">
-        <div>
-          <div class="eyebrow" data-i18n="heroEyebrow">PHP Developer · TP. Hồ Chí Minh</div>
-          <h1 data-i18n="heroTitle">Xây sản phẩm hữu ích, không chỉ viết code.</h1>
-          <p class="hero-copy" data-i18n-html="heroCopy">
-            Tôi là <strong>Nguyễn Quốc Anh</strong>, PHP Developer định hướng xây dựng ứng dụng web ổn định bằng
-            <strong>PHP, MySQL, JavaScript, Bootstrap và REST API</strong>. Tôi thích biến vấn đề thực tế thành phần mềm đơn giản, dễ bảo trì.
-          </p>
+      <div class="hero-bg" aria-hidden="true"></div>
+      <div class="hero-orb" id="heroOrb" aria-hidden="true"></div>
 
-          <div class="hero-actions">
-            <a class="btn btn-primary" href="#projects" data-i18n="heroProjectBtn">Xem dự án nổi bật</a>
-            <a class="btn btn-secondary" href="CV_Nguyen_Quoc_Anh_Harvard_ATS.pdf" download data-i18n="heroCvBtn">Tải CV</a>
-            <a class="btn btn-secondary" href="mailto:nguyenquocanh.dev@gmail.com" data-i18n="heroEmailBtn">Gửi email</a>
-          </div>
+      <div class="container hero-inner">
+        <div class="status-pill" data-reveal>
+          <span class="status-dot" aria-hidden="true"></span>
+          <span data-i18n="openStatus">Open to work · PHP Developer</span>
         </div>
 
-        <aside class="github-hero-card" aria-label="GitHub profile">
-          <div class="status"><span class="status-dot"></span><span data-i18n="openStatus">Sẵn sàng cho vị trí PHP Developer</span></div>
+        <h1 data-reveal style="--d:1" data-i18n="heroTitle">Xây sản phẩm hữu ích, không chỉ viết code.</h1>
 
-          <div class="profile-row">
-            <div class="avatar avatar-placeholder" id="profileAvatarPlaceholder" aria-hidden="true">NQA</div>
-            <img class="avatar" id="profileAvatar" src="" alt="GitHub avatar" hidden />
-            <div>
-              <h2 class="profile-name" id="profileName">Nguyễn Quốc Anh</h2>
-              <a class="profile-login" id="profileLogin" href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener noreferrer">@nguyenquocanhz</a>
-            </div>
-          </div>
+        <p class="hero-copy" data-reveal style="--d:2" data-i18n-html="heroCopy">
+          Tôi là <strong>Nguyễn Quốc Anh</strong>, PHP Developer tại TP. Hồ Chí Minh. Tôi xây ứng dụng web ổn định bằng
+          <strong>PHP, MySQL, JavaScript và REST API</strong>, và phát triển công cụ mã nguồn mở cho cộng đồng.
+        </p>
 
-          <div class="profile-stats">
-            <div class="profile-stat"><strong id="profileRepos">—</strong><span data-i18n="reposLabel">Kho mã nguồn</span></div>
-            <div class="profile-stat"><strong id="profileFollowers">—</strong><span data-i18n="followersLabel">Người theo dõi</span></div>
-            <div class="profile-stat"><strong id="profileFollowing">—</strong><span data-i18n="followingLabel">Đang theo dõi</span></div>
-          </div>
+        <div class="hero-actions" data-reveal style="--d:3">
+          <a class="btn btn-primary magnetic" href="#projects">
+            <span data-i18n="heroProjectBtn">Xem dự án</span>
+            <svg class="i-arrow" width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn magnetic" href="CV_Nguyen_Quoc_Anh_Harvard_ATS.pdf" download>
+            <span data-i18n="heroCvBtn">Tải CV (PDF)</span>
+            <svg class="i-down" width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+          <a class="btn magnetic" href="#contact" data-i18n="heroContactBtn">Liên hệ</a>
+        </div>
 
-          <div class="quick-info">
-            <a href="mailto:nguyenquocanh.dev@gmail.com">nguyenquocanh.dev@gmail.com</a>
-            <a href="tel:+84397215747">+84 397 215 747</a>
-            <span data-i18n="location">Bình Tân, TP. Hồ Chí Minh</span>
-            <a href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener noreferrer">github.com/nguyenquocanhz</a>
-            <a href="https://www.linkedin.com/in/nguyenquocanhz/" target="_blank" rel="noopener noreferrer">linkedin.com/in/nguyenquocanhz</a>
-          </div>
-        </aside>
+        <div class="hero-stats" data-reveal style="--d:4">
+          <div class="hero-stat"><strong id="profileRepos">—</strong><span data-i18n="reposLabel">Kho mã nguồn</span></div>
+          <div class="hero-stat"><strong id="profileStars">—</strong><span data-i18n="starsLabel">Sao trên GitHub</span></div>
+          <div class="hero-stat"><strong id="profileFollowers">—</strong><span data-i18n="followersLabel">Người theo dõi</span></div>
+          <div class="hero-stat"><strong data-count="3.6" data-decimals="1" data-suffix="/4.0">3.6/4.0</strong><span data-i18n="gpaLabel">GPA học tập</span></div>
+        </div>
       </div>
     </section>
 
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee-track">
+        <div class="marquee-group">
+          <span>PHP 8</span><span>MySQL</span><span>JavaScript</span><span>REST API</span><span>Go</span><span>Python</span><span>TypeScript</span><span>Bootstrap</span><span>Git</span><span>GitHub Actions</span><span>CI/CD</span><span>VPS Deployment</span>
+        </div>
+        <div class="marquee-group">
+          <span>PHP 8</span><span>MySQL</span><span>JavaScript</span><span>REST API</span><span>Go</span><span>Python</span><span>TypeScript</span><span>Bootstrap</span><span>Git</span><span>GitHub Actions</span><span>CI/CD</span><span>VPS Deployment</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= ABOUT ================= -->
     <section class="section" id="about">
       <div class="container">
         <div class="section-heading">
-          <div class="section-kicker" data-i18n="aboutKicker">01 / Giới thiệu</div>
-          <h2 class="section-title" data-i18n="aboutTitle">Developer thực chiến với tư duy sản phẩm.</h2>
+          <span class="section-kicker" data-reveal data-i18n="aboutKicker">01 — Giới thiệu</span>
+          <h2 class="section-title" data-reveal style="--d:1" data-i18n="aboutTitle">Developer thực chiến với tư duy sản phẩm.</h2>
         </div>
 
         <div class="about-grid">
-          <article class="card">
+          <article class="card spot" data-reveal>
             <h3 data-i18n="aboutBringTitle">Tôi có thể đóng góp gì?</h3>
             <p data-i18n="aboutBringCopy">
               Nền tảng kỹ thuật phần mềm kết hợp kinh nghiệm xử lý lỗi, thiết kế cơ sở dữ liệu, hỗ trợ hệ thống và triển khai. Tôi ưu tiên code rõ ràng, tính năng ổn định và phối hợp minh bạch trong nhóm.
             </p>
 
             <div class="stat-grid">
-              <div class="stat"><strong>3.6/4.0</strong><span data-i18n="gpaLabel">GPA học tập</span></div>
-              <div class="stat"><strong>9+/10</strong><span data-i18n="scoreLabel">Điểm dự án nhóm</span></div>
-              <div class="stat"><strong>5</strong><span data-i18n="teamLabel">Thành viên đã dẫn dắt</span></div>
+              <div class="stat"><strong data-count="3.6" data-decimals="1" data-suffix="/4.0">3.6/4.0</strong><span data-i18n="gpaLabel">GPA học tập</span></div>
+              <div class="stat"><strong data-count="9" data-suffix="+/10">9+/10</strong><span data-i18n="scoreLabel">Điểm dự án nhóm</span></div>
+              <div class="stat"><strong data-count="5">5</strong><span data-i18n="teamLabel">Thành viên đã dẫn dắt</span></div>
             </div>
           </article>
 
-          <article class="card">
+          <article class="card spot" data-reveal style="--d:1">
             <h3 data-i18n="focusTitle">Định hướng hiện tại</h3>
             <p data-i18n="focusCopy">
               Phát triển chuyên sâu PHP trong đội ngũ kỹ thuật chuyên nghiệp, tập trung backend logic, tối ưu MySQL, bảo mật ứng dụng, tích hợp API và cải thiện toàn bộ hành trình người dùng từ giao diện đến cơ sở dữ liệu.
             </p>
+
+            <div class="profile-row">
+              <div class="avatar avatar-placeholder" id="profileAvatarPlaceholder" aria-hidden="true">NQA</div>
+              <img class="avatar" id="profileAvatar" src="" alt="GitHub avatar" hidden />
+              <div>
+                <div class="profile-name" id="profileName">Nguyễn Quốc Anh</div>
+                <a class="profile-login" id="profileLogin" href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener noreferrer">@nguyenquocanhz</a>
+              </div>
+            </div>
           </article>
         </div>
       </div>
     </section>
 
+    <!-- ================= SKILLS ================= -->
     <section class="section" id="skills">
       <div class="container">
         <div class="section-heading">
-          <div class="section-kicker" data-i18n="skillsKicker">02 / Kỹ năng</div>
-          <h2 class="section-title" data-i18n="skillsTitle">Bộ kỹ năng tập trung cho phát triển web hiện đại.</h2>
+          <span class="section-kicker" data-reveal data-i18n="skillsKicker">02 — Kỹ năng</span>
+          <h2 class="section-title" data-reveal style="--d:1" data-i18n="skillsTitle">Bộ kỹ năng tập trung cho phát triển web hiện đại.</h2>
         </div>
 
-        <div class="skill-groups">
-          <div class="skill-group">
-            <h3>Backend</h3>
+        <div class="skills-grid">
+          <div class="card spot skill-group" data-reveal>
+            <h3>Backend <small>01</small></h3>
             <div class="tags">
               <span class="tag">PHP 7/8</span><span class="tag">REST API</span><span class="tag">Authentication</span>
               <span class="tag">Payment Integration</span><span class="tag">Backend Automation</span>
             </div>
           </div>
 
-          <div class="skill-group">
-            <h3>Frontend</h3>
+          <div class="card spot skill-group" data-reveal style="--d:1">
+            <h3>Frontend <small>02</small></h3>
             <div class="tags">
               <span class="tag">HTML5</span><span class="tag">CSS3</span><span class="tag">JavaScript</span>
               <span class="tag">Bootstrap</span><span class="tag">jQuery</span><span class="tag">Responsive UI</span>
             </div>
           </div>
 
-          <div class="skill-group">
-            <h3 data-i18n="databaseTitle">Cơ sở dữ liệu</h3>
+          <div class="card spot skill-group" data-reveal style="--d:2">
+            <h3><span data-i18n="databaseTitle">Cơ sở dữ liệu</span> <small>03</small></h3>
             <div class="tags">
               <span class="tag">MySQL</span><span class="tag">SQL Server</span><span class="tag">Database Design</span>
               <span class="tag">Stored Procedures</span><span class="tag">Query Optimization</span>
             </div>
           </div>
 
-          <div class="skill-group">
-            <h3 data-i18n="workflowTitle">Công cụ & quy trình</h3>
+          <div class="card spot skill-group" data-reveal>
+            <h3><span data-i18n="workflowTitle">Công cụ & quy trình</span> <small>04</small></h3>
             <div class="tags">
               <span class="tag">Git</span><span class="tag">GitHub</span><span class="tag">GitLab</span>
               <span class="tag">GitHub Actions</span><span class="tag">CI/CD</span><span class="tag">VPS Deployment</span>
+            </div>
+          </div>
+
+          <div class="card spot skill-group" data-reveal style="--d:1">
+            <h3><span data-i18n="mobileTitle">Mobile & Desktop</span> <small>05</small></h3>
+            <div class="tags">
+              <span class="tag">Java (Android)</span><span class="tag">MVVM</span><span class="tag">Room</span>
+              <span class="tag">C# / .NET</span><span class="tag">3-Tier Architecture</span>
+            </div>
+          </div>
+
+          <div class="card spot skill-group" data-reveal style="--d:2">
+            <h3><span data-i18n="ossSkillTitle">Dùng trong mã nguồn mở</span> <small>06</small></h3>
+            <div class="tags">
+              <span class="tag">Go</span><span class="tag">Python</span><span class="tag">TypeScript</span>
+              <span class="tag">Electron</span><span class="tag">Linux</span><span class="tag">SSH</span>
             </div>
           </div>
         </div>
       </div>
     </section>
 
+    <!-- ================= PROJECTS ================= -->
     <section class="section" id="projects">
       <div class="container">
         <div class="section-heading">
-          <div class="section-kicker" data-i18n="projectsKicker">03 / Dự án</div>
-          <h2 class="section-title" data-i18n="projectsTitle">Sản phẩm giải quyết vấn đề thực tế.</h2>
+          <span class="section-kicker" data-reveal data-i18n="projectsKicker">03 — Dự án</span>
+          <h2 class="section-title" data-reveal style="--d:1" data-i18n="projectsTitle">Sản phẩm giải quyết vấn đề thực tế.</h2>
         </div>
 
-        <div class="projects">
-          <article class="project featured">
+        <div class="projects-grid">
+          <article class="card spot project featured" data-reveal>
             <div>
-              <div class="project-index" data-i18n="featuredLabel">DỰ ÁN NỔI BẬT</div>
+              <div class="project-index">
+                <span data-i18n="featuredLabel">01 · Dự án nổi bật</span>
+                <span class="project-arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
               <h3 data-i18n="vpsTitle">Nền tảng thương mại điện tử VPS tự động</h3>
               <p data-i18n="vpsCopy">
                 Ứng dụng full-stack cho phép cấu hình, thanh toán và tự động kích hoạt dịch vụ VPS. Hệ thống xử lý tùy chọn máy chủ, xác minh thanh toán, giao thông tin tài khoản tức thời và báo cáo doanh thu.
               </p>
-              <div class="project-meta">
+              <div class="tags">
                 <span class="tag">PHP</span><span class="tag">MySQL</span><span class="tag">Bootstrap</span>
                 <span class="tag">jQuery</span><span class="tag">REST API</span><span class="tag">Payment Gateway</span>
               </div>
             </div>
-            <div class="project-links">
-              <a href="mailto:nguyenquocanh.dev@gmail.com?subject=VPS%20E-commerce%20Project%20Demo" data-i18n="requestDemo">Yêu cầu xem demo ↗</a>
-            </div>
+            <a class="text-link stretch" href="mailto:nguyenquocanh.dev@gmail.com?subject=VPS%20E-commerce%20Project%20Demo" data-i18n="requestDemo">Yêu cầu xem demo</a>
           </article>
 
-          <article class="project">
+          <article class="card spot project" data-reveal>
             <div>
-              <div class="project-index">02</div>
+              <div class="project-index">
+                <span>02 · Android</span>
+                <span class="project-arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
               <h3>QR Wallet</h3>
               <p data-i18n="qrCopy">
                 Ứng dụng Android tập trung mã QR ngân hàng, hỗ trợ xác thực sinh trắc học, mã hóa dữ liệu cục bộ, quét QR và đăng nhập Google.
               </p>
-              <div class="project-meta">
+              <div class="tags">
                 <span class="tag">Java</span><span class="tag">MVVM</span><span class="tag">Room</span>
                 <span class="tag">CameraX</span><span class="tag">ZXing</span>
               </div>
             </div>
-            <div class="project-links">
-              <a href="https://github.com/nguyenquocanhz/AppQRWallet" target="_blank" rel="noopener noreferrer" data-i18n="viewSource">Xem mã nguồn ↗</a>
-            </div>
+            <a class="text-link stretch" href="https://github.com/nguyenquocanhz/AppQRWallet" target="_blank" rel="noopener noreferrer" data-i18n="viewSource">Xem mã nguồn</a>
           </article>
 
-          <article class="project">
+          <article class="card spot project" data-reveal style="--d:1">
             <div>
-              <div class="project-index">03</div>
+              <div class="project-index">
+                <span>03 · Android</span>
+                <span class="project-arrow" aria-hidden="true"><svg width="15" height="15" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              </div>
               <h3 data-i18n="quizTitle">Ứng dụng ôn thi giấy phép lái xe</h3>
               <p data-i18n="quizCopy">
                 Ứng dụng Android hoạt động ngoại tuyến với câu hỏi theo chủ đề, đề thi thử 30 câu, đọc dữ liệu JSON và theo dõi tiến độ học tập.
               </p>
-              <div class="project-meta">
+              <div class="tags">
                 <span class="tag">Java</span><span class="tag">Android XML</span><span class="tag">JSON</span><span class="tag">Offline Storage</span>
               </div>
             </div>
-            <div class="project-links">
-              <a href="https://github.com/nguyenquocanhz/VietLearn" target="_blank" rel="noopener noreferrer" data-i18n="viewSource2">Xem mã nguồn ↗</a>
-            </div>
+            <a class="text-link stretch" href="https://github.com/nguyenquocanhz/VietLearn" target="_blank" rel="noopener noreferrer" data-i18n="viewSource">Xem mã nguồn</a>
           </article>
 
-          <article class="project">
+          <article class="card spot project featured" data-reveal>
             <div>
-              <div class="project-index">04</div>
+              <div class="project-index">
+                <span data-i18n="storeLabel">04 · Desktop · Trưởng nhóm</span>
+              </div>
               <h3 data-i18n="storeTitle">Hệ thống quản lý cửa hàng</h3>
               <p data-i18n="storeCopy">
                 Ứng dụng desktop quản lý kinh doanh laptop và linh kiện. Tôi dẫn dắt nhóm 5 thành viên, thiết kế cơ sở dữ liệu, phân công công việc và review code.
               </p>
-              <div class="project-meta">
+              <div class="tags">
                 <span class="tag">C#</span><span class="tag">SQL Server</span><span class="tag">3-Tier Architecture</span><span class="tag">Team Leadership</span>
               </div>
             </div>
@@ -1106,45 +1334,97 @@
       </div>
     </section>
 
-    <section class="section" id="github">
+    <!-- ================= OPEN SOURCE ================= -->
+    <section class="section" id="opensource">
       <div class="container">
         <div class="section-heading">
-          <div class="section-kicker" data-i18n="githubKicker">04 / GitHub REST API</div>
-          <h2 class="section-title" data-i18n="githubTitle">Kho mã nguồn được cập nhật trực tiếp từ GitHub.</h2>
+          <span class="section-kicker" data-reveal data-i18n="ossKicker">04 — Mã nguồn mở</span>
+          <h2 class="section-title" data-reveal style="--d:1" data-i18n="ossTitle">Xây công khai, chia sẻ cho cộng đồng.</h2>
+          <p class="section-lead" data-reveal style="--d:2" data-i18n="ossLead">Các công cụ tôi tự phát triển và duy trì trên GitHub — dữ liệu bên dưới được tải trực tiếp từ GitHub REST API.</p>
         </div>
 
-        <div class="github-panel">
-          <div class="github-toolbar">
-            <p data-i18n="githubCopy">Dữ liệu profile và repository công khai của @nguyenquocanhz được tải tự động khi mở trang.</p>
-            <a class="btn btn-secondary" href="https://github.com/nguyenquocanhz?tab=repositories" target="_blank" rel="noopener noreferrer" data-i18n="allGithub">Xem toàn bộ trên GitHub ↗</a>
+        <article class="card spot oss-feature" data-reveal>
+          <div>
+            <span class="oss-badge" data-i18n="termwardBadge">Dự án tiêu biểu · Go</span>
+            <h3>Termward</h3>
+            <p data-i18n="termwardCopy">Trình quản lý SSH mã nguồn mở cho nhiều máy chủ, chủ động cảnh báo tình trạng máy và quản lý SSH key. Lõi viết bằng Go, giao diện desktop bằng Electron.</p>
+            <ul class="oss-points">
+              <li data-i18n="termwardP1">Quản lý nhiều máy chủ SSH trong một nơi</li>
+              <li data-i18n="termwardP2">Cảnh báo sức khỏe máy chủ chủ động</li>
+              <li data-i18n="termwardP3">Quản lý SSH key tập trung</li>
+            </ul>
+            <div class="oss-actions">
+              <a class="btn btn-primary magnetic" href="https://github.com/nguyenquocanhz/termward" target="_blank" rel="noopener noreferrer">
+                <svg width="17" height="17" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>
+                <span data-i18n="termwardBtn">Xem trên GitHub</span>
+              </a>
+              <span class="oss-meta" id="termwardMeta"></span>
+            </div>
           </div>
 
+          <div class="terminal" aria-hidden="true">
+            <div class="terminal-bar"><i></i><i></i><i></i><span>termward — zsh</span></div>
+            <pre class="terminal-body" id="terminalBody"></pre>
+          </div>
+        </article>
+
+        <div class="github-toolbar" data-reveal>
           <div class="repo-filters" id="repoFilters" aria-label="Lọc repository"></div>
+          <a class="text-link" href="https://github.com/nguyenquocanhz?tab=repositories" target="_blank" rel="noopener noreferrer">
+            <span data-i18n="allGithub">Xem toàn bộ trên GitHub</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          </a>
+        </div>
 
-          <div class="repo-grid" id="repoGrid" aria-live="polite">
-            <div class="skeleton" aria-hidden="true"></div>
-            <div class="skeleton" aria-hidden="true"></div>
-            <div class="skeleton" aria-hidden="true"></div>
-          </div>
+        <div class="repo-grid" id="repoGrid" aria-live="polite">
+          <div class="skeleton" aria-hidden="true"></div>
+          <div class="skeleton" aria-hidden="true"></div>
+          <div class="skeleton" aria-hidden="true"></div>
+        </div>
 
-          <div class="repo-actions">
-            <button class="btn btn-secondary" id="loadMoreRepos" type="button" hidden data-i18n="loadMore">Tải thêm dự án</button>
-          </div>
+        <div class="repo-actions">
+          <button class="btn" id="loadMoreRepos" type="button" hidden data-i18n="loadMore">Tải thêm dự án</button>
         </div>
       </div>
     </section>
 
+    <!-- ================= EXPERIENCE / TIMELINE ================= -->
     <section class="section" id="experience">
       <div class="container">
         <div class="section-heading">
-          <div class="section-kicker" data-i18n="experienceKicker">05 / Hành trình</div>
-          <h2 class="section-title" data-i18n="experienceTitle">Kinh nghiệm và học vấn.</h2>
+          <span class="section-kicker" data-reveal data-i18n="experienceKicker">05 — Hành trình</span>
+          <h2 class="section-title" data-reveal style="--d:1" data-i18n="experienceTitle">Kinh nghiệm và học vấn.</h2>
         </div>
 
-        <div class="timeline">
-          <article class="timeline-item">
-            <div class="timeline-time" data-i18n="workTime">09/2025 — 10/2025</div>
-            <div>
+        <div class="timeline" id="timeline">
+          <div class="timeline-rail" aria-hidden="true"></div>
+          <div class="timeline-fill" aria-hidden="true"></div>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-meta">
+              <span class="timeline-type" data-i18n="typeOss">Mã nguồn mở</span>
+              <span data-i18n="ossTime">Đang diễn ra</span>
+            </div>
+            <div class="timeline-card">
+              <h3 data-i18n="ossRoleTitle">Tác giả & maintainer mã nguồn mở</h3>
+              <h4>GitHub · @nguyenquocanhz</h4>
+              <ul>
+                <li data-i18n="oss1">Phát triển Termward — trình quản lý SSH cho nhiều máy chủ (Go + Electron).</li>
+                <li data-i18n="oss2">Xây DomainGateway — theo dõi ngày hết hạn tên miền qua RDAP/WHOIS, cảnh báo Telegram.</li>
+                <li data-i18n="oss3">Duy trì nhiều công cụ nhỏ cho quản trị máy chủ, tự động hóa và tiện ích desktop.</li>
+              </ul>
+              <div class="tags"><span class="tag">Go</span><span class="tag">Python</span><span class="tag">TypeScript</span><span class="tag">PHP</span></div>
+            </div>
+          </article>
+
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-meta">
+              <span class="timeline-type" data-i18n="typeWork">Công việc</span>
+              <span data-i18n="workTime">09/2025 — 10/2025</span>
+            </div>
+            <div class="timeline-card">
               <h3 data-i18n="workTitle">Nhân viên Hỗ trợ Kỹ thuật</h3>
               <h4>Z1 Computer Joint Stock Company</h4>
               <ul>
@@ -1155,9 +1435,13 @@
             </div>
           </article>
 
-          <article class="timeline-item">
-            <div class="timeline-time" data-i18n="eduTime">08/2023 — 03/2026</div>
-            <div>
+          <article class="timeline-item" data-reveal>
+            <span class="timeline-dot" aria-hidden="true"></span>
+            <div class="timeline-meta">
+              <span class="timeline-type" data-i18n="typeEdu">Học vấn</span>
+              <span data-i18n="eduTime">08/2023 — 03/2026</span>
+            </div>
+            <div class="timeline-card">
               <h3 data-i18n="eduTitle">Kỹ thuật phần mềm</h3>
               <h4 data-i18n="school">Trường Cao đẳng Kinh tế - Kỹ thuật TP. Hồ Chí Minh (HOTEC)</h4>
               <ul>
@@ -1171,19 +1455,57 @@
       </div>
     </section>
 
+    <!-- ================= CONTACT ================= -->
     <section class="section" id="contact">
       <div class="container">
-        <div class="contact-panel">
-          <h2 data-i18n="contactTitle">Cùng xây một sản phẩm thật sự hữu ích.</h2>
-          <p data-i18n="contactCopy">
-            Tôi đang tìm cơ hội PHP Developer tại TP. Hồ Chí Minh. Hãy liên hệ để trao đổi phỏng vấn, dự án hoặc hợp tác kỹ thuật.
+        <div class="contact-head">
+          <div class="status-pill" data-reveal>
+            <span class="status-dot" aria-hidden="true"></span>
+            <span data-i18n="contactStatus">Open to work · Sẵn sàng nhận việc</span>
+          </div>
+          <h2 data-reveal style="--d:1" data-i18n="contactTitle">Cùng xây một sản phẩm thật sự hữu ích.</h2>
+          <p data-reveal style="--d:2" data-i18n="contactCopy">
+            Tôi đang tìm cơ hội PHP Developer tại TP. Hồ Chí Minh. Nhắn trực tiếp qua mạng xã hội hoặc email để trao đổi phỏng vấn, dự án hay hợp tác kỹ thuật.
           </p>
 
-          <div class="contact-links">
-            <a class="btn btn-primary" href="mailto:nguyenquocanh.dev@gmail.com" data-i18n="contactEmail">Gửi email</a>
-            <a class="btn btn-secondary" href="tel:+84397215747" data-i18n="contactCall">Gọi điện</a>
-            <a class="btn btn-secondary" href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener noreferrer">GitHub</a>
+          <div class="contact-email" data-reveal style="--d:3">
+            <span>nguyenquocanh.dev@gmail.com</span>
+            <button class="btn btn-primary btn-sm" id="copyEmail" type="button" data-email="nguyenquocanh.dev@gmail.com" data-i18n="copyEmail">Sao chép</button>
           </div>
+        </div>
+
+        <div class="contact-grid">
+          <a class="card spot contact-card" href="https://t.me/nqatech2003" target="_blank" rel="noopener noreferrer" data-reveal>
+            <div class="contact-card-top">
+              <span class="contact-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 4L3 11l6 2.2M21 4l-3.5 15-8.5-5.8M21 4L9 13.2m0 0V19l3.2-3.6" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+              <span class="project-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div><strong>Telegram</strong><span data-i18n="dmTelegram">Nhắn tin trực tiếp · @nqatech2003</span></div>
+          </a>
+
+          <a class="card spot contact-card" href="https://www.linkedin.com/in/nguyenquocanhz/" target="_blank" rel="noopener noreferrer" data-reveal style="--d:1">
+            <div class="contact-card-top">
+              <span class="contact-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="3" stroke="currentColor" stroke-width="1.7"/><path d="M8 10.5V17M8 7.2v.1M12 17v-3.6c0-1.6 1-2.6 2.3-2.6s2 .9 2 2.6V17M12 10.5V17" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></svg></span>
+              <span class="project-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div><strong>LinkedIn</strong><span data-i18n="dmLinkedin">Kết nối nghề nghiệp · /in/nguyenquocanhz</span></div>
+          </a>
+
+          <a class="card spot contact-card" href="https://github.com/nguyenquocanhz" target="_blank" rel="noopener noreferrer" data-reveal style="--d:2">
+            <div class="contact-card-top">
+              <span class="contact-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg></span>
+              <span class="project-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div><strong>GitHub</strong><span data-i18n="dmGithub">Mã nguồn & issue · @nguyenquocanhz</span></div>
+          </a>
+
+          <a class="card spot contact-card" href="tel:+84397215747" data-reveal style="--d:3">
+            <div class="contact-card-top">
+              <span class="contact-icon"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M5 4h4l2 5-2.5 1.5a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z" stroke="currentColor" stroke-width="1.7" stroke-linejoin="round"/></svg></span>
+              <span class="project-arrow" aria-hidden="true"><svg width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            </div>
+            <div><strong data-i18n="contactCall">Điện thoại</strong><span>+84 397 215 747</span></div>
+          </a>
         </div>
       </div>
     </section>
@@ -1191,10 +1513,15 @@
 
   <footer>
     <div class="container footer-row">
-      <span>© <span id="year"></span> Nguyễn Quốc Anh.</span>
+      <span>© <span id="year"></span> Nguyễn Quốc Anh · <span data-i18n="location">Bình Tân, TP. Hồ Chí Minh</span></span>
       <span data-i18n="footerCopy">Portfolio song ngữ · GitHub REST API · Không dùng framework.</span>
     </div>
   </footer>
+
+  <button class="to-top" id="toTop" type="button" aria-label="Lên đầu trang">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 19V5m0 0l-6 6m6-6l6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+  </button>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <script>
     "use strict";
@@ -1202,86 +1529,118 @@
     const GITHUB_USER = "nguyenquocanhz";
     const API_VERSION = "2022-11-28";
     const REPOS_PER_VIEW = 6;
+    const FEATURED_REPO = "termward";
 
     const translations = {
       vi: {
         pageTitle: "Nguyễn Quốc Anh | PHP Developer",
-        pageDescription: "Portfolio song ngữ Việt/Anh của Nguyễn Quốc Anh — PHP Developer. Dự án PHP, MySQL, JavaScript, Bootstrap, REST API và GitHub.",
+        pageDescription: "Portfolio song ngữ Việt/Anh của Nguyễn Quốc Anh — PHP Developer. Dự án PHP, MySQL, JavaScript, REST API và mã nguồn mở trên GitHub.",
         skip: "Bỏ qua đến nội dung chính",
-        navAbout: "Giới thiệu", navSkills: "Kỹ năng", navProjects: "Dự án", navGithub: "GitHub", navExperience: "Kinh nghiệm", navContact: "Liên hệ",
-        heroEyebrow: "PHP Developer · TP. Hồ Chí Minh",
+        navAbout: "Giới thiệu", navSkills: "Kỹ năng", navProjects: "Dự án", navOss: "Mã nguồn mở", navExperience: "Kinh nghiệm", navContact: "Liên hệ", navCv: "Tải CV",
+        openStatus: "Open to work · PHP Developer",
         heroTitle: "Xây sản phẩm hữu ích, không chỉ viết code.",
-        heroCopy: "Tôi là <strong>Nguyễn Quốc Anh</strong>, PHP Developer định hướng xây dựng ứng dụng web ổn định bằng <strong>PHP, MySQL, JavaScript, Bootstrap và REST API</strong>. Tôi thích biến vấn đề thực tế thành phần mềm đơn giản, dễ bảo trì.",
-        heroProjectBtn: "Xem dự án nổi bật", heroCvBtn: "Tải CV", heroEmailBtn: "Gửi email",
-        openStatus: "Sẵn sàng cho vị trí PHP Developer", reposLabel: "Kho mã nguồn", followersLabel: "Người theo dõi", followingLabel: "Đang theo dõi", location: "Bình Tân, TP. Hồ Chí Minh",
-        aboutKicker: "01 / Giới thiệu", aboutTitle: "Developer thực chiến với tư duy sản phẩm.",
+        heroCopy: "Tôi là <strong>Nguyễn Quốc Anh</strong>, PHP Developer tại TP. Hồ Chí Minh. Tôi xây ứng dụng web ổn định bằng <strong>PHP, MySQL, JavaScript và REST API</strong>, và phát triển công cụ mã nguồn mở cho cộng đồng.",
+        heroProjectBtn: "Xem dự án", heroCvBtn: "Tải CV (PDF)", heroContactBtn: "Liên hệ",
+        reposLabel: "Kho mã nguồn", starsLabel: "Sao trên GitHub", followersLabel: "Người theo dõi", location: "Bình Tân, TP. Hồ Chí Minh",
+        aboutKicker: "01 — Giới thiệu", aboutTitle: "Developer thực chiến với tư duy sản phẩm.",
         aboutBringTitle: "Tôi có thể đóng góp gì?", aboutBringCopy: "Nền tảng kỹ thuật phần mềm kết hợp kinh nghiệm xử lý lỗi, thiết kế cơ sở dữ liệu, hỗ trợ hệ thống và triển khai. Tôi ưu tiên code rõ ràng, tính năng ổn định và phối hợp minh bạch trong nhóm.",
         gpaLabel: "GPA học tập", scoreLabel: "Điểm dự án nhóm", teamLabel: "Thành viên đã dẫn dắt",
         focusTitle: "Định hướng hiện tại", focusCopy: "Phát triển chuyên sâu PHP trong đội ngũ kỹ thuật chuyên nghiệp, tập trung backend logic, tối ưu MySQL, bảo mật ứng dụng, tích hợp API và cải thiện toàn bộ hành trình người dùng từ giao diện đến cơ sở dữ liệu.",
-        skillsKicker: "02 / Kỹ năng", skillsTitle: "Bộ kỹ năng tập trung cho phát triển web hiện đại.", databaseTitle: "Cơ sở dữ liệu", workflowTitle: "Công cụ & quy trình",
-        projectsKicker: "03 / Dự án", projectsTitle: "Sản phẩm giải quyết vấn đề thực tế.", featuredLabel: "DỰ ÁN NỔI BẬT",
-        vpsTitle: "Nền tảng thương mại điện tử VPS tự động", vpsCopy: "Ứng dụng full-stack cho phép cấu hình, thanh toán và tự động kích hoạt dịch vụ VPS. Hệ thống xử lý tùy chọn máy chủ, xác minh thanh toán, giao thông tin tài khoản tức thời và báo cáo doanh thu.", requestDemo: "Yêu cầu xem demo ↗",
-        qrCopy: "Ứng dụng Android tập trung mã QR ngân hàng, hỗ trợ xác thực sinh trắc học, mã hóa dữ liệu cục bộ, quét QR và đăng nhập Google.", viewSource: "Xem mã nguồn ↗",
-        quizTitle: "Ứng dụng ôn thi giấy phép lái xe", quizCopy: "Ứng dụng Android hoạt động ngoại tuyến với câu hỏi theo chủ đề, đề thi thử 30 câu, đọc dữ liệu JSON và theo dõi tiến độ học tập.", viewSource2: "Xem mã nguồn ↗",
-        storeTitle: "Hệ thống quản lý cửa hàng", storeCopy: "Ứng dụng desktop quản lý kinh doanh laptop và linh kiện. Tôi dẫn dắt nhóm 5 thành viên, thiết kế cơ sở dữ liệu, phân công công việc và review code.",
-        githubKicker: "04 / GitHub REST API", githubTitle: "Kho mã nguồn được cập nhật trực tiếp từ GitHub.", githubCopy: "Dữ liệu profile và repository công khai của @nguyenquocanhz được tải tự động khi mở trang.", allGithub: "Xem toàn bộ trên GitHub ↗", loadMore: "Tải thêm dự án",
-        experienceKicker: "05 / Hành trình", experienceTitle: "Kinh nghiệm và học vấn.", workTime: "09/2025 — 10/2025", workTitle: "Nhân viên Hỗ trợ Kỹ thuật",
+        skillsKicker: "02 — Kỹ năng", skillsTitle: "Bộ kỹ năng tập trung cho phát triển web hiện đại.", databaseTitle: "Cơ sở dữ liệu", workflowTitle: "Công cụ & quy trình", mobileTitle: "Mobile & Desktop", ossSkillTitle: "Dùng trong mã nguồn mở",
+        projectsKicker: "03 — Dự án", projectsTitle: "Sản phẩm giải quyết vấn đề thực tế.", featuredLabel: "01 · Dự án nổi bật",
+        vpsTitle: "Nền tảng thương mại điện tử VPS tự động", vpsCopy: "Ứng dụng full-stack cho phép cấu hình, thanh toán và tự động kích hoạt dịch vụ VPS. Hệ thống xử lý tùy chọn máy chủ, xác minh thanh toán, giao thông tin tài khoản tức thời và báo cáo doanh thu.", requestDemo: "Yêu cầu xem demo",
+        qrCopy: "Ứng dụng Android tập trung mã QR ngân hàng, hỗ trợ xác thực sinh trắc học, mã hóa dữ liệu cục bộ, quét QR và đăng nhập Google.", viewSource: "Xem mã nguồn",
+        quizTitle: "Ứng dụng ôn thi giấy phép lái xe", quizCopy: "Ứng dụng Android hoạt động ngoại tuyến với câu hỏi theo chủ đề, đề thi thử 30 câu, đọc dữ liệu JSON và theo dõi tiến độ học tập.",
+        storeLabel: "04 · Desktop · Trưởng nhóm", storeTitle: "Hệ thống quản lý cửa hàng", storeCopy: "Ứng dụng desktop quản lý kinh doanh laptop và linh kiện. Tôi dẫn dắt nhóm 5 thành viên, thiết kế cơ sở dữ liệu, phân công công việc và review code.",
+        ossKicker: "04 — Mã nguồn mở", ossTitle: "Xây công khai, chia sẻ cho cộng đồng.", ossLead: "Các công cụ tôi tự phát triển và duy trì trên GitHub — dữ liệu bên dưới được tải trực tiếp từ GitHub REST API.",
+        termwardBadge: "Dự án tiêu biểu · Go", termwardCopy: "Trình quản lý SSH mã nguồn mở cho nhiều máy chủ, chủ động cảnh báo tình trạng máy và quản lý SSH key. Lõi viết bằng Go, giao diện desktop bằng Electron.",
+        termwardP1: "Quản lý nhiều máy chủ SSH trong một nơi", termwardP2: "Cảnh báo sức khỏe máy chủ chủ động", termwardP3: "Quản lý SSH key tập trung", termwardBtn: "Xem trên GitHub",
+        termLine1: "# Trình quản lý SSH mã nguồn mở cho nhiều máy chủ", termLine2: "✓ cảnh báo sức khỏe chủ động", termLine3: "✓ quản lý SSH key", termLine4: "✓ lõi Go + giao diện Electron",
+        allGithub: "Xem toàn bộ trên GitHub", loadMore: "Tải thêm dự án",
+        experienceKicker: "05 — Hành trình", experienceTitle: "Kinh nghiệm và học vấn.",
+        typeOss: "Mã nguồn mở", typeWork: "Công việc", typeEdu: "Học vấn",
+        ossTime: "Đang diễn ra", ossRoleTitle: "Tác giả & maintainer mã nguồn mở",
+        oss1: "Phát triển Termward — trình quản lý SSH cho nhiều máy chủ (Go + Electron).", oss2: "Xây DomainGateway — theo dõi ngày hết hạn tên miền qua RDAP/WHOIS, cảnh báo Telegram.", oss3: "Duy trì nhiều công cụ nhỏ cho quản trị máy chủ, tự động hóa và tiện ích desktop.",
+        workTime: "09/2025 — 10/2025", workTitle: "Nhân viên Hỗ trợ Kỹ thuật",
         work1: "Quản trị nội dung website, hỗ trợ cải thiện hiệu năng và trải nghiệm người dùng.", work2: "Chẩn đoán lỗi phần cứng và phần mềm để giảm thời gian gián đoạn vận hành.", work3: "Hỗ trợ KiotViet POS, gian hàng thương mại điện tử và các quy trình kỹ thuật.",
         eduTime: "08/2023 — 03/2026", eduTitle: "Kỹ thuật phần mềm", school: "Trường Cao đẳng Kinh tế - Kỹ thuật TP. Hồ Chí Minh (HOTEC)", edu1: "GPA: 3.6/4.0 — Tốt nghiệp loại Giỏi.", edu2: "Sinh viên Xuất sắc trong 4 học kỳ liên tiếp.", edu3: "Xây dựng dự án thực tế trên nền tảng web, desktop và Android.",
-        contactTitle: "Cùng xây một sản phẩm thật sự hữu ích.", contactCopy: "Tôi đang tìm cơ hội PHP Developer tại TP. Hồ Chí Minh. Hãy liên hệ để trao đổi phỏng vấn, dự án hoặc hợp tác kỹ thuật.", contactEmail: "Gửi email", contactCall: "Gọi điện",
+        contactStatus: "Open to work · Sẵn sàng nhận việc", contactTitle: "Cùng xây một sản phẩm thật sự hữu ích.", contactCopy: "Tôi đang tìm cơ hội PHP Developer tại TP. Hồ Chí Minh. Nhắn trực tiếp qua mạng xã hội hoặc email để trao đổi phỏng vấn, dự án hay hợp tác kỹ thuật.",
+        copyEmail: "Sao chép", copied: "Đã sao chép email", copyFailed: "Không sao chép được — hãy chọn và sao chép thủ công",
+        dmTelegram: "Nhắn tin trực tiếp · @nqatech2003", dmLinkedin: "Kết nối nghề nghiệp · /in/nguyenquocanhz", dmGithub: "Mã nguồn & issue · @nguyenquocanhz", contactCall: "Điện thoại",
         footerCopy: "Portfolio song ngữ · GitHub REST API · Không dùng framework.",
-        allFilter: "Tất cả", publicRepo: "Công khai", noDescription: "Repository chưa có mô tả.", updated: "Cập nhật", sourceCode: "Mã nguồn ↗", liveDemo: "Demo ↗", loading: "Đang tải dữ liệu GitHub…", apiError: "Không thể tải GitHub API. Có thể đã vượt giới hạn yêu cầu; hãy mở trực tiếp trang GitHub.", noRepos: "Không tìm thấy repository phù hợp.", themeLabel: "Đổi giao diện sáng tối", menuLabel: "Mở menu", switchLanguage: "Switch to English"
+        allFilter: "Tất cả", noDescription: "Repository chưa có mô tả.", liveDemo: "Demo", apiError: "Không thể tải GitHub API. Có thể đã vượt giới hạn yêu cầu; hãy mở trực tiếp trang GitHub.", noRepos: "Không tìm thấy repository phù hợp.", themeLabel: "Đổi giao diện sáng tối", menuLabel: "Mở menu", topLabel: "Lên đầu trang", switchLanguage: "Switch to English"
       },
       en: {
         pageTitle: "Nguyen Quoc Anh | PHP Developer",
-        pageDescription: "Bilingual Vietnamese/English portfolio of Nguyen Quoc Anh — PHP Developer. PHP, MySQL, JavaScript, Bootstrap, REST API and GitHub projects.",
+        pageDescription: "Bilingual Vietnamese/English portfolio of Nguyen Quoc Anh — PHP Developer. PHP, MySQL, JavaScript, REST API projects and open source on GitHub.",
         skip: "Skip to main content",
-        navAbout: "About", navSkills: "Skills", navProjects: "Projects", navGithub: "GitHub", navExperience: "Experience", navContact: "Contact",
-        heroEyebrow: "PHP Developer · Ho Chi Minh City",
+        navAbout: "About", navSkills: "Skills", navProjects: "Projects", navOss: "Open source", navExperience: "Experience", navContact: "Contact", navCv: "Get CV",
+        openStatus: "Open to work · PHP Developer",
         heroTitle: "Building useful products, not just writing code.",
-        heroCopy: "I am <strong>Nguyen Quoc Anh</strong>, a PHP Developer focused on building reliable web applications with <strong>PHP, MySQL, JavaScript, Bootstrap and REST APIs</strong>. I enjoy turning practical problems into simple, maintainable software.",
-        heroProjectBtn: "View featured projects", heroCvBtn: "Download CV", heroEmailBtn: "Email me",
-        openStatus: "Open to PHP Developer roles", reposLabel: "Repositories", followersLabel: "Followers", followingLabel: "Following", location: "Binh Tan, Ho Chi Minh City",
-        aboutKicker: "01 / About", aboutTitle: "A practical developer with a product mindset.",
+        heroCopy: "I am <strong>Nguyen Quoc Anh</strong>, a PHP Developer in Ho Chi Minh City. I build reliable web applications with <strong>PHP, MySQL, JavaScript and REST APIs</strong>, and ship open-source tools for the community.",
+        heroProjectBtn: "View projects", heroCvBtn: "Download CV (PDF)", heroContactBtn: "Contact",
+        reposLabel: "Repositories", starsLabel: "GitHub stars", followersLabel: "Followers", location: "Binh Tan, Ho Chi Minh City",
+        aboutKicker: "01 — About", aboutTitle: "A practical developer with a product mindset.",
         aboutBringTitle: "What I bring", aboutBringCopy: "Software engineering fundamentals combined with hands-on experience in debugging, database design, system support and deployment. I care about readable code, stable features and transparent teamwork.",
         gpaLabel: "Academic GPA", scoreLabel: "Team project score", teamLabel: "Team members led",
         focusTitle: "Current focus", focusCopy: "Growing as a PHP developer in a professional engineering team, with a focus on backend logic, MySQL optimization, application security, API integrations and the complete user journey from interface to database.",
-        skillsKicker: "02 / Skills", skillsTitle: "Focused skills for modern web development.", databaseTitle: "Database", workflowTitle: "Tools & workflow",
-        projectsKicker: "03 / Projects", projectsTitle: "Products that solve practical problems.", featuredLabel: "FEATURED PROJECT",
-        vpsTitle: "Automated VPS E-commerce Platform", vpsCopy: "A full-stack application for configuring, purchasing and automatically activating VPS services. The system handles server options, payment verification, instant credential delivery and revenue reporting.", requestDemo: "Request demo ↗",
-        qrCopy: "An Android application that centralizes banking QR codes with biometric authentication, encrypted local storage, QR scanning and Google Sign-In.", viewSource: "View source ↗",
-        quizTitle: "Driver's License Quiz App", quizCopy: "An offline Android study application with topic-based quizzes, 30-question mock exams, JSON data parsing and progress tracking.", viewSource2: "View source ↗",
-        storeTitle: "Store Management System", storeCopy: "A desktop application for laptop and component retail management. I led a five-member team, designed the database, assigned tasks and reviewed code.",
-        githubKicker: "04 / GitHub REST API", githubTitle: "Repositories updated directly from GitHub.", githubCopy: "The public profile and repositories of @nguyenquocanhz are loaded automatically when the page opens.", allGithub: "View all on GitHub ↗", loadMore: "Load more projects",
-        experienceKicker: "05 / Journey", experienceTitle: "Experience and education.", workTime: "Sep 2025 — Oct 2025", workTitle: "Technical Support Associate",
+        skillsKicker: "02 — Skills", skillsTitle: "Focused skills for modern web development.", databaseTitle: "Database", workflowTitle: "Tools & workflow", mobileTitle: "Mobile & Desktop", ossSkillTitle: "Used in open source",
+        projectsKicker: "03 — Projects", projectsTitle: "Products that solve practical problems.", featuredLabel: "01 · Featured project",
+        vpsTitle: "Automated VPS E-commerce Platform", vpsCopy: "A full-stack application for configuring, purchasing and automatically activating VPS services. The system handles server options, payment verification, instant credential delivery and revenue reporting.", requestDemo: "Request a demo",
+        qrCopy: "An Android application that centralizes banking QR codes with biometric authentication, encrypted local storage, QR scanning and Google Sign-In.", viewSource: "View source",
+        quizTitle: "Driver's License Quiz App", quizCopy: "An offline Android study application with topic-based quizzes, 30-question mock exams, JSON data parsing and progress tracking.",
+        storeLabel: "04 · Desktop · Team lead", storeTitle: "Store Management System", storeCopy: "A desktop application for laptop and component retail management. I led a five-member team, designed the database, assigned tasks and reviewed code.",
+        ossKicker: "04 — Open source", ossTitle: "Built in public, shared with the community.", ossLead: "Tools I build and maintain on GitHub — everything below is loaded live from the GitHub REST API.",
+        termwardBadge: "Flagship project · Go", termwardCopy: "Open-source SSH manager for many servers with proactive health alerts and SSH key management. Go core with an Electron desktop UI.",
+        termwardP1: "Manage many SSH servers in one place", termwardP2: "Proactive server health alerts", termwardP3: "Centralized SSH key management", termwardBtn: "View on GitHub",
+        termLine1: "# Open-source SSH manager for many servers", termLine2: "✓ proactive health alerts", termLine3: "✓ SSH key management", termLine4: "✓ Go core + Electron desktop UI",
+        allGithub: "View all on GitHub", loadMore: "Load more projects",
+        experienceKicker: "05 — Journey", experienceTitle: "Experience and education.",
+        typeOss: "Open source", typeWork: "Work", typeEdu: "Education",
+        ossTime: "Ongoing", ossRoleTitle: "Open-source author & maintainer",
+        oss1: "Building Termward — an SSH manager for many servers (Go + Electron).", oss2: "Built DomainGateway — domain expiry tracking over RDAP/WHOIS with Telegram alerts.", oss3: "Maintaining a set of small tools for server administration, automation and desktop utilities.",
+        workTime: "Sep 2025 — Oct 2025", workTitle: "Technical Support Associate",
         work1: "Maintained website content and supported performance and user experience improvements.", work2: "Diagnosed hardware and software issues to reduce operational downtime.", work3: "Supported KiotViet POS, e-commerce listings and technical workflows.",
         eduTime: "Aug 2023 — Mar 2026", eduTitle: "Software Engineering", school: "Ho Chi Minh City College of Economics and Technology (HOTEC)", edu1: "GPA: 3.6/4.0 — High Distinction.", edu2: "Recognized as an Excellent Student for four consecutive semesters.", edu3: "Built practical projects across web, desktop and Android development.",
-        contactTitle: "Let’s build something genuinely useful.", contactCopy: "I am looking for a PHP Developer opportunity in Ho Chi Minh City. Reach out for an interview, project discussion or technical collaboration.", contactEmail: "Send an email", contactCall: "Call me",
+        contactStatus: "Open to work · Available now", contactTitle: "Let’s build something genuinely useful.", contactCopy: "I am looking for a PHP Developer opportunity in Ho Chi Minh City. DM me on social or send an email to talk about an interview, a project or a technical collaboration.",
+        copyEmail: "Copy", copied: "Email copied", copyFailed: "Could not copy — please select and copy manually",
+        dmTelegram: "Direct message · @nqatech2003", dmLinkedin: "Professional network · /in/nguyenquocanhz", dmGithub: "Source & issues · @nguyenquocanhz", contactCall: "Phone",
         footerCopy: "Bilingual portfolio · GitHub REST API · No framework.",
-        allFilter: "All", publicRepo: "Public", noDescription: "No repository description yet.", updated: "Updated", sourceCode: "Source ↗", liveDemo: "Live demo ↗", loading: "Loading GitHub data…", apiError: "Unable to load the GitHub API. The request limit may have been reached; open the GitHub profile directly.", noRepos: "No matching repositories found.", themeLabel: "Toggle light and dark theme", menuLabel: "Open menu", switchLanguage: "Chuyển sang tiếng Việt"
+        allFilter: "All", noDescription: "No repository description yet.", liveDemo: "Live demo", apiError: "Unable to load the GitHub API. The request limit may have been reached; open the GitHub profile directly.", noRepos: "No matching repositories found.", themeLabel: "Toggle light and dark theme", menuLabel: "Open menu", topLabel: "Back to top", switchLanguage: "Chuyển sang tiếng Việt"
       }
     };
 
-    let currentLang = localStorage.getItem("portfolio-language") || "vi";
+    function storageGet(key) {
+      try { return localStorage.getItem(key); } catch (error) { return null; }
+    }
+    function storageSet(key, value) {
+      try { localStorage.setItem(key, value); } catch (error) { /* chế độ riêng tư */ }
+    }
+
+    const root = document.documentElement;
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const finePointer = window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+
+    let currentLang = storageGet("portfolio-language") === "en" ? "en" : "vi";
     let githubProfile = null;
     let allRepos = [];
     let filteredRepos = [];
     let activeLanguageFilter = "all";
     let visibleRepoCount = REPOS_PER_VIEW;
 
-    const root = document.documentElement;
-    const savedTheme = localStorage.getItem("portfolio-theme");
-    const prefersLight = window.matchMedia("(prefers-color-scheme: light)").matches;
-    root.dataset.theme = savedTheme || (prefersLight ? "light" : "dark");
-
     function t(key) {
       return translations[currentLang][key] || key;
     }
 
+    function numberFormat(value) {
+      return new Intl.NumberFormat(currentLang === "vi" ? "vi-VN" : "en-US").format(value);
+    }
+
+    /* ---------- Ngôn ngữ ---------- */
     function applyLanguage(lang) {
       currentLang = lang;
-      localStorage.setItem("portfolio-language", lang);
-      document.documentElement.lang = lang;
+      storageSet("portfolio-language", lang);
+      root.lang = lang;
       document.title = t("pageTitle");
 
       const metaDescription = document.querySelector('meta[name="description"]');
@@ -1292,13 +1651,13 @@
       if (ogDescription) ogDescription.content = t("pageDescription");
 
       document.querySelectorAll("[data-i18n]").forEach(element => {
-        const key = element.dataset.i18n;
-        if (translations[lang][key] !== undefined) element.textContent = translations[lang][key];
+        const value = translations[lang][element.dataset.i18n];
+        if (value !== undefined) element.textContent = value;
       });
 
       document.querySelectorAll("[data-i18n-html]").forEach(element => {
-        const key = element.dataset.i18nHtml;
-        if (translations[lang][key] !== undefined) element.innerHTML = translations[lang][key];
+        const value = translations[lang][element.dataset.i18nHtml];
+        if (value !== undefined) element.innerHTML = value;
       });
 
       const langToggle = document.getElementById("langToggle");
@@ -1306,37 +1665,267 @@
       langToggle.setAttribute("aria-label", t("switchLanguage"));
       document.getElementById("themeToggle").setAttribute("aria-label", t("themeLabel"));
       document.getElementById("menuToggle").setAttribute("aria-label", t("menuLabel"));
+      document.getElementById("toTop").setAttribute("aria-label", t("topLabel"));
 
       renderGithubProfile();
       renderRepoFilters();
       renderGithubRepos();
+      renderTerminal(terminalPlayed);
     }
-
-    document.getElementById("themeToggle").addEventListener("click", () => {
-      const nextTheme = root.dataset.theme === "light" ? "dark" : "light";
-      root.dataset.theme = nextTheme;
-      localStorage.setItem("portfolio-theme", nextTheme);
-    });
 
     document.getElementById("langToggle").addEventListener("click", () => {
       applyLanguage(currentLang === "vi" ? "en" : "vi");
     });
 
+    /* ---------- Giao diện sáng/tối ---------- */
+    function syncThemeColor() {
+      const meta = document.querySelector('meta[name="theme-color"]');
+      if (meta) meta.content = root.dataset.theme === "light" ? "#ffffff" : "#000000";
+    }
+    syncThemeColor();
+
+    document.getElementById("themeToggle").addEventListener("click", () => {
+      const nextTheme = root.dataset.theme === "light" ? "dark" : "light";
+      root.dataset.theme = nextTheme;
+      storageSet("portfolio-theme", nextTheme);
+      syncThemeColor();
+    });
+
+    /* ---------- Menu mobile ---------- */
     const menuToggle = document.getElementById("menuToggle");
     const mainNav = document.getElementById("mainNav");
+
+    function closeMenu() {
+      mainNav.classList.remove("is-open");
+      menuToggle.setAttribute("aria-expanded", "false");
+    }
 
     menuToggle.addEventListener("click", () => {
       const isOpen = mainNav.classList.toggle("is-open");
       menuToggle.setAttribute("aria-expanded", String(isOpen));
     });
+    mainNav.querySelectorAll("a").forEach(link => link.addEventListener("click", closeMenu));
+    document.addEventListener("keydown", event => { if (event.key === "Escape") closeMenu(); });
 
-    mainNav.querySelectorAll("a").forEach(link => {
-      link.addEventListener("click", () => {
-        mainNav.classList.remove("is-open");
-        menuToggle.setAttribute("aria-expanded", "false");
+    /* ---------- Hiệu ứng cuộn: progress, header, timeline, nút lên đầu ---------- */
+    const siteHeader = document.getElementById("siteHeader");
+    const toTop = document.getElementById("toTop");
+    const timeline = document.getElementById("timeline");
+    const timelineItems = Array.from(timeline.querySelectorAll(".timeline-item"));
+    let scrollTicking = false;
+
+    function onScrollFrame() {
+      scrollTicking = false;
+      const scrollTop = window.scrollY;
+      const maxScroll = document.documentElement.scrollHeight - window.innerHeight;
+      root.style.setProperty("--progress", maxScroll > 0 ? (scrollTop / maxScroll).toFixed(4) : "0");
+      siteHeader.classList.toggle("is-scrolled", scrollTop > 24);
+      toTop.classList.toggle("is-visible", scrollTop > window.innerHeight * .8);
+
+      // Đường timeline được "vẽ" dần theo vị trí cuộn.
+      const rect = timeline.getBoundingClientRect();
+      const trigger = window.innerHeight * .62;
+      const fill = Math.min(1, Math.max(0, (trigger - rect.top) / rect.height));
+      timeline.style.setProperty("--fill", fill.toFixed(4));
+      timelineItems.forEach(item => {
+        item.classList.toggle("is-active", item.getBoundingClientRect().top < trigger);
       });
+    }
+
+    function requestScrollFrame() {
+      if (scrollTicking) return;
+      scrollTicking = true;
+      requestAnimationFrame(onScrollFrame);
+    }
+
+    window.addEventListener("scroll", requestScrollFrame, { passive: true });
+    window.addEventListener("resize", requestScrollFrame);
+    toTop.addEventListener("click", () => window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" }));
+
+    /* ---------- Reveal khi cuộn + đếm số ---------- */
+    function animateCount(element) {
+      const target = Number(element.dataset.count);
+      const decimals = Number(element.dataset.decimals || 0);
+      const suffix = element.dataset.suffix || "";
+      if (reduceMotion || !Number.isFinite(target)) return;
+
+      const duration = 1300;
+      const start = performance.now();
+      function frame(now) {
+        const progress = Math.min(1, (now - start) / duration);
+        const eased = 1 - Math.pow(1 - progress, 4);
+        element.textContent = (target * eased).toFixed(decimals) + suffix;
+        if (progress < 1) requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
+    }
+
+    if ("IntersectionObserver" in window) {
+      const revealObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          entry.target.classList.add("is-visible");
+          entry.target.querySelectorAll("[data-count]").forEach(animateCount);
+          revealObserver.unobserve(entry.target);
+        });
+      }, { threshold: .12, rootMargin: "0px 0px -6% 0px" });
+
+      document.querySelectorAll("[data-reveal]").forEach(element => revealObserver.observe(element));
+
+      // Tô sáng mục menu của section đang xem.
+      const navLinks = Array.from(mainNav.querySelectorAll("a"));
+      const sectionObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+          if (!entry.isIntersecting) return;
+          navLinks.forEach(link => {
+            const isActive = link.getAttribute("href") === `#${entry.target.id}`;
+            link.classList.toggle("is-active", isActive);
+            if (isActive) link.setAttribute("aria-current", "true"); else link.removeAttribute("aria-current");
+          });
+        });
+      }, { rootMargin: "-45% 0px -50% 0px" });
+
+      document.querySelectorAll("main section[id]").forEach(section => sectionObserver.observe(section));
+    } else {
+      document.querySelectorAll("[data-reveal]").forEach(element => element.classList.add("is-visible"));
+    }
+
+    /* ---------- Hover: spotlight, magnetic, parallax ---------- */
+    if (finePointer) {
+      // Dùng event delegation để thẻ repo render sau cũng có hiệu ứng.
+      document.addEventListener("pointermove", event => {
+        const card = event.target instanceof Element ? event.target.closest(".spot") : null;
+        if (!card) return;
+        const rect = card.getBoundingClientRect();
+        card.style.setProperty("--mx", `${event.clientX - rect.left}px`);
+        card.style.setProperty("--my", `${event.clientY - rect.top}px`);
+      }, { passive: true });
+
+      if (!reduceMotion) {
+        document.querySelectorAll(".magnetic").forEach(button => {
+          button.addEventListener("pointermove", event => {
+            const rect = button.getBoundingClientRect();
+            const x = (event.clientX - rect.left - rect.width / 2) * .22;
+            const y = (event.clientY - rect.top - rect.height / 2) * .3;
+            button.style.transform = `translate(${x.toFixed(1)}px, ${y.toFixed(1)}px)`;
+          });
+          button.addEventListener("pointerleave", () => { button.style.transform = ""; });
+        });
+
+        const hero = document.getElementById("top");
+        const heroOrb = document.getElementById("heroOrb");
+        hero.addEventListener("pointermove", event => {
+          const rect = hero.getBoundingClientRect();
+          heroOrb.style.setProperty("--px", `${((event.clientX - rect.left) / rect.width - .5) * 90}px`);
+          heroOrb.style.setProperty("--py", `${((event.clientY - rect.top) / rect.height - .5) * 70}px`);
+        }, { passive: true });
+      }
+    }
+
+    /* ---------- Terminal Termward ---------- */
+    const terminalBody = document.getElementById("terminalBody");
+    let terminalPlayed = false;
+    let terminalRun = 0;
+
+    function terminalLines() {
+      return [
+        { type: "cmd", text: `git clone https://github.com/${GITHUB_USER}/${FEATURED_REPO}` },
+        { type: "dim", text: t("termLine1") },
+        { type: "out", text: t("termLine2") },
+        { type: "out", text: t("termLine3") },
+        { type: "out", text: t("termLine4") },
+        { type: "cmd", text: "" }
+      ];
+    }
+
+    function lineHtml(line, typed) {
+      const text = escapeHtml(typed === undefined ? line.text : typed);
+      if (line.type === "cmd") return `<span class="t-prompt">$</span> ${text}`;
+      if (line.type === "dim") return `<span class="t-dim">${text}</span>`;
+      return text;
+    }
+
+    const caretHtml = '<span class="t-caret"></span>';
+
+    function renderTerminal(instant) {
+      const run = ++terminalRun;
+      const lines = terminalLines();
+
+      if (instant || reduceMotion) {
+        terminalBody.innerHTML = lines.map(line => lineHtml(line)).join("\n") + caretHtml;
+        return;
+      }
+      if (!terminalPlayed) {
+        terminalBody.innerHTML = `<span class="t-prompt">$</span> ${caretHtml}`;
+        return;
+      }
+
+      const done = [];
+      let index = 0;
+
+      function nextLine() {
+        if (run !== terminalRun) return;
+        if (index >= lines.length) return;
+        const line = lines[index];
+
+        if (line.type !== "cmd" || !line.text) {
+          done.push(lineHtml(line));
+          index += 1;
+          terminalBody.innerHTML = done.join("\n") + (index >= lines.length ? caretHtml : "");
+          setTimeout(nextLine, 260);
+          return;
+        }
+
+        let chars = 0;
+        (function typeChar() {
+          if (run !== terminalRun) return;
+          chars += 1;
+          terminalBody.innerHTML = done.concat(lineHtml(line, line.text.slice(0, chars))).join("\n") + caretHtml;
+          if (chars < line.text.length) {
+            setTimeout(typeChar, 26);
+          } else {
+            done.push(lineHtml(line));
+            index += 1;
+            setTimeout(nextLine, 420);
+          }
+        })();
+      }
+      nextLine();
+    }
+
+    if ("IntersectionObserver" in window) {
+      const terminalObserver = new IntersectionObserver(entries => {
+        if (!entries[0].isIntersecting) return;
+        terminalPlayed = true;
+        renderTerminal(false);
+        terminalObserver.disconnect();
+      }, { threshold: .5 });
+      terminalObserver.observe(terminalBody);
+    } else {
+      terminalPlayed = true;
+    }
+
+    /* ---------- Sao chép email ---------- */
+    const toast = document.getElementById("toast");
+    let toastTimer = 0;
+
+    function showToast(message) {
+      toast.textContent = message;
+      toast.classList.add("is-visible");
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove("is-visible"), 2200);
+    }
+
+    document.getElementById("copyEmail").addEventListener("click", async event => {
+      try {
+        await navigator.clipboard.writeText(event.currentTarget.dataset.email);
+        showToast(t("copied"));
+      } catch (error) {
+        showToast(t("copyFailed"));
+      }
     });
 
+    /* ---------- GitHub REST API ---------- */
     async function githubFetch(url) {
       const response = await fetch(url, {
         headers: {
@@ -1350,31 +1939,21 @@
         error.status = response.status;
         throw error;
       }
-
       return response.json();
     }
 
     async function fetchAllPublicRepos(expectedCount = 0) {
       const pages = Math.max(1, Math.min(3, Math.ceil(expectedCount / 100)));
       const requests = [];
-
       for (let page = 1; page <= pages; page += 1) {
         requests.push(githubFetch(`https://api.github.com/users/${GITHUB_USER}/repos?type=public&sort=updated&direction=desc&per_page=100&page=${page}`));
       }
-
       const results = await Promise.all(requests);
       return results.flat();
     }
 
     function rankRepositories(repos) {
-      const priority = [
-        "portifolio_nguyen_quoc_anh",
-        "QExplorer",
-        "CallerID-Lan",
-        "MediaPlayerPro",
-        "AppQRWallet",
-        "VietLearn"
-      ];
+      const priority = ["termward", "DomainGateway", "zmp-mcp", "wrenpanel", "evil2ban", "ghost-authenticator"];
 
       return repos
         .filter(repo => !repo.fork)
@@ -1386,7 +1965,6 @@
             if (bPriority === -1) return -1;
             return aPriority - bPriority;
           }
-
           const starDifference = b.stargazers_count - a.stargazers_count;
           if (starDifference !== 0) return starDifference;
           return new Date(b.updated_at) - new Date(a.updated_at);
@@ -1405,27 +1983,31 @@
         renderGithubRepos();
       } catch (error) {
         console.error(error);
-        const grid = document.getElementById("repoGrid");
-        grid.innerHTML = `<div class="github-state error">${escapeHtml(t("apiError"))}<br><br><a href="https://github.com/${GITHUB_USER}" target="_blank" rel="noopener noreferrer">github.com/${GITHUB_USER} ↗</a></div>`;
+        document.getElementById("repoGrid").innerHTML = `<div class="github-state error">${escapeHtml(t("apiError"))}<br><br><a href="https://github.com/${GITHUB_USER}" target="_blank" rel="noopener noreferrer">github.com/${GITHUB_USER}</a></div>`;
       }
     }
 
     function renderGithubProfile() {
       if (!githubProfile) return;
 
+      const totalStars = allRepos.reduce((sum, repo) => sum + repo.stargazers_count, 0);
       document.getElementById("profileName").textContent = githubProfile.name || GITHUB_USER;
       document.getElementById("profileLogin").textContent = `@${githubProfile.login}`;
       document.getElementById("profileLogin").href = githubProfile.html_url;
-      document.getElementById("profileRepos").textContent = new Intl.NumberFormat(currentLang === "vi" ? "vi-VN" : "en-US").format(githubProfile.public_repos);
-      document.getElementById("profileFollowers").textContent = new Intl.NumberFormat(currentLang === "vi" ? "vi-VN" : "en-US").format(githubProfile.followers);
-      document.getElementById("profileFollowing").textContent = new Intl.NumberFormat(currentLang === "vi" ? "vi-VN" : "en-US").format(githubProfile.following);
+      document.getElementById("profileRepos").textContent = numberFormat(githubProfile.public_repos);
+      document.getElementById("profileFollowers").textContent = numberFormat(githubProfile.followers);
+      document.getElementById("profileStars").textContent = numberFormat(totalStars);
 
       const avatar = document.getElementById("profileAvatar");
-      const placeholder = document.getElementById("profileAvatarPlaceholder");
       avatar.src = githubProfile.avatar_url;
       avatar.alt = `${githubProfile.login} GitHub avatar`;
       avatar.hidden = false;
-      placeholder.hidden = true;
+      document.getElementById("profileAvatarPlaceholder").hidden = true;
+
+      const featured = allRepos.find(repo => repo.name === FEATURED_REPO);
+      if (featured) {
+        document.getElementById("termwardMeta").textContent = `★ ${numberFormat(featured.stargazers_count)} · ${featured.language || "Go"}`;
+      }
     }
 
     function renderRepoFilters() {
@@ -1445,27 +2027,26 @@
         .slice(0, 6)
         .map(([language]) => language);
 
-      const filterValues = ["all", ...languages];
-      filters.innerHTML = filterValues.map(value => {
+      filters.innerHTML = ["all", ...languages].map(value => {
         const label = value === "all" ? t("allFilter") : value;
-        const activeClass = value === activeLanguageFilter ? " is-active" : "";
-        return `<button class="filter-btn${activeClass}" type="button" data-filter="${escapeHtml(value)}">${escapeHtml(label)}</button>`;
+        const isActive = value === activeLanguageFilter;
+        return `<button class="filter-btn${isActive ? " is-active" : ""}" type="button" aria-pressed="${isActive}" data-filter="${escapeHtml(value)}">${escapeHtml(label)}</button>`;
       }).join("");
-
-      filters.querySelectorAll("button").forEach(button => {
-        button.addEventListener("click", () => {
-          activeLanguageFilter = button.dataset.filter;
-          visibleRepoCount = REPOS_PER_VIEW;
-          filteredRepos = activeLanguageFilter === "all"
-            ? allRepos
-            : allRepos.filter(repo => repo.language === activeLanguageFilter);
-          renderRepoFilters();
-          renderGithubRepos();
-        });
-      });
     }
 
-    function renderGithubRepos() {
+    document.getElementById("repoFilters").addEventListener("click", event => {
+      const button = event.target.closest("button[data-filter]");
+      if (!button) return;
+      activeLanguageFilter = button.dataset.filter;
+      visibleRepoCount = REPOS_PER_VIEW;
+      filteredRepos = activeLanguageFilter === "all"
+        ? allRepos
+        : allRepos.filter(repo => repo.language === activeLanguageFilter);
+      renderRepoFilters();
+      renderGithubRepos();
+    });
+
+    function renderGithubRepos(animateFrom = 0) {
       if (!allRepos.length) return;
 
       const grid = document.getElementById("repoGrid");
@@ -1478,37 +2059,29 @@
         return;
       }
 
-      grid.innerHTML = reposToShow.map(repo => createRepoCard(repo)).join("");
+      grid.innerHTML = reposToShow.map((repo, index) => createRepoCard(repo, Math.max(0, index - animateFrom))).join("");
       loadMoreButton.hidden = visibleRepoCount >= filteredRepos.length;
-      loadMoreButton.textContent = t("loadMore");
     }
 
-    function createRepoCard(repo) {
-      const locale = currentLang === "vi" ? "vi-VN" : "en-US";
-      const updatedDate = new Intl.DateTimeFormat(locale, { year: "numeric", month: "short", day: "2-digit" }).format(new Date(repo.updated_at));
+    function createRepoCard(repo, order) {
       const description = repo.description || t("noDescription");
-      const topics = Array.isArray(repo.topics) ? repo.topics.slice(0, 4) : [];
       const language = repo.language || "Code";
+      const arrow = '<span class="project-arrow" aria-hidden="true"><svg width="13" height="13" viewBox="0 0 24 24" fill="none"><path d="M7 17L17 7M9 7h8v8" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>';
 
       return `
-        <article class="repo-card">
+        <article class="card spot repo-card" style="--i:${order}">
           <div class="repo-top">
-            <h3 class="repo-name"><a href="${escapeAttribute(repo.html_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(repo.name)}</a></h3>
-            <span class="repo-visibility">${escapeHtml(t("publicRepo"))}</span>
+            <h3 class="repo-name"><a href="${escapeHtml(repo.html_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(repo.name)}</a></h3>
+            ${arrow}
           </div>
           <p class="repo-desc">${escapeHtml(description)}</p>
-          ${topics.length ? `<div class="repo-topics">${topics.map(topic => `<span class="repo-topic">${escapeHtml(topic)}</span>`).join("")}</div>` : ""}
           <div class="repo-footer">
             <div class="repo-metrics">
-              <span><span class="language-dot"></span> ${escapeHtml(language)}</span>
+              <span><span class="language-dot"></span>${escapeHtml(language)}</span>
               <span>★ ${repo.stargazers_count}</span>
               <span>⑂ ${repo.forks_count}</span>
             </div>
-            <span>${escapeHtml(t("updated"))}: ${escapeHtml(updatedDate)}</span>
-          </div>
-          <div class="project-links">
-            <a href="${escapeAttribute(repo.html_url)}" target="_blank" rel="noopener noreferrer">${escapeHtml(t("sourceCode"))}</a>
-            ${repo.homepage ? `<a href="${escapeAttribute(normalizeUrl(repo.homepage))}" target="_blank" rel="noopener noreferrer">${escapeHtml(t("liveDemo"))}</a>` : ""}
+            ${repo.homepage ? `<a class="repo-demo" href="${escapeHtml(normalizeUrl(repo.homepage))}" target="_blank" rel="noopener noreferrer">${escapeHtml(t("liveDemo"))} ↗</a>` : ""}
           </div>
         </article>`;
     }
@@ -1527,17 +2100,15 @@
         .replaceAll("'", "&#039;");
     }
 
-    function escapeAttribute(value) {
-      return escapeHtml(value);
-    }
-
     document.getElementById("loadMoreRepos").addEventListener("click", () => {
+      const previousCount = visibleRepoCount;
       visibleRepoCount += REPOS_PER_VIEW;
-      renderGithubRepos();
+      renderGithubRepos(previousCount);
     });
 
     document.getElementById("year").textContent = new Date().getFullYear();
     applyLanguage(currentLang);
+    onScrollFrame();
     loadGithubData();
   </script>
 </body>
